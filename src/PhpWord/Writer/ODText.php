@@ -17,12 +17,8 @@
 
 namespace PhpOffice\PhpWord\Writer;
 
-use PhpOffice\Math\Writer\MathML;
-use PhpOffice\PhpWord\Element\AbstractElement;
-use PhpOffice\PhpWord\Element\Formula;
 use PhpOffice\PhpWord\Media;
 use PhpOffice\PhpWord\PhpWord;
-use PhpOffice\PhpWord\Writer\ODText\Part\AbstractPart;
 
 /**
  * ODText writer.
@@ -31,11 +27,6 @@ use PhpOffice\PhpWord\Writer\ODText\Part\AbstractPart;
  */
 class ODText extends AbstractWriter implements WriterInterface
 {
-    /**
-     * @var AbstractElement[]
-     */
-    protected $objects = [];
-
     /**
      * Create new ODText writer.
      *
@@ -86,28 +77,8 @@ class ODText extends AbstractWriter implements WriterInterface
 
         // Write parts
         foreach ($this->parts as $partName => $fileName) {
-            if ($fileName === '') {
-                continue;
-            }
-            $part = $this->getWriterPart($partName);
-            if (!$part instanceof AbstractPart) {
-                continue;
-            }
-
-            $part->setObjects($this->objects);
-
-            $zip->addFromString($fileName, $part->write());
-
-            $this->objects = $part->getObjects();
-        }
-
-        // Write objects charts
-        if (!empty($this->objects)) {
-            $writer = new MathML();
-            foreach ($this->objects as $idxObject => $object) {
-                if ($object instanceof Formula) {
-                    $zip->addFromString('Formula' . $idxObject . '/content.xml', $writer->write($object->getMath()));
-                }
+            if ($fileName != '') {
+                $zip->addFromString($fileName, $this->getWriterPart($partName)->write());
             }
         }
 

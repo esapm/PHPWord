@@ -50,19 +50,4 @@ class MPDFTest extends \PHPUnit\Framework\TestCase
 
         unlink($file);
     }
-
-    /**
-     * Test set/get abstract renderer options.
-     */
-    public function testSetGetAbstractRendererOptions(): void
-    {
-        $rendererName = Settings::PDF_RENDERER_MPDF;
-        $rendererLibraryPath = realpath(PHPWORD_TESTS_BASE_DIR . '/../vendor/mpdf/mpdf');
-        Settings::setPdfRenderer($rendererName, $rendererLibraryPath);
-        Settings::setPdfRendererOptions([
-            'font' => 'Arial',
-        ]);
-        $writer = new PDF(new PhpWord());
-        self::assertEquals('Arial', $writer->getFont());
-    }
 }

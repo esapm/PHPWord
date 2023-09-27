@@ -18,7 +18,6 @@
 namespace PhpOffice\PhpWord\Reader\ODText;
 
 use DateTime;
-use PhpOffice\Math\Reader\MathML;
 use PhpOffice\PhpWord\Element\TrackChange;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Shared\XMLReader;
@@ -52,55 +51,37 @@ class Content extends AbstractPart
 
                         break;
                     case 'text:p': // Paragraph
-                        $element = $xmlReader->getElement('draw:frame/draw:object', $node);
-                        if ($element) {
-                            $mathFile = str_replace('./', '', $element->getAttribute('xlink:href')) . '/content.xml';
-
-                            $xmlReaderObject = new XMLReader();
-                            $mathElement = $xmlReaderObject->getDomFromZip($this->docFile, $mathFile);
-                            if ($mathElement) {
-                                $mathXML = $mathElement->saveXML($mathElement);
-
-                                if (is_string($mathXML)) {
-                                    $reader = new MathML();
-                                    $math = $reader->read($mathXML);
-
-                                    $section->addFormula($math);
-                                }
-                            }
-                        } else {
-                            $children = $node->childNodes;
-                            foreach ($children as $child) {
-                                switch ($child->nodeName) {
-                                    case 'text:change-start':
-                                        $changeId = $child->getAttribute('text:change-id');
-                                        if (isset($trackedChanges[$changeId])) {
-                                            $changed = $trackedChanges[$changeId];
-                                        }
-
-                                        break;
-                                    case 'text:change-end':
-                                        unset($changed);
-
-                                        break;
-                                    case 'text:change':
-                                        $changeId = $child->getAttribute('text:change-id');
-                                        if (isset($trackedChanges[$changeId])) {
-                                            $changed = $trackedChanges[$changeId];
-                                        }
-
-                                        break;
-                                }
-                            }
-
-                            $element = $section->addText($node->nodeValue);
-                            if (isset($changed) && is_array($changed)) {
-                                $element->setTrackChange($changed['changed']);
-                                if (isset($changed['textNodes'])) {
-                                    foreach ($changed['textNodes'] as $changedNode) {
-                                        $element = $section->addText($changedNode->nodeValue);
-                                        $element->setTrackChange($changed['changed']);
+                        $children = $node->childNodes;
+                        foreach ($children as $child) {
+                            switch ($child->nodeName) {
+                                case 'text:change-start':
+                                    $changeId = $child->getAttribute('text:change-id');
+                                    if (isset($trackedChanges[$changeId])) {
+                                        $changed = $trackedChanges[$changeId];
                                     }
+
+                                    break;
+                                case 'text:change-end':
+                                    unset($changed);
+
+                                    break;
+                                case 'text:change':
+                                    $changeId = $child->getAttribute('text:change-id');
+                                    if (isset($trackedChanges[$changeId])) {
+                                        $changed = $trackedChanges[$changeId];
+                                    }
+
+                                    break;
+                            }
+                        }
+
+                        $element = $section->addText($node->nodeValue);
+                        if (isset($changed) && is_array($changed)) {
+                            $element->setTrackChange($changed['changed']);
+                            if (isset($changed['textNodes'])) {
+                                foreach ($changed['textNodes'] as $changedNode) {
+                                    $element = $section->addText($changedNode->nodeValue);
+                                    $element->setTrackChange($changed['changed']);
                                 }
                             }
                         }

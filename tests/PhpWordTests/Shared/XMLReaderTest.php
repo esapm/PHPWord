@@ -87,7 +87,7 @@ class XMLReaderTest extends \PHPUnit\Framework\TestCase
     public function testReturnNullOnNonExistingNode(): void
     {
         $reader = new XMLReader();
-        self::assertSame(0, $reader->getElements('/element/children')->length);
+        self::assertEmpty($reader->getElements('/element/children'));
         $reader->getDomFromString('<element><child>AAA</child></element>');
 
         self::assertNull($reader->getElement('/element/children'));

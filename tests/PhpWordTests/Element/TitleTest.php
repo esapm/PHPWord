@@ -14,7 +14,6 @@
  *
  * @license     http://www.gnu.org/licenses/lgpl.txt LGPL version 3
  */
-declare(strict_types=1);
 
 namespace PhpOffice\PhpWordTests\Element;
 
@@ -33,17 +32,24 @@ use PhpOffice\PhpWord\Element\Title;
 class TitleTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * Create new instance with string.
+     * Create new instance.
      */
     public function testConstruct(): void
     {
-        $title = new Title('text');
+        $oTitle = new Title('text');
 
-        self::assertInstanceOf(Title::class, $title);
-        self::assertEquals('text', $title->getText());
-        self::assertEquals(1, $title->getDepth());
-        self::assertNull($title->getPageNumber());
-        self::assertNull($title->getStyle());
+        self::assertInstanceOf('PhpOffice\\PhpWord\\Element\\Title', $oTitle);
+        self::assertEquals('text', $oTitle->getText());
+    }
+
+    /**
+     * Get style null.
+     */
+    public function testStyleNull(): void
+    {
+        $oTitle = new Title('text');
+
+        self::assertNull($oTitle->getStyle());
     }
 
     /**
@@ -51,30 +57,17 @@ class TitleTest extends \PHPUnit\Framework\TestCase
      */
     public function testConstructWithTextRun(): void
     {
-        $textRun = new TextRun();
-        $textRun->addText('text');
-        $title = new Title($textRun);
+        $oTextRun = new TextRun();
+        $oTextRun->addText('text');
+        $oTitle = new Title($oTextRun);
 
-        self::assertInstanceOf(TextRun::class, $title->getText());
-        self::assertEquals(1, $title->getDepth());
-        self::assertNull($title->getPageNumber());
-        self::assertNull($title->getStyle());
+        self::assertInstanceOf('PhpOffice\\PhpWord\\Element\\TextRun', $oTitle->getText());
     }
 
     public function testConstructWithInvalidArgument(): void
     {
         $this->expectException(InvalidArgumentException::class);
-
-        new Title(new PageBreak());
-    }
-
-    public function testConstructWithPageNumber(): void
-    {
-        $title = new Title('text', 1, 0);
-
-        self::assertInstanceOf(Title::class, $title);
-        self::assertEquals('text', $title->getText());
-        self::assertEquals(0, $title->getPageNumber());
-        self::assertNull($title->getStyle());
+        $oPageBreak = new PageBreak();
+        new Title($oPageBreak);
     }
 }

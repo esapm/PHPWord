@@ -99,7 +99,7 @@ class Paragraph extends Border
     /**
      * Text line height.
      *
-     * @var float|int
+     * @var int
      */
     private $lineHeight;
 

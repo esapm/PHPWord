@@ -101,7 +101,6 @@ class Head extends AbstractPart
             'table' => [
                 'border' => '1px solid black',
                 'border-spacing' => '0px',
-                'border-collapse' => 'collapse',
                 'width ' => '100%',
             ],
             'td' => [

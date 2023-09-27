@@ -32,7 +32,7 @@ abstract class AbstractElement
     /**
      * PhpWord object.
      *
-     * @var ?\PhpOffice\PhpWord\PhpWord
+     * @var \PhpOffice\PhpWord\PhpWord
      */
     protected $phpWord;
 
@@ -147,7 +147,7 @@ abstract class AbstractElement
     /**
      * Get PhpWord.
      *
-     * @return ?\PhpOffice\PhpWord\PhpWord
+     * @return \PhpOffice\PhpWord\PhpWord
      */
     public function getPhpWord()
     {
@@ -156,6 +156,8 @@ abstract class AbstractElement
 
     /**
      * Set PhpWord as reference.
+     *
+     * @param \PhpOffice\PhpWord\PhpWord $phpWord
      */
     public function setPhpWord(?PhpWord $phpWord = null): void
     {
@@ -430,7 +432,7 @@ abstract class AbstractElement
      * Set new style value.
      *
      * @param mixed $styleObject Style object
-     * @param null|array|\PhpOffice\PhpWord\Style|string $styleValue Style value
+     * @param mixed $styleValue Style value
      * @param bool $returnObject Always return object
      *
      * @return mixed

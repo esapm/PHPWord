@@ -151,7 +151,6 @@ class Settings extends AbstractPart
         $this->setOnOffValue('w:updateFields', $documentSettings->hasUpdateFields());
         $this->setOnOffValue('w:autoHyphenation', $documentSettings->hasAutoHyphenation());
         $this->setOnOffValue('w:doNotHyphenateCaps', $documentSettings->hasDoNotHyphenateCaps());
-        $this->setOnOffValue('w:bookFoldPrinting', $documentSettings->hasBookFoldPrinting());
 
         $this->setThemeFontLang($documentSettings->getThemeFontLang());
         $this->setRevisionView($documentSettings->getRevisionView());

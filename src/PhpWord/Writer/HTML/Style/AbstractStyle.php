@@ -36,7 +36,7 @@ abstract class AbstractStyle
     /**
      * Style.
      *
-     * @var null|array|\PhpOffice\PhpWord\Style\AbstractStyle
+     * @var array|\PhpOffice\PhpWord\Style\AbstractStyle
      */
     private $style;
 
@@ -78,7 +78,7 @@ abstract class AbstractStyle
     /**
      * Get style.
      *
-     * @return null|array|\PhpOffice\PhpWord\Style\AbstractStyle|string
+     * @return array|\PhpOffice\PhpWord\Style\AbstractStyle $style
      */
     public function getStyle()
     {

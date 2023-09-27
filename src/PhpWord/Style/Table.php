@@ -131,7 +131,7 @@ class Table extends Border
     private $unit = TblWidth::AUTO;
 
     /**
-     * @var null|float|int cell spacing value
+     * @var float|int cell spacing value
      */
     protected $cellSpacing;
 
@@ -143,7 +143,7 @@ class Table extends Border
     /**
      * Position.
      *
-     * @var ?\PhpOffice\PhpWord\Style\TablePosition
+     * @var \PhpOffice\PhpWord\Style\TablePosition
      */
     private $position;
 
@@ -188,7 +188,7 @@ class Table extends Border
     }
 
     /**
-     * @param null|float|int $cellSpacing
+     * @param float|int $cellSpacing
      */
     public function setCellSpacing($cellSpacing = null): void
     {
@@ -196,7 +196,7 @@ class Table extends Border
     }
 
     /**
-     * @return null|float|int
+     * @return float|int
      */
     public function getCellSpacing()
     {
@@ -216,7 +216,7 @@ class Table extends Border
     /**
      * Get background.
      *
-     * @return ?string
+     * @return string
      */
     public function getBgColor()
     {
@@ -704,7 +704,7 @@ class Table extends Border
     /**
      * Get position.
      *
-     * @return ?\PhpOffice\PhpWord\Style\TablePosition
+     * @return \PhpOffice\PhpWord\Style\TablePosition
      */
     public function getPosition()
     {
@@ -726,7 +726,7 @@ class Table extends Border
     }
 
     /**
-     * @return ?TblWidthComplexType
+     * @return TblWidthComplexType
      */
     public function getIndent()
     {

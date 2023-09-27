@@ -19,7 +19,6 @@ namespace PhpOffice\PhpWordTests;
 
 use DOMDocument;
 use DOMElement;
-use DOMNode;
 use DOMNodeList;
 use DOMXPath;
 
@@ -64,6 +63,31 @@ class XmlDocument
     private $defaultFile = 'word/document.xml';
 
     /**
+     * Get default file.
+     *
+     * @return string
+     */
+    public function getDefaultFile()
+    {
+        return $this->defaultFile;
+    }
+
+    /**
+     * Set default file.
+     *
+     * @param string $file
+     *
+     * @return string
+     */
+    public function setDefaultFile($file)
+    {
+        $temp = $this->defaultFile;
+        $this->defaultFile = $file;
+
+        return $temp;
+    }
+
+    /**
      * Create new instance.
      *
      * @param string $path
@@ -74,45 +98,13 @@ class XmlDocument
     }
 
     /**
-     * Get default file.
-     */
-    public function getDefaultFile(): string
-    {
-        return $this->defaultFile;
-    }
-
-    /**
-     * Set default file.
-     */
-    public function setDefaultFile(string $file): string
-    {
-        $temp = $this->defaultFile;
-
-        $this->defaultFile = $file;
-
-        return $temp;
-    }
-
-    /**
-     * Get file name.
-     */
-    public function getFile(): string
-    {
-        return $this->file;
-    }
-
-    /**
-     * Get path.
-     */
-    public function getPath(): string
-    {
-        return $this->path;
-    }
-
-    /**
      * Get DOM from file.
+     *
+     * @param string $file
+     *
+     * @return DOMDocument
      */
-    public function getFileDom(string $file = ''): DOMDocument
+    public function getFileDom($file = '')
     {
         if (!$file) {
             $file = $this->defaultFile;
@@ -140,9 +132,12 @@ class XmlDocument
     /**
      * Get node list.
      *
-     * @return DOMNodeList<DOMNode>
+     * @param string $path
+     * @param string $file
+     *
+     * @return DOMNodeList
      */
-    public function getNodeList(string $path, string $file = ''): DOMNodeList
+    public function getNodeList($path, $file = '')
     {
         if (!$file) {
             $file = $this->defaultFile;
@@ -161,25 +156,73 @@ class XmlDocument
 
     /**
      * Get element.
+     *
+     * @param string $path
+     * @param string $file
+     *
+     * @return DOMElement
      */
-    public function getElement(string $path, string $file = ''): ?DOMElement
+    public function getElement($path, $file = '')
     {
-        return $this->getNodeList($path, $file)->item(0);
+        if (!$file) {
+            $file = $this->defaultFile;
+        }
+        $elements = $this->getNodeList($path, $file);
+
+        return $elements->item(0);
+    }
+
+    /**
+     * Get file name.
+     *
+     * @return string
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * Get path.
+     *
+     * @return string
+     */
+    public function getPath()
+    {
+        return $this->path;
     }
 
     /**
      * Get element attribute.
+     *
+     * @param   string  $path
+     * @param   string  $attribute
+     * @param   string  $file
+     *
+     * @return  string
      */
-    public function getElementAttribute(string $path, string $attribute, string $file = ''): string
+    public function getElementAttribute($path, $attribute, $file = '')
     {
+        if (!$file) {
+            $file = $this->defaultFile;
+        }
+
         return $this->getElement($path, $file)->getAttribute($attribute);
     }
 
     /**
      * Check if element exists.
+     *
+     * @param   string  $path
+     * @param   string  $file
+     *
+     * @return  string
      */
-    public function elementExists(string $path, string $file = ''): bool
+    public function elementExists($path, $file = '')
     {
+        if (!$file) {
+            $file = $this->defaultFile;
+        }
         $nodeList = $this->getNodeList($path, $file);
 
         return $nodeList->length != 0;
@@ -188,11 +231,23 @@ class XmlDocument
     /**
      * Returns the xml, or part of it as a formatted string.
      *
-     * @return false|string
+     * @param string $path
+     * @param string $file
+     *
+     * @return string
      */
-    public function printXml(string $path = '/', string $file = '')
+    public function printXml($path = '/', $file = '')
     {
+        if (!$file) {
+            $file = $this->defaultFile;
+        }
         $element = $this->getElement($path, $file);
+        if ($element instanceof DOMDocument) {
+            $element->formatOutput = true;
+            $element->preserveWhiteSpace = false;
+
+            return $element->saveXML();
+        }
 
         $newdoc = new DOMDocument();
         $newdoc->formatOutput = true;

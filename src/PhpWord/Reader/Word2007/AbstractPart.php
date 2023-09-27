@@ -19,11 +19,8 @@ namespace PhpOffice\PhpWord\Reader\Word2007;
 
 use DateTime;
 use DOMElement;
-use InvalidArgumentException;
-use PhpOffice\Math\Reader\OfficeMathML;
 use PhpOffice\PhpWord\ComplexType\TblWidth as TblWidthComplexType;
 use PhpOffice\PhpWord\Element\AbstractContainer;
-use PhpOffice\PhpWord\Element\AbstractElement;
 use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\Element\TrackChange;
 use PhpOffice\PhpWord\PhpWord;
@@ -71,20 +68,6 @@ abstract class AbstractPart
     protected $rels = [];
 
     /**
-     * Comment references.
-     *
-     * @var array<string, array<string, AbstractElement>>
-     */
-    protected $commentRefs = [];
-
-    /**
-     * Image Loading.
-     *
-     * @var bool
-     */
-    protected $imageLoading = true;
-
-    /**
      * Read part.
      */
     abstract public function read(PhpWord $phpWord);
@@ -111,74 +94,6 @@ abstract class AbstractPart
         $this->rels = $value;
     }
 
-    public function setImageLoading(bool $value): self
-    {
-        $this->imageLoading = $value;
-
-        return $this;
-    }
-
-    public function hasImageLoading(): bool
-    {
-        return $this->imageLoading;
-    }
-
-    /**
-     * Get comment references.
-     *
-     * @return array<string, array<string, null|AbstractElement>>
-     */
-    public function getCommentReferences(): array
-    {
-        return $this->commentRefs;
-    }
-
-    /**
-     * Set comment references.
-     *
-     * @param array<string, array<string, null|AbstractElement>> $commentRefs
-     */
-    public function setCommentReferences(array $commentRefs): self
-    {
-        $this->commentRefs = $commentRefs;
-
-        return $this;
-    }
-
-    /**
-     * Set comment reference.
-     */
-    private function setCommentReference(string $type, string $id, AbstractElement $element): self
-    {
-        if (!in_array($type, ['start', 'end'])) {
-            throw new InvalidArgumentException('Type must be "start" or "end"');
-        }
-
-        if (!array_key_exists($id, $this->commentRefs)) {
-            $this->commentRefs[$id] = [
-                'start' => null,
-                'end' => null,
-            ];
-        }
-        $this->commentRefs[$id][$type] = $element;
-
-        return $this;
-    }
-
-    /**
-     * Get comment reference.
-     *
-     * @return array<string, null|AbstractElement>
-     */
-    protected function getCommentReference(string $id): array
-    {
-        if (!array_key_exists($id, $this->commentRefs)) {
-            throw new InvalidArgumentException(sprintf('Comment with id %s isn\'t referenced in document', $id));
-        }
-
-        return $this->commentRefs[$id];
-    }
-
     /**
      * Read w:p.
      *
@@ -190,7 +105,12 @@ abstract class AbstractPart
     protected function readParagraph(XMLReader $xmlReader, DOMElement $domNode, $parent, $docPart = 'document'): void
     {
         // Paragraph style
-        $paragraphStyle = $xmlReader->elementExists('w:pPr', $domNode) ? $this->readParagraphStyle($xmlReader, $domNode) : null;
+        $paragraphStyle = null;
+        $headingDepth = null;
+        if ($xmlReader->elementExists('w:pPr', $domNode)) {
+            $paragraphStyle = $this->readParagraphStyle($xmlReader, $domNode);
+            $headingDepth = $this->getHeadingDepth($paragraphStyle);
+        }
 
         // PreserveText
         if ($xmlReader->elementExists('w:r/w:instrText', $domNode)) {
@@ -217,27 +137,8 @@ abstract class AbstractPart
                 }
             }
             $parent->addPreserveText(htmlspecialchars($textContent, ENT_QUOTES, 'UTF-8'), $fontStyle, $paragraphStyle);
-
-            return;
-        }
-
-        // Formula
-        $xmlReader->registerNamespace('m', 'http://schemas.openxmlformats.org/officeDocument/2006/math');
-        if ($xmlReader->elementExists('m:oMath', $domNode)) {
-            $mathElement = $xmlReader->getElement('m:oMath', $domNode);
-            $mathXML = $mathElement->ownerDocument->saveXML($mathElement);
-            if (is_string($mathXML)) {
-                $reader = new OfficeMathML();
-                $math = $reader->read($mathXML);
-
-                $parent->addFormula($math);
-            }
-
-            return;
-        }
-
-        // List item
-        if ($xmlReader->elementExists('w:pPr/w:numPr', $domNode)) {
+        } elseif ($xmlReader->elementExists('w:pPr/w:numPr', $domNode)) {
+            // List item
             $numId = $xmlReader->getAttribute('w:val', $domNode, 'w:pPr/w:numPr/w:numId');
             $levelId = $xmlReader->getAttribute('w:val', $domNode, 'w:pPr/w:numPr/w:ilvl');
             $nodes = $xmlReader->getElements('*', $domNode);
@@ -247,15 +148,10 @@ abstract class AbstractPart
             foreach ($nodes as $node) {
                 $this->readRun($xmlReader, $node, $listItemRun, $docPart, $paragraphStyle);
             }
-
-            return;
-        }
-
-        // Heading or Title
-        $headingDepth = $xmlReader->elementExists('w:pPr', $domNode) ? $this->getHeadingDepth($paragraphStyle) : null;
-        if ($headingDepth !== null) {
+        } elseif ($headingDepth !== null) {
+            // Heading or Title
             $textContent = null;
-            $nodes = $xmlReader->getElements('w:r|w:hyperlink', $domNode);
+            $nodes = $xmlReader->getElements('w:r', $domNode);
             if ($nodes->length === 1) {
                 $textContent = htmlspecialchars($xmlReader->getValue('w:t', $nodes->item(0)), ENT_QUOTES, 'UTF-8');
             } else {
@@ -265,19 +161,17 @@ abstract class AbstractPart
                 }
             }
             $parent->addTitle($textContent, $headingDepth);
-
-            return;
-        }
-
-        // Text and TextRun
-        $textRunContainers = $xmlReader->countElements('w:r|w:ins|w:del|w:hyperlink|w:smartTag|w:commentReference|w:commentRangeStart|w:commentRangeEnd', $domNode);
-        if (0 === $textRunContainers) {
-            $parent->addTextBreak(null, $paragraphStyle);
         } else {
-            $nodes = $xmlReader->getElements('*', $domNode);
-            $paragraph = $parent->addTextRun($paragraphStyle);
-            foreach ($nodes as $node) {
-                $this->readRun($xmlReader, $node, $paragraph, $docPart, $paragraphStyle);
+            // Text and TextRun
+            $textRunContainers = $xmlReader->countElements('w:r|w:ins|w:del|w:hyperlink|w:smartTag', $domNode);
+            if (0 === $textRunContainers) {
+                $parent->addTextBreak(null, $paragraphStyle);
+            } else {
+                $nodes = $xmlReader->getElements('*', $domNode);
+                $paragraph = $parent->addTextRun($paragraphStyle);
+                foreach ($nodes as $node) {
+                    $this->readRun($xmlReader, $node, $paragraph, $docPart, $paragraphStyle);
+                }
             }
         }
     }
@@ -317,7 +211,7 @@ abstract class AbstractPart
      */
     protected function readRun(XMLReader $xmlReader, DOMElement $domNode, $parent, $docPart, $paragraphStyle = null): void
     {
-        if (in_array($domNode->nodeName, ['w:ins', 'w:del', 'w:smartTag', 'w:hyperlink', 'w:commentReference'])) {
+        if (in_array($domNode->nodeName, ['w:ins', 'w:del', 'w:smartTag', 'w:hyperlink'])) {
             $nodes = $xmlReader->getElements('*', $domNode);
             foreach ($nodes as $node) {
                 $this->readRun($xmlReader, $node, $parent, $docPart, $paragraphStyle);
@@ -327,17 +221,6 @@ abstract class AbstractPart
             $nodes = $xmlReader->getElements('*', $domNode);
             foreach ($nodes as $node) {
                 $this->readRunChild($xmlReader, $node, $parent, $docPart, $paragraphStyle, $fontStyle);
-            }
-        }
-
-        if ($xmlReader->elementExists('.//*["commentReference"=local-name()]', $domNode)) {
-            $node = iterator_to_array($xmlReader->getElements('.//*["commentReference"=local-name()]', $domNode))[0];
-            $attributeIdentifier = $node->attributes->getNamedItem('id');
-            if ($attributeIdentifier) {
-                $id = $attributeIdentifier->nodeValue;
-
-                $this->setCommentReference('start', $id, $parent->getElement($parent->countElements() - 1));
-                $this->setCommentReference('end', $id, $parent->getElement($parent->countElements() - 1));
             }
         }
     }
@@ -366,7 +249,7 @@ abstract class AbstractPart
             // Image
             $rId = $xmlReader->getAttribute('r:id', $node, 'v:shape/v:imagedata');
             $target = $this->getMediaTarget($docPart, $rId);
-            if ($this->hasImageLoading() && null !== $target) {
+            if (null !== $target) {
                 if ('External' == $this->getTargetMode($docPart, $rId)) {
                     $imageSource = $target;
                 } else {
@@ -388,7 +271,7 @@ abstract class AbstractPart
                 $embedId = $xmlReader->getAttribute('r:embed', $node, 'wp:anchor/a:graphic/a:graphicData/pic:pic/pic:blipFill/a:blip');
             }
             $target = $this->getMediaTarget($docPart, $embedId);
-            if ($this->hasImageLoading() && null !== $target) {
+            if (null !== $target) {
                 $imageSource = "zip://{$this->docFile}#{$target}";
                 $parent->addImage($imageSource, null, false, $name);
             }
@@ -437,7 +320,6 @@ abstract class AbstractPart
                     $type = ($runParent->nodeName == 'w:del') ? TrackChange::DELETED : TrackChange::INSERTED;
                     $author = $runParent->getAttribute('w:author');
                     $date = DateTime::createFromFormat('Y-m-d\TH:i:s\Z', $runParent->getAttribute('w:date'));
-                    $date = $date instanceof DateTime ? $date : null;
                     $element->setChangeInfo($type, $author, $date);
                 }
             }
@@ -484,8 +366,9 @@ abstract class AbstractPart
                     } elseif ('w:tc' == $rowNode->nodeName) { // Cell
                         $cellWidth = $xmlReader->getAttribute('w:w', $rowNode, 'w:tcPr/w:tcW');
                         $cellStyle = null;
-                        if ($xmlReader->elementExists('w:tcPr', $rowNode)) {
-                            $cellStyle = $this->readCellStyle($xmlReader, $rowNode);
+                        $cellStyleNode = $xmlReader->getElement('w:tcPr', $rowNode);
+                        if (null !== $cellStyleNode) {
+                            $cellStyle = $this->readCellStyle($xmlReader, $cellStyleNode);
                         }
 
                         $cell = $row->addCell($cellWidth, $cellStyle);
@@ -671,7 +554,7 @@ abstract class AbstractPart
     /**
      * Read w:tcPr.
      *
-     * @return null|array
+     * @return array
      */
     private function readCellStyle(XMLReader $xmlReader, DOMElement $domNode)
     {
@@ -681,26 +564,9 @@ abstract class AbstractPart
             'gridSpan' => [self::READ_VALUE, 'w:gridSpan'],
             'vMerge' => [self::READ_VALUE, 'w:vMerge', null, null, 'continue'],
             'bgColor' => [self::READ_VALUE, 'w:shd', 'w:fill'],
-            'noWrap' => [self::READ_VALUE, 'w:noWrap', null, null, true],
         ];
-        $style = null;
 
-        if ($xmlReader->elementExists('w:tcPr', $domNode)) {
-            $styleNode = $xmlReader->getElement('w:tcPr', $domNode);
-
-            $borders = ['top', 'left', 'bottom', 'right'];
-            foreach ($borders as $side) {
-                $ucfSide = ucfirst($side);
-
-                $styleDefs['border' . $ucfSide . 'Size'] = [self::READ_VALUE, 'w:tcBorders/w:' . $side, 'w:sz'];
-                $styleDefs['border' . $ucfSide . 'Color'] = [self::READ_VALUE, 'w:tcBorders/w:' . $side, 'w:color'];
-                $styleDefs['border' . $ucfSide . 'Style'] = [self::READ_VALUE, 'w:tcBorders/w:' . $side, 'w:val'];
-            }
-
-            $style = $this->readStyleDefs($xmlReader, $styleNode, $styleDefs);
-        }
-
-        return $style;
+        return $this->readStyleDefs($xmlReader, $domNode, $styleDefs);
     }
 
     /**

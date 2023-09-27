@@ -250,18 +250,14 @@ class TemplateProcessor
     }
 
     /**
-     * @param ?string $subject
+     * @param string $subject
      *
      * @return string
      */
     protected static function ensureUtf8Encoded($subject)
     {
         if (!Text::isUTF8($subject) && null !== $subject) {
-            if (PHP_VERSION_ID < 80200) {
-                $subject = utf8_encode($subject);
-            } else {
-                $subject = mb_convert_encoding($subject, 'UTF-8', mb_list_encodings());
-            }
+            $subject = utf8_encode($subject);
         }
 
         return (null !== $subject) ? $subject : '';
@@ -441,7 +437,7 @@ class TemplateProcessor
         if (null === $value && isset($inlineValue)) {
             $value = $inlineValue;
         }
-        if (!preg_match('/^([0-9.]*(cm|mm|in|pt|pc|px|%|em|ex|)|auto)$/i', $value ?? '')) {
+        if (!preg_match('/^([0-9]*(cm|mm|in|pt|pc|px|%|em|ex|)|auto)$/i', $value ?? '')) {
             $value = null;
         }
         if (null === $value) {

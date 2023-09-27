@@ -18,7 +18,6 @@
 namespace PhpOffice\PhpWord\Writer\PDF;
 
 use Dompdf\Dompdf as DompdfLib;
-use Dompdf\Options;
 use PhpOffice\PhpWord\Writer\WriterInterface;
 
 /**
@@ -43,12 +42,7 @@ class DomPDF extends AbstractRenderer implements WriterInterface
      */
     protected function createExternalWriterInstance()
     {
-        $options = new Options();
-        if ($this->getFont()) {
-            $options->set('defaultFont', $this->getFont());
-        }
-
-        return new DompdfLib($options);
+        return new DompdfLib();
     }
 
     /**

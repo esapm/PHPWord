@@ -41,11 +41,6 @@ class SettingsTest extends TestCase
 
     private $pdfRendererName;
 
-    /**
-     * @var array
-     */
-    private $pdfRendererOptions;
-
     private $pdfRendererPath;
 
     private $tempDir;
@@ -61,7 +56,6 @@ class SettingsTest extends TestCase
         $this->measurementUnit = Settings::getMeasurementUnit();
         $this->outputEscapingEnabled = Settings::isOutputEscapingEnabled();
         $this->pdfRendererName = Settings::getPdfRendererName();
-        $this->pdfRendererOptions = Settings::getPdfRendererOptions();
         $this->pdfRendererPath = Settings::getPdfRendererPath();
         $this->tempDir = Settings::getTempDir();
         $this->zipClass = Settings::getZipClass();
@@ -76,7 +70,6 @@ class SettingsTest extends TestCase
         Settings::setMeasurementUnit($this->measurementUnit);
         Settings::setOutputEscapingEnabled($this->outputEscapingEnabled);
         Settings::setPdfRendererName($this->pdfRendererName);
-        Settings::setPdfRendererOptions($this->pdfRendererOptions);
         Settings::setPdfRendererPath($this->pdfRendererPath);
         Settings::setTempDir($this->tempDir);
         Settings::setZipClass($this->zipClass);
@@ -129,23 +122,6 @@ class SettingsTest extends TestCase
         self::assertEquals($domPdfPath, Settings::getPdfRendererPath());
         self::assertFalse(Settings::setPdfRendererPath('dummy/path'));
         self::assertEquals($domPdfPath, Settings::getPdfRendererPath());
-    }
-
-    /**
-     * Test set/get PDF renderer.
-     */
-    public function testSetGetPdfOptions(): void
-    {
-        $domPdfPath = realpath(PHPWORD_TESTS_BASE_DIR . '/../vendor/dompdf/dompdf');
-
-        self::assertEquals([], Settings::getPdfRendererOptions());
-
-        Settings::setPdfRendererOptions([
-            'font' => 'Arial',
-        ]);
-        self::assertEquals([
-            'font' => 'Arial',
-        ], Settings::getPdfRendererOptions());
     }
 
     /**

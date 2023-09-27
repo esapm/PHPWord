@@ -99,12 +99,12 @@ class XMLReader
      * @param string $path
      * @param DOMElement $contextNode
      *
-     * @return DOMNodeList<DOMElement>
+     * @return DOMNodeList
      */
     public function getElements($path, ?DOMElement $contextNode = null)
     {
         if ($this->dom === null) {
-            return new DOMNodeList();
+            return [];
         }
         if ($this->xpath === null) {
             $this->xpath = new DOMXpath($this->dom);

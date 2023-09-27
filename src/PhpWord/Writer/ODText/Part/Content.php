@@ -135,11 +135,8 @@ class Content extends AbstractPart
             $xmlWriter->startElement('text:p');
             $xmlWriter->writeAttribute('text:style-name', 'SB' . $section->getSectionId());
             $xmlWriter->endElement();
-
             $containerWriter = new Container($xmlWriter, $section);
-            $containerWriter->setPart($this);
             $containerWriter->write();
-
             $xmlWriter->endElement(); // text:section
         }
 
@@ -283,6 +280,7 @@ class Content extends AbstractPart
                 $sty->setAlignment($style->getAlignment());
                 $this->imageParagraphStyles[] = $sty;
             } elseif ($element instanceof Table) {
+                /** @var \PhpOffice\PhpWord\Style\Table $style */
                 $style = $element->getStyle();
                 if (is_string($style)) {
                     $style = Style::getStyle($style);

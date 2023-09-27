@@ -81,7 +81,6 @@ abstract class AbstractRenderer extends HTML
     public function __construct(PhpWord $phpWord)
     {
         parent::__construct($phpWord);
-
         if ($this->includeFile != null) {
             $includeFile = Settings::getPdfRendererPath() . '/' . $this->includeFile;
             if (file_exists($includeFile)) {
@@ -93,12 +92,6 @@ abstract class AbstractRenderer extends HTML
                 throw new Exception('Unable to load PDF Rendering library');
                 // @codeCoverageIgnoreEnd
             }
-        }
-
-        // Configuration
-        $options = Settings::getPdfRendererOptions();
-        if (!empty($options['font'])) {
-            $this->setFont($options['font']);
         }
     }
 
