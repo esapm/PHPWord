@@ -53,6 +53,8 @@ for ($i = 1; $i <= 8; ++$i) {
     $text = (0 == $i % 2) ? 'X' : '';
     $table->addCell(500)->addText($text);
 }
+$table->addTblCaption('This is a table caption. It will appear in the Title field of the Alt Text Properties tab.');
+$table->addTblDescription('This is a table description. It will appear in the Description field of the Alt Text Properties tab.');
 
 /*
  *  3. colspan (gridSpan) and rowspan (vMerge)
@@ -76,6 +78,8 @@ $cellVCentered = ['valign' => 'center'];
 $spanTableStyleName = 'Colspan Rowspan';
 $phpWord->addTableStyle($spanTableStyleName, $fancyTableStyle);
 $table = $section->addTable($spanTableStyleName);
+// Note: Alt text (table captions and descriptions) will be ignored if added to a named style. 
+// Use table->addTblCaption() and table->addTblDescription() instead.
 
 $table->addRow();
 
@@ -112,7 +116,7 @@ $table->addCell(null, $cellRowContinue);
 $section->addPageBreak();
 $section->addText('Table with colspan and rowspan', $header);
 
-$styleTable = ['borderSize' => 6, 'borderColor' => '999999'];
+$styleTable = ['borderSize' => 6, 'borderColor' => '999999', 'tblCaption' => 'Table captions can be added in the style array.', 'tblDescription' => 'Table descriptions can also be added in the style array. Both will be overwritten by text entered using the addTblCaption() or addTblDescription() functions.'];
 $phpWord->addTableStyle('Colspan Rowspan', $styleTable);
 $table = $section->addTable('Colspan Rowspan');
 

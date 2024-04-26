@@ -44,6 +44,21 @@ class Table extends AbstractElement
      * @var int
      */
     private $width;
+        
+    /**
+     * Table ELEMENT caption and title of Alt Text field.
+     *
+     * @var string
+     */
+    private $tblCaption;
+
+    
+    /**
+     * Table ELEMENT description and contents of Alt Text fiels.
+     *
+     * @var string
+     */
+    private $tblDescription;
 
     /**
      * Create a new table.
@@ -127,6 +142,46 @@ class Table extends AbstractElement
     public function setWidth($width): void
     {
         $this->width = $width;
+    }
+
+    /**
+     * Get table ELEMENT tblCaption
+     * 
+     * @return string
+     */
+    public function getTblCaption()
+    {
+        return $this->tblCaption;
+    }
+    
+    /**
+     * Add table ELEMENT tblCaption. This function can be called from an external PHP file.
+     *
+     * @param string $tblCaption
+     */
+    public function addTblCaption($tblCaption): void
+    {
+        $this->tblCaption = $tblCaption;
+    }
+    
+    /**
+     * Get table ELEMENT tblDescription
+     *
+     * @return string
+     */
+    public function getTblDescription()
+    {
+        return $this->tblDescription;
+    }
+        
+    /**
+     * Add table ELEMENT tblDescription. This function can be called from an external PHP file.
+     *
+     * @param string $tblDescription
+     */
+    public function addTblDescription($tblDescription): void
+    {
+        $this->tblDescription = $tblDescription;
     }
 
     /**

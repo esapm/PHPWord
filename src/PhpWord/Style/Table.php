@@ -167,6 +167,20 @@ class Table extends Border
     private $bidiVisual = false;
 
     /**
+     * @var string tblCaption value
+     * 
+     * This is also the title of the alt text field.
+     */
+    private $tblCaption = '';
+    
+    /**
+     * @var string tblDescription value
+     *
+     * This is also the content of the alt text field.
+     */
+    private $tblDescription = '';
+
+    /**
      * Create new table style.
      *
      * @param mixed $tableStyle
@@ -178,7 +192,7 @@ class Table extends Border
         if ($firstRowStyle !== null && is_array($firstRowStyle)) {
             $this->firstRowStyle = clone $this;
             $this->firstRowStyle->isFirstRow = true;
-            unset($this->firstRowStyle->firstRowStyle, $this->firstRowStyle->borderInsideHSize, $this->firstRowStyle->borderInsideHColor, $this->firstRowStyle->borderInsideVSize, $this->firstRowStyle->borderInsideVColor, $this->firstRowStyle->cellMarginTop, $this->firstRowStyle->cellMarginLeft, $this->firstRowStyle->cellMarginRight, $this->firstRowStyle->cellMarginBottom, $this->firstRowStyle->cellSpacing);
+            unset($this->firstRowStyle->firstRowStyle, $this->firstRowStyle->borderInsideHSize, $this->firstRowStyle->borderInsideHColor, $this->firstRowStyle->borderInsideVSize, $this->firstRowStyle->borderInsideVColor, $this->firstRowStyle->cellMarginTop, $this->firstRowStyle->cellMarginLeft, $this->firstRowStyle->cellMarginRight, $this->firstRowStyle->cellMarginBottom, $this->firstRowStyle->cellSpacing, $this->firstRowStyle->tblCaption, $this->firstRowStyle->tblDescription);
             $this->firstRowStyle->setStyleByArray($firstRowStyle);
         }
 
@@ -655,6 +669,50 @@ class Table extends Border
         $this->layout = $this->setEnumVal($value, $enum, $this->layout);
 
         return $this;
+    }
+    
+    /**
+     * Get table caption.
+     * 
+     * @return string
+     */
+    public function getTblCaption()
+    {
+        return $this->tblCaption;
+    }
+    
+    /**
+     * Set table caption.
+     *
+     * @param string $value
+     *
+     * @return self
+     */
+    public function setTblCaption($value = null)
+    {
+        return $this->tblCaption = $value;
+    }
+    
+    /**
+     * Get table description (alt text).
+     * 
+     * @return string
+     */
+    public function getTblDescription()
+    {
+        return $this->tblDescription;
+    }
+
+    /**
+     * Set table description (alt text).
+     *
+     * @param string $value
+     *
+     * @return self
+     */
+    public function setTblDescription($value = null)
+    {
+        return $this->tblDescription = $value;
     }
 
     /**
