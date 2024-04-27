@@ -1881,6 +1881,26 @@ Search.appendIndex(
             "summary": "Set\u0020table\u0020width.",
             "url": "classes/PhpOffice-PhpWord-Element-Table.html#method_setWidth"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Table\u003A\u003AgetTblCaption\u0028\u0029",
+            "name": "getTblCaption",
+            "summary": "Get\u0020table\u0020ELEMENT\u0020tblCaption",
+            "url": "classes/PhpOffice-PhpWord-Element-Table.html#method_getTblCaption"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Table\u003A\u003AaddTblCaption\u0028\u0029",
+            "name": "addTblCaption",
+            "summary": "Add\u0020table\u0020ELEMENT\u0020tblCaption.\u0020This\u0020function\u0020can\u0020be\u0020called\u0020from\u0020an\u0020external\u0020PHP\u0020file.",
+            "url": "classes/PhpOffice-PhpWord-Element-Table.html#method_addTblCaption"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Table\u003A\u003AgetTblDescription\u0028\u0029",
+            "name": "getTblDescription",
+            "summary": "Get\u0020table\u0020ELEMENT\u0020tblDescription",
+            "url": "classes/PhpOffice-PhpWord-Element-Table.html#method_getTblDescription"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Table\u003A\u003AaddTblDescription\u0028\u0029",
+            "name": "addTblDescription",
+            "summary": "Add\u0020table\u0020ELEMENT\u0020tblDescription.\u0020This\u0020function\u0020can\u0020be\u0020called\u0020from\u0020an\u0020external\u0020PHP\u0020file.",
+            "url": "classes/PhpOffice-PhpWord-Element-Table.html#method_addTblDescription"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Element\\Table\u003A\u003AcountColumns\u0028\u0029",
             "name": "countColumns",
             "summary": "Get\u0020column\u0020count.",
@@ -1905,6 +1925,16 @@ Search.appendIndex(
             "name": "width",
             "summary": "Table\u0020width.",
             "url": "classes/PhpOffice-PhpWord-Element-Table.html#property_width"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Table\u003A\u003A\u0024tblCaption",
+            "name": "tblCaption",
+            "summary": "Table\u0020ELEMENT\u0020caption\u0020and\u0020title\u0020of\u0020Alt\u0020Text\u0020field.",
+            "url": "classes/PhpOffice-PhpWord-Element-Table.html#property_tblCaption"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Table\u003A\u003A\u0024tblDescription",
+            "name": "tblDescription",
+            "summary": "Table\u0020ELEMENT\u0020description\u0020and\u0020contents\u0020of\u0020Alt\u0020Text\u0020fiels.",
+            "url": "classes/PhpOffice-PhpWord-Element-Table.html#property_tblDescription"
         },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Element\\Text",
             "name": "Text",
@@ -10931,6 +10961,26 @@ Search.appendIndex(
             "summary": "Set\u0020layout.",
             "url": "classes/PhpOffice-PhpWord-Style-Table.html#method_setLayout"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Table\u003A\u003AgetTblCaption\u0028\u0029",
+            "name": "getTblCaption",
+            "summary": "Get\u0020table\u0020caption.",
+            "url": "classes/PhpOffice-PhpWord-Style-Table.html#method_getTblCaption"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Table\u003A\u003AsetTblCaption\u0028\u0029",
+            "name": "setTblCaption",
+            "summary": "Set\u0020table\u0020caption.",
+            "url": "classes/PhpOffice-PhpWord-Style-Table.html#method_setTblCaption"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Table\u003A\u003AgetTblDescription\u0028\u0029",
+            "name": "getTblDescription",
+            "summary": "Get\u0020table\u0020description\u0020\u0028alt\u0020text\u0029.",
+            "url": "classes/PhpOffice-PhpWord-Style-Table.html#method_getTblDescription"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Table\u003A\u003AsetTblDescription\u0028\u0029",
+            "name": "setTblDescription",
+            "summary": "Set\u0020table\u0020description\u0020\u0028alt\u0020text\u0029.",
+            "url": "classes/PhpOffice-PhpWord-Style-Table.html#method_setTblDescription"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Style\\Table\u003A\u003AgetTableOnlyProperty\u0028\u0029",
             "name": "getTableOnlyProperty",
             "summary": "Get\u0020table\u0020style\u0020only\u0020property\u0020by\u0020checking\u0020if\u0020it\u0027s\u0020a\u0020firstRow.",
@@ -11090,6 +11140,16 @@ Search.appendIndex(
             "name": "bidiVisual",
             "summary": "Visually\u0020Right\u0020to\u0020Left\u0020Table.",
             "url": "classes/PhpOffice-PhpWord-Style-Table.html#property_bidiVisual"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Table\u003A\u003A\u0024tblCaption",
+            "name": "tblCaption",
+            "summary": "",
+            "url": "classes/PhpOffice-PhpWord-Style-Table.html#property_tblCaption"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Table\u003A\u003A\u0024tblDescription",
+            "name": "tblDescription",
+            "summary": "",
+            "url": "classes/PhpOffice-PhpWord-Style-Table.html#property_tblDescription"
         },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Style\\TablePosition",
             "name": "TablePosition",
@@ -15086,15 +15146,45 @@ Search.appendIndex(
             "summary": "Set\u0020width.",
             "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Style-Table.html#method_setWidth"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Style\\Table\u003A\u003AsetTblCaption\u0028\u0029",
+            "name": "setTblCaption",
+            "summary": "Set\u0020tblCaption.",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Style-Table.html#method_setTblCaption"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Style\\Table\u003A\u003AsetTblDescription\u0028\u0029",
+            "name": "setTblDescription",
+            "summary": "Set\u0020tblDescription.",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Style-Table.html#method_setTblDescription"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Style\\Table\u003A\u003AwriteIndent\u0028\u0029",
             "name": "writeIndent",
             "summary": "",
             "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Style-Table.html#method_writeIndent"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Style\\Table\u003A\u003AwriteTblCaption\u0028\u0029",
+            "name": "writeTblCaption",
+            "summary": "Write\u0020table\u0020caption\u0020\u0028Title\u0020of\u0020alt\u0020text\u0029.",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Style-Table.html#method_writeTblCaption"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Style\\Table\u003A\u003AwriteTblDescription\u0028\u0029",
+            "name": "writeTblDescription",
+            "summary": "Write\u0020table\u0020description\u0020\u0028alt\u0020text\u0029.",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Style-Table.html#method_writeTblDescription"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Style\\Table\u003A\u003A\u0024width",
             "name": "width",
             "summary": "",
             "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Style-Table.html#property_width"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Style\\Table\u003A\u003A\u0024tblCaption",
+            "name": "tblCaption",
+            "summary": "",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Style-Table.html#property_tblCaption"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Style\\Table\u003A\u003A\u0024tblDescription",
+            "name": "tblDescription",
+            "summary": "",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Style-Table.html#property_tblDescription"
         },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Style\\TablePosition",
             "name": "TablePosition",
