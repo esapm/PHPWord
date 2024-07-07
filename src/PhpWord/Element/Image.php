@@ -150,6 +150,7 @@ class Image extends AbstractElement
      *
      * @param string $source
      * @param mixed $style
+     * @param string $altText
      * @param bool $watermark
      * @param string $name
      */

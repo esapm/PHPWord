@@ -692,7 +692,8 @@ class Table extends Border
      */
     public function setTblCaption($value = null)
     {
-        return $this->tblCaption = $value;
+        $this->tblCaption = $value;
+        return $this;
     }
     
     /**
@@ -714,7 +715,8 @@ class Table extends Border
      */
     public function setTblDescription($value = null)
     {
-        return $this->tblDescription = $value;
+        $this->tblDescription = $value;
+        return $this;
     }
 
     /**
