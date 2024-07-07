@@ -18,9 +18,11 @@
 namespace PhpOffice\PhpWord\Style;
 
 use PhpOffice\PhpWord\ComplexType\TblWidth as TblWidthComplexType;
+use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\JcTable;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
+use PhpOffice\PhpWord\Style;
 
 class Table extends Border
 {
@@ -131,7 +133,7 @@ class Table extends Border
     private $unit = TblWidth::AUTO;
 
     /**
-     * @var float|int cell spacing value
+     * @var null|float|int cell spacing value
      */
     protected $cellSpacing;
 
@@ -143,7 +145,7 @@ class Table extends Border
     /**
      * Position.
      *
-     * @var \PhpOffice\PhpWord\Style\TablePosition
+     * @var ?\PhpOffice\PhpWord\Style\TablePosition
      */
     private $position;
 
@@ -162,9 +164,9 @@ class Table extends Border
      *
      * @see  http://www.datypic.com/sc/ooxml/e-w_bidiVisual-1.html
      *
-     * @var bool
+     * @var ?bool
      */
-    private $bidiVisual = false;
+    private $bidiVisual;
 
     /**
      * @var string tblCaption value
@@ -202,7 +204,7 @@ class Table extends Border
     }
 
     /**
-     * @param float|int $cellSpacing
+     * @param null|float|int $cellSpacing
      */
     public function setCellSpacing($cellSpacing = null): void
     {
@@ -210,7 +212,7 @@ class Table extends Border
     }
 
     /**
-     * @return float|int
+     * @return null|float|int
      */
     public function getCellSpacing()
     {
@@ -230,7 +232,7 @@ class Table extends Border
     /**
      * Get background.
      *
-     * @return string
+     * @return ?string
      */
     public function getBgColor()
     {
@@ -762,7 +764,7 @@ class Table extends Border
     /**
      * Get position.
      *
-     * @return \PhpOffice\PhpWord\Style\TablePosition
+     * @return ?\PhpOffice\PhpWord\Style\TablePosition
      */
     public function getPosition()
     {
@@ -784,7 +786,7 @@ class Table extends Border
     }
 
     /**
-     * @return TblWidthComplexType
+     * @return ?TblWidthComplexType
      */
     public function getIndent()
     {
@@ -826,17 +828,17 @@ class Table extends Border
     /**
      * Get bidiVisual.
      *
-     * @return bool
+     * @return ?bool
      */
     public function isBidiVisual()
     {
-        return $this->bidiVisual;
+        return $this->bidiVisual ?? Settings::isDefaultRtl();
     }
 
     /**
      * Set bidiVisual.
      *
-     * @param bool $bidi
+     * @param ?bool $bidi
      *            Set to true to visually present table as Right to Left
      *
      * @return self

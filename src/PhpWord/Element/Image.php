@@ -54,7 +54,7 @@ class Image extends AbstractElement
     /**
      * Image style.
      *
-     * @var ImageStyle
+     * @var ?ImageStyle
      */
     private $style;
 
@@ -167,7 +167,7 @@ class Image extends AbstractElement
     /**
      * Get Image style.
      *
-     * @return ImageStyle
+     * @return ?ImageStyle
      */
     public function getStyle()
     {
@@ -435,10 +435,10 @@ class Image extends AbstractElement
         }
 
         if ($base64) {
-            return chunk_split(base64_encode($imageBinary));
+            return base64_encode($imageBinary);
         }
 
-        return chunk_split(bin2hex($imageBinary));
+        return bin2hex($imageBinary);
     }
 
     /**

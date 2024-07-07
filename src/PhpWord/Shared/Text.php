@@ -138,9 +138,9 @@ class Text
     /**
      * Return UTF8 encoded value.
      *
-     * @param string $value
+     * @param null|string $value
      *
-     * @return string
+     * @return ?string
      */
     public static function toUTF8($value = '')
     {
