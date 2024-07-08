@@ -69,7 +69,7 @@ class Table extends AbstractStyle
             //
             // Caption (alt text title)
             $this->writeTblCaption($xmlWriter, 'w:tblCaption', $this->tblCaption);
-    
+
             // Description (alt text contents)
             $this->writeTblDescription($xmlWriter, 'w:tblDescription', $this->tblDescription);
 
@@ -100,7 +100,7 @@ class Table extends AbstractStyle
         //
         // Caption (alt text title)
         $this->writeTblCaption($xmlWriter, 'w:tblCaption', (!empty($this->tblCaption) ? $this->tblCaption : $style->getTblCaption()));
- 
+
         // Description (alt text contents)
         $this->writeTblDescription($xmlWriter, 'w:tblDescription', (!empty($this->tblDescription) ? $this->tblDescription : $style->getTblDescription()));
 
@@ -266,11 +266,11 @@ class Table extends AbstractStyle
     }
 
     /**
-    * Write table caption (Title of alt text).
-    *
-    * @param string $elementName
-    * @param string $tblCaption
-    */
+     * Write table caption (Title of alt text).
+     *
+     * @param string $elementName
+     * @param string $tblCaption
+     */
 
     private function writeTblCaption(XMLWriter $xmlWriter, $elementName, $tblCaption): void
     {
@@ -284,14 +284,14 @@ class Table extends AbstractStyle
 
     /**
      * Write table description (alt text).
-    *
-    * @param string $elementName
-    * @param string $tblDescription
-    */
+     *
+     * @param string $elementName
+     * @param string $tblDescription
+     */
 
     private function writeTblDescription(XMLWriter $xmlWriter, $elementName, $tblDescription): void
     {
-        if (null === $tblDescription || '' == $tblDescription) {
+        if (empty($tblDescription)) {
             return;
         }
         $xmlWriter->startElement($elementName);

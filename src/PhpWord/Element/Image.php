@@ -64,7 +64,7 @@ class Image extends AbstractElement
      * @var string
      */
     private $altText;
-    
+
     /**
      * Is watermark.
      *
@@ -204,7 +204,7 @@ class Image extends AbstractElement
     {
         return $this->altText;
     }
-    
+
     /**
      * Sets the image name.
      *

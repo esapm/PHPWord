@@ -170,15 +170,15 @@ class Table extends Border
 
     /**
      * @var string tblCaption value
-     * 
-     * This is also the title of the alt text field.
+     *
+     * This is also the title of the alt text field
      */
     private $tblCaption = '';
-    
+
     /**
      * @var string tblDescription value
      *
-     * This is also the content of the alt text field.
+     * This is also the content of the alt text field
      */
     private $tblDescription = '';
 
@@ -672,17 +672,17 @@ class Table extends Border
 
         return $this;
     }
-    
+
     /**
      * Get table caption.
-     * 
+     *
      * @return string
      */
     public function getTblCaption()
     {
         return $this->tblCaption;
     }
-    
+
     /**
      * Set table caption.
      *
@@ -693,12 +693,13 @@ class Table extends Border
     public function setTblCaption($value = null)
     {
         $this->tblCaption = $value;
+
         return $this;
     }
-    
+
     /**
      * Get table description (alt text).
-     * 
+     *
      * @return string
      */
     public function getTblDescription()
@@ -716,6 +717,7 @@ class Table extends Border
     public function setTblDescription($value = null)
     {
         $this->tblDescription = $value;
+
         return $this;
     }
 
