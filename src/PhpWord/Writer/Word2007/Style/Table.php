@@ -99,10 +99,10 @@ class Table extends AbstractStyle
         // the code below will include them if they are part of the table style.
         //
         // Caption (alt text title)
-        $this->writeTblCaption($xmlWriter, 'w:tblCaption', $this->tblCaption ?? $style->getTblCaption());
+        $this->writeTblCaption($xmlWriter, 'w:tblCaption', (!empty($this->tblCaption) ? $this->tblCaption : $style->getTblCaption()));
  
         // Description (alt text contents)
-        $this->writeTblDescription($xmlWriter, 'w:tblDescription', $this->tblDescription ?? $style->getTblDescription());
+        $this->writeTblDescription($xmlWriter, 'w:tblDescription', (!empty($this->tblDescription) ? $this->tblDescription : $style->getTblDescription()));
 
         $this->writeTblWidth($xmlWriter, 'w:tblW', $style->getUnit(), $style->getWidth());
         $this->writeTblWidth($xmlWriter, 'w:tblCellSpacing', TblWidth::TWIP, $style->getCellSpacing());
@@ -237,7 +237,7 @@ class Table extends AbstractStyle
     /**
      * Set tblCaption.
      *
-     * @param string $tblCaption
+     * @param string $value
      */
     public function setTblCaption($value = null): void
     {
@@ -247,7 +247,7 @@ class Table extends AbstractStyle
     /**
      * Set tblDescription.
      *
-     * @param string $tblDescription
+     * @param string $value
      */
     public function setTblDescription($value = null): void
     {
@@ -274,7 +274,7 @@ class Table extends AbstractStyle
 
     private function writeTblCaption(XMLWriter $xmlWriter, $elementName, $tblCaption): void
     {
-        if (null === $tblCaption || '' == $tblCaption) {
+        if (empty($tblCaption)) {
             return;
         }
         $xmlWriter->startElement($elementName);

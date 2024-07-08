@@ -388,7 +388,7 @@ abstract class AbstractPart
             $target = $this->getMediaTarget($docPart, $embedId);
             if ($this->hasImageLoading() && null !== $target) {
                 $imageSource = "zip://{$this->docFile}#{$target}";
-                $parent->addImage($imageSource, null, false, $name);
+                $parent->addImage($imageSource, null, null, false, $name);
             }
         } elseif ($node->nodeName == 'w:object') {
             // Object

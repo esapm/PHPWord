@@ -5,11 +5,12 @@ To add an image, use the ``addImage`` method to sections, headers, footers, text
 ``` php
 <?php
 
-$section->addImage($src, [$style]);
+$section->addImage($src, [$style], $altText);
 ```
 
 - ``$src``. String path to a local image, URL of a remote image or the image data, as a string. Warning: Do not pass user-generated strings here, as that would allow an attacker to read arbitrary files or perform server-side request forgery by passing file paths or URLs instead of image data.
 - ``$style``. See [`Styles > Image`](../styles/image.md).
+- ``$altText``. String containing alt text to be added to image.
 
 Examples:
 
@@ -25,7 +26,8 @@ $section->addImage(
         'marginTop'     => -1,
         'marginLeft'    => -1,
         'wrappingStyle' => 'behind'
-    )
+    ),
+    'alt text'
 );
 $footer = $section->addFooter();
 $footer->addImage('http://example.com/image.php');
