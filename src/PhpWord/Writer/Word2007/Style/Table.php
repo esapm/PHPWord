@@ -63,7 +63,7 @@ class Table extends AbstractStyle
                 $this->writeTblWidth($xmlWriter, 'w:tblW', TblWidth::PERCENT, $this->width);
             }
             // Even though Word groups alt text fields with table styles, the alt text is ignored when sent as part
-            // of a named style. The code below allows table captions and descriptions to be added via the 
+            // of a named style. The code below allows table captions and descriptions to be added via the
             // addTblCaption() and addTblDescription() functions. These populate the Alt Text Title and Alt Text
             // Description fields, respectively.
             //
