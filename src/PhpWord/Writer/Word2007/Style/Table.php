@@ -271,7 +271,6 @@ class Table extends AbstractStyle
      * @param string $elementName
      * @param string $tblCaption
      */
-
     private function writeTblCaption(XMLWriter $xmlWriter, $elementName, $tblCaption): void
     {
         if (empty($tblCaption)) {
@@ -288,7 +287,6 @@ class Table extends AbstractStyle
      * @param string $elementName
      * @param string $tblDescription
      */
-
     private function writeTblDescription(XMLWriter $xmlWriter, $elementName, $tblDescription): void
     {
         if (empty($tblDescription)) {
