@@ -1551,7 +1551,7 @@ parameters:
 			path: tests/PhpWordTests/Element/ImageTest.php
 
 		-
-			message: "#^Parameter \\#3 \\$watermark of class PhpOffice\\\\PhpWord\\\\Element\\\\Image constructor expects bool, null given\\.$#"
+			message: "#^Parameter \\#4 \\$watermark of class PhpOffice\\\\PhpWord\\\\Element\\\\Image constructor expects bool, null given\\.$#"
 			count: 1
 			path: tests/PhpWordTests/Element/ImageTest.php
 
