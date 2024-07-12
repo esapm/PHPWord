@@ -23,6 +23,7 @@ use PHPUnit\Framework\TestCase;
  * Test class for PhpOffice\PhpWord\Settings.
  *
  * @coversDefaultClass \PhpOffice\PhpWord\Settings
+ *
  * @runTestsInSeparateProcesses
  */
 class SettingsTest extends TestCase
@@ -41,11 +42,19 @@ class SettingsTest extends TestCase
 
     private $pdfRendererName;
 
+    /**
+     * @var array
+     */
+    private $pdfRendererOptions;
+
     private $pdfRendererPath;
 
     private $tempDir;
 
     private $zipClass;
+
+    /** @var bool */
+    private $defaultRtl;
 
     protected function setUp(): void
     {
@@ -56,9 +65,11 @@ class SettingsTest extends TestCase
         $this->measurementUnit = Settings::getMeasurementUnit();
         $this->outputEscapingEnabled = Settings::isOutputEscapingEnabled();
         $this->pdfRendererName = Settings::getPdfRendererName();
+        $this->pdfRendererOptions = Settings::getPdfRendererOptions();
         $this->pdfRendererPath = Settings::getPdfRendererPath();
         $this->tempDir = Settings::getTempDir();
         $this->zipClass = Settings::getZipClass();
+        $this->defaultRtl = Settings::isDefaultRtl();
     }
 
     protected function tearDown(): void
@@ -70,9 +81,11 @@ class SettingsTest extends TestCase
         Settings::setMeasurementUnit($this->measurementUnit);
         Settings::setOutputEscapingEnabled($this->outputEscapingEnabled);
         Settings::setPdfRendererName($this->pdfRendererName);
+        Settings::setPdfRendererOptions($this->pdfRendererOptions);
         Settings::setPdfRendererPath($this->pdfRendererPath);
         Settings::setTempDir($this->tempDir);
         Settings::setZipClass($this->zipClass);
+        Settings::setDefaultRtl($this->defaultRtl);
     }
 
     /**
@@ -93,6 +106,17 @@ class SettingsTest extends TestCase
         self::assertFalse(Settings::isOutputEscapingEnabled());
         Settings::setOutputEscapingEnabled(true);
         self::assertTrue(Settings::isOutputEscapingEnabled());
+    }
+
+    public function testSetGetDefaultRtl(): void
+    {
+        self::assertNull(Settings::isDefaultRtl());
+        Settings::setDefaultRtl(true);
+        self::assertTrue(Settings::isDefaultRtl());
+        Settings::setDefaultRtl(false);
+        self::assertFalse(Settings::isDefaultRtl());
+        Settings::setDefaultRtl(null);
+        self::assertNull(Settings::isDefaultRtl());
     }
 
     /**
@@ -125,6 +149,23 @@ class SettingsTest extends TestCase
     }
 
     /**
+     * Test set/get PDF renderer.
+     */
+    public function testSetGetPdfOptions(): void
+    {
+        $domPdfPath = realpath(PHPWORD_TESTS_BASE_DIR . '/../vendor/dompdf/dompdf');
+
+        self::assertEquals([], Settings::getPdfRendererOptions());
+
+        Settings::setPdfRendererOptions([
+            'font' => 'Arial',
+        ]);
+        self::assertEquals([
+            'font' => 'Arial',
+        ], Settings::getPdfRendererOptions());
+    }
+
+    /**
      * Test set/get measurement unit.
      */
     public function testSetGetMeasurementUnit(): void
@@ -149,6 +190,7 @@ class SettingsTest extends TestCase
     /**
      * @covers ::getTempDir
      * @covers ::setTempDir
+     *
      * @depends testPhpTempDirIsUsedByDefault
      */
     public function testTempDirCanBeSet(): void

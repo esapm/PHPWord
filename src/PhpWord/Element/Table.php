@@ -27,7 +27,7 @@ class Table extends AbstractElement
     /**
      * Table style.
      *
-     * @var \PhpOffice\PhpWord\Style\Table
+     * @var ?\PhpOffice\PhpWord\Style\Table
      */
     private $style;
 
@@ -41,10 +41,10 @@ class Table extends AbstractElement
     /**
      * Table width.
      *
-     * @var int
+     * @var ?int
      */
     private $width;
-        
+
     /**
      * Table ELEMENT caption and title of Alt Text field.
      *
@@ -52,7 +52,6 @@ class Table extends AbstractElement
      */
     private $tblCaption;
 
-    
     /**
      * Table ELEMENT description and contents of Alt Text fiels.
      *
@@ -117,7 +116,7 @@ class Table extends AbstractElement
     /**
      * Get table style.
      *
-     * @return \PhpOffice\PhpWord\Style\Table
+     * @return null|\PhpOffice\PhpWord\Style\Table|string
      */
     public function getStyle()
     {
@@ -127,7 +126,7 @@ class Table extends AbstractElement
     /**
      * Get table width.
      *
-     * @return int
+     * @return ?int
      */
     public function getWidth()
     {
@@ -145,15 +144,15 @@ class Table extends AbstractElement
     }
 
     /**
-     * Get table ELEMENT tblCaption
-     * 
+     * Get table ELEMENT tblCaption.
+     *
      * @return string
      */
     public function getTblCaption()
     {
         return $this->tblCaption;
     }
-    
+
     /**
      * Add table ELEMENT tblCaption. This function can be called from an external PHP file.
      *
@@ -163,9 +162,9 @@ class Table extends AbstractElement
     {
         $this->tblCaption = $tblCaption;
     }
-    
+
     /**
-     * Get table ELEMENT tblDescription
+     * Get table ELEMENT tblDescription.
      *
      * @return string
      */
@@ -173,7 +172,7 @@ class Table extends AbstractElement
     {
         return $this->tblDescription;
     }
-        
+
     /**
      * Add table ELEMENT tblDescription. This function can be called from an external PHP file.
      *

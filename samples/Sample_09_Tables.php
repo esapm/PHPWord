@@ -78,7 +78,7 @@ $cellVCentered = ['valign' => 'center'];
 $spanTableStyleName = 'Colspan Rowspan';
 $phpWord->addTableStyle($spanTableStyleName, $fancyTableStyle);
 $table = $section->addTable($spanTableStyleName);
-// Note: Alt text (table captions and descriptions) will be ignored if added to a named style. 
+// Note: Alt text (table captions and descriptions) will be ignored if added to a named style.
 // Use table->addTblCaption() and table->addTblDescription() instead.
 
 $table->addRow();

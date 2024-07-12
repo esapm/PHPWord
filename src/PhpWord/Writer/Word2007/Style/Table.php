@@ -63,13 +63,13 @@ class Table extends AbstractStyle
                 $this->writeTblWidth($xmlWriter, 'w:tblW', TblWidth::PERCENT, $this->width);
             }
             // Even though Word groups alt text fields with table styles, the alt text is ignored when sent as part
-            // of a named style. The code below allows table captions and descriptions to be added via the 
+            // of a named style. The code below allows table captions and descriptions to be added via the
             // addTblCaption() and addTblDescription() functions. These populate the Alt Text Title and Alt Text
             // Description fields, respectively.
             //
             // Caption (alt text title)
             $this->writeTblCaption($xmlWriter, 'w:tblCaption', $this->tblCaption);
-    
+
             // Description (alt text contents)
             $this->writeTblDescription($xmlWriter, 'w:tblDescription', $this->tblDescription);
 
@@ -99,10 +99,10 @@ class Table extends AbstractStyle
         // the code below will include them if they are part of the table style.
         //
         // Caption (alt text title)
-        $this->writeTblCaption($xmlWriter, 'w:tblCaption', $this->tblCaption ?? $style->getTblCaption());
- 
+        $this->writeTblCaption($xmlWriter, 'w:tblCaption', (!empty($this->tblCaption) ? $this->tblCaption : $style->getTblCaption()));
+
         // Description (alt text contents)
-        $this->writeTblDescription($xmlWriter, 'w:tblDescription', $this->tblDescription ?? $style->getTblDescription());
+        $this->writeTblDescription($xmlWriter, 'w:tblDescription', (!empty($this->tblDescription) ? $this->tblDescription : $style->getTblDescription()));
 
         $this->writeTblWidth($xmlWriter, 'w:tblW', $style->getUnit(), $style->getWidth());
         $this->writeTblWidth($xmlWriter, 'w:tblCellSpacing', TblWidth::TWIP, $style->getCellSpacing());
@@ -237,7 +237,7 @@ class Table extends AbstractStyle
     /**
      * Set tblCaption.
      *
-     * @param string $tblCaption
+     * @param string $value
      */
     public function setTblCaption($value = null): void
     {
@@ -247,7 +247,7 @@ class Table extends AbstractStyle
     /**
      * Set tblDescription.
      *
-     * @param string $tblDescription
+     * @param string $value
      */
     public function setTblDescription($value = null): void
     {
@@ -266,15 +266,14 @@ class Table extends AbstractStyle
     }
 
     /**
-    * Write table caption (Title of alt text).
-    *
-    * @param string $elementName
-    * @param string $tblCaption
-    */
-
+     * Write table caption (Title of alt text).
+     *
+     * @param string $elementName
+     * @param string $tblCaption
+     */
     private function writeTblCaption(XMLWriter $xmlWriter, $elementName, $tblCaption): void
     {
-        if (null === $tblCaption || '' == $tblCaption) {
+        if (empty($tblCaption)) {
             return;
         }
         $xmlWriter->startElement($elementName);
@@ -284,14 +283,13 @@ class Table extends AbstractStyle
 
     /**
      * Write table description (alt text).
-    *
-    * @param string $elementName
-    * @param string $tblDescription
-    */
-
+     *
+     * @param string $elementName
+     * @param string $tblDescription
+     */
     private function writeTblDescription(XMLWriter $xmlWriter, $elementName, $tblDescription): void
     {
-        if (null === $tblDescription || '' == $tblDescription) {
+        if (empty($tblDescription)) {
             return;
         }
         $xmlWriter->startElement($elementName);

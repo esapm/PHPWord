@@ -18,6 +18,7 @@
 namespace PhpOffice\PhpWord\Element;
 
 use BadMethodCallException;
+use PhpOffice\Math\Math;
 use ReflectionClass;
 
 /**
@@ -34,11 +35,11 @@ use ReflectionClass;
  * @method Footnote addFootnote(mixed $pStyle = null)
  * @method Endnote addEndnote(mixed $pStyle = null)
  * @method CheckBox addCheckBox(string $name, $text, mixed $fStyle = null, mixed $pStyle = null)
- * @method Title addTitle(mixed $text, int $depth = 1)
+ * @method Title addTitle(mixed $text, int $depth = 1, int $pageNumber = null)
  * @method TOC addTOC(mixed $fontStyle = null, mixed $tocStyle = null, int $minDepth = 1, int $maxDepth = 9)
  * @method PageBreak addPageBreak()
  * @method Table addTable(mixed $style = null)
- * @method Image addImage(string $source, mixed $style = null, bool $isWatermark = false, $name = null)
+ * @method Image addImage(string $source, mixed $style = null, string $altText = null, bool $isWatermark = false, $name = null)
  * @method OLEObject addOLEObject(string $source, mixed $style = null)
  * @method TextBox addTextBox(mixed $style = null)
  * @method Field addField(string $type = null, array $properties = array(), array $options = array(), mixed $text = null)
@@ -47,6 +48,7 @@ use ReflectionClass;
  * @method Chart addChart(string $type, array $categories, array $values, array $style = null, $seriesName = null)
  * @method FormField addFormField(string $type, mixed $fStyle = null, mixed $pStyle = null)
  * @method SDT addSDT(string $type)
+ * @method Formula addFormula(Math $math)
  * @method \PhpOffice\PhpWord\Element\OLEObject addObject(string $source, mixed $style = null) deprecated, use addOLEObject instead
  *
  * @since 0.10.0
@@ -88,6 +90,7 @@ abstract class AbstractContainer extends AbstractElement
             'Footnote', 'Endnote', 'CheckBox', 'TextBox', 'Field',
             'Line', 'Shape', 'Title', 'TOC', 'PageBreak',
             'Chart', 'FormField', 'SDT', 'Comment',
+            'Formula',
         ];
         $functions = [];
         foreach ($elements as $element) {

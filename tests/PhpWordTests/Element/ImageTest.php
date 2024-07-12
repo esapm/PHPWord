@@ -70,7 +70,7 @@ class ImageTest extends AbstractWebServerEmbeddedTest
     {
         $nam = ucfirst(strtok($source, '.'));
         $source = __DIR__ . "/../_files/images/{$source}";
-        $image = new Image($source, null, null, null, $nam);
+        $image = new Image($source, null, null, false, $nam);
         self::assertInstanceOf('PhpOffice\\PhpWord\\Element\\Image', $image);
         self::assertEquals($source, $image->getSource());
         self::assertEquals($nam, $image->getName());
@@ -88,7 +88,7 @@ class ImageTest extends AbstractWebServerEmbeddedTest
         self::assertNotNull($image->getImageStringData());
     }
 
-    public function providerImages(): array
+    public static function providerImages(): array
     {
         return [
             ['mars.jpg', 'image/jpeg', 'jpg', 'imagecreatefromjpeg', true, 100],
