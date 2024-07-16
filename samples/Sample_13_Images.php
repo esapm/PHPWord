@@ -13,16 +13,19 @@ $phpWord = new \PhpOffice\PhpWord\PhpWord();
 $section = $phpWord->addSection();
 $section->addText('Local image with alt text but no styles:');
 $section->addImage('resources/_mars.jpg', null, 'Image of Mars');
+$section->addCaption('Image of Mars', 'Figure', ['bold'=>true], ['spaceAfter'=>240, 'spaceBefore'=>0]);
 
 printSeparator($section);
 $section->addText('Local image with styles but not alt text:');
-$section->addImage('resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
+$section->addImage('resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'keepNext' => true]);
+$section->addCaption('Image of Earth', 'Figure', ['bold'=>true], ['spaceAfter'=>240, 'spaceBefore'=>0]);
 
 // Remote image
 printSeparator($section);
 $source = 'http://php.net/images/logos/php-med-trans-light.gif';
 $section->addText("Remote image from: {$source}");
-$section->addImage($source);
+$section->addImage($source, ['keepNext' => true]);
+$section->addCaption('Remote image', 'Figure', ['bold'=>true], ['spaceAfter'=>240, 'spaceBefore'=>0]);
 
 // Image from string
 printSeparator($section);
