@@ -17,22 +17,26 @@ $section->addCaption('Image of Mars', 'Figure', ['bold'=>true], ['spaceAfter'=>2
 
 printSeparator($section);
 $section->addText('Local image with styles but not alt text:');
-$section->addImage('resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'keepNext' => true]);
+$section->addImage('resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
 $section->addCaption('Image of Earth', 'Figure', ['bold'=>true], ['spaceAfter'=>240, 'spaceBefore'=>0]);
 
 // Remote image
 printSeparator($section);
 $source = 'http://php.net/images/logos/php-med-trans-light.gif';
 $section->addText("Remote image from: {$source}");
-$section->addImage($source, ['keepNext' => true]);
+$section->addImage($source, null);
 $section->addCaption('Remote image', 'Figure', ['bold'=>true], ['spaceAfter'=>240, 'spaceBefore'=>0]);
 
 // Image from string
 printSeparator($section);
+$section->addText('In order to keep the image with the caption that follows, add the image to a textRun.');
+$section->addTextBreak();
 $source = 'resources/_mars.jpg';
 $fileContent = file_get_contents($source);
 $section->addText('Image from string');
-$section->addImage($fileContent);
+$imageTextRun = $section->addTextRun(['keepNext'=>true]);
+$imageTextRun->addImage($fileContent);
+$section->addCaption('Image of Mars', 'Figure', ['bold'=>true], ['spaceAfter'=>240, 'spaceBefore'=>0]);
 
 //Wrapping style
 printSeparator($section);
