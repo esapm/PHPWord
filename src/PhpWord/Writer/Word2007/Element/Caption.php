@@ -82,7 +82,7 @@ class Caption extends AbstractElement
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:instrText');
         $xmlWriter->writeAttribute('xml:space', 'preserve');
-        $xmlWriter->text(" SEQ Figure \* ARABIC ");
+        $xmlWriter->text(" SEQ {$label} \* ARABIC ");
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 
