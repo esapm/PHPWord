@@ -187,6 +187,13 @@ class Paragraph extends Border
      * @var bool
      */
     private $suppressAutoHyphens = false;
+   
+    /**
+     * Custom style.
+     *
+     * @var string
+     */
+    private $customStyle = '1';
 
     /**
      * Set Style value.
@@ -242,6 +249,7 @@ class Paragraph extends Border
             'bidi' => $this->isBidi(),
             'textAlignment' => $this->getTextAlignment(),
             'suppressAutoHyphens' => $this->hasSuppressAutoHyphens(),
+            'customStyle' => $this->getCustomStyle(),
         ];
 
         return $styles;
@@ -821,5 +829,29 @@ class Paragraph extends Border
     public function setSuppressAutoHyphens($suppressAutoHyphens): void
     {
         $this->suppressAutoHyphens = (bool) $suppressAutoHyphens;
+    }
+
+    /**
+     * Get custom Style flag.
+     *
+     * @return string
+     */
+    public function getCustomStyle()
+    {
+        return $this->customStyle;
+    }
+
+    /**
+     * Set custom Style flag.
+     *
+     * @param string $value
+     *
+     * @return self
+     */
+    public function setCustomStyle($value = '1')
+    {
+        $this->customStyle = $value;
+
+        return $this;
     }
 }
