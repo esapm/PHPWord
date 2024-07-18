@@ -9,23 +9,27 @@ include_once 'Sample_Header.php';
 echo date('H:i:s'), ' Create new PhpWord object', EOL;
 $phpWord = new \PhpOffice\PhpWord\PhpWord();
 
+// Define styles
+$figureCaptionStyle = 'figureCaptionStyle';
+$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter'=>120, 'spaceBefore'=>0, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START,'next'=>'Normal']);
+
 // Begin code
 $section = $phpWord->addSection();
 $section->addText('Local image with alt text but no styles:');
 $section->addImage('resources/_mars.jpg', null, 'Image of Mars');
-$section->addCaption('Image of Mars', 'Figure', ['bold'=>true], ['spaceAfter'=>240, 'spaceBefore'=>0]);
+$section->addCaption('Image of Mars', 'Figure', ['bold'=>true], $figureCaptionStyle);
 
 printSeparator($section);
 $section->addText('Local image with styles but not alt text:');
 $section->addImage('resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
-$section->addCaption('Image of Earth', 'Figure', ['bold'=>true], ['spaceAfter'=>240, 'spaceBefore'=>0]);
+$section->addCaption('Image of Earth', 'Figure', ['bold'=>true], $figureCaptionStyle);
 
 // Remote image
 printSeparator($section);
 $source = 'http://php.net/images/logos/php-med-trans-light.gif';
 $section->addText("Remote image from: {$source}");
 $section->addImage($source, null);
-$section->addCaption('Remote image', 'Figure', ['bold'=>true], ['spaceAfter'=>240, 'spaceBefore'=>0]);
+$section->addCaption('Remote image', 'Figure', ['bold'=>true], $figureCaptionStyle);
 
 // Image from string
 printSeparator($section);
@@ -36,7 +40,7 @@ $fileContent = file_get_contents($source);
 $section->addText('Image from string');
 $imageTextRun = $section->addTextRun(['keepNext'=>true]);
 $imageTextRun->addImage($fileContent);
-$section->addCaption('Image of Mars', 'Figure', ['bold'=>true], ['spaceAfter'=>240, 'spaceBefore'=>0]);
+$section->addCaption('Image of Mars', 'Figure', ['bold'=>true], $figureCaptionStyle);
 
 //Wrapping style
 printSeparator($section);
