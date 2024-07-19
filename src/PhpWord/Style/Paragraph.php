@@ -187,13 +187,30 @@ class Paragraph extends Border
      * @var bool
      */
     private $suppressAutoHyphens = false;
-   
+
     /**
      * Custom style.
      *
      * @var string
      */
     private $customStyle = '1';
+       
+    /**
+     * Font style.
+     *
+     * @var PhpOffice\PhpWord\Style\Font
+     */
+    private $fontStyle;
+
+    /**
+     * Create new paragraph style.
+     *
+     * @param array|\PhpOffice\PhpWord\Style\Font|string Font styles definition
+     */
+    public function __construct($fontStyle = null)
+    {
+        $this->setFontStyle($fontStyle);
+    }
 
     /**
      * Set Style value.
@@ -250,6 +267,7 @@ class Paragraph extends Border
             'textAlignment' => $this->getTextAlignment(),
             'suppressAutoHyphens' => $this->hasSuppressAutoHyphens(),
             'customStyle' => $this->getCustomStyle(),
+            'fontStyle' => $this->getFontStyle(),
         ];
 
         return $styles;
@@ -853,5 +871,29 @@ class Paragraph extends Border
         $this->customStyle = $value;
 
         return $this;
+    }
+
+    /**
+     * Set font style.
+     *
+     * @param mixed $value
+     *
+     * @return self
+     */
+    public function setFontStyle($value = null)
+    {
+        $this->setObjectVal($value, 'Font', $this->fontStyle);
+
+        return $this;
+    }
+
+    /**
+     * Get font style.
+     *
+     * @return \PhpOffice\PhpWord\Style\Font|string
+     */
+    public function getFontStyle()
+    {
+        return $this->fontStyle;
     }
 }

@@ -39,13 +39,14 @@ class Style
      * Add paragraph style.
      *
      * @param string $styleName
-     * @param AbstractStyle|array $styles
+     * @param AbstractStyle|array $paragraphStyle
+     * @param AbstractStyle|array $fontStyle
      *
      * @return \PhpOffice\PhpWord\Style\Paragraph
      */
-    public static function addParagraphStyle($styleName, $styles)
+    public static function addParagraphStyle($styleName, $paragraphStyle, $fontStyle = null)
     {
-        return self::setStyleValues($styleName, new Paragraph(), $styles);
+        return self::setStyleValues($styleName, new Paragraph($fontStyle), $paragraphStyle);
     }
 
     /**
