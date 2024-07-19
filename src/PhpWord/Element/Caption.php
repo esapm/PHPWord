@@ -18,8 +18,6 @@
 namespace PhpOffice\PhpWord\Element;
 
 use PhpOffice\PhpWord\Shared\Text as SharedText;
-// use PhpOffice\PhpWord\Style\Font;
-// use PhpOffice\PhpWord\Style\Paragraph;
 
 /**
  * Caption element.

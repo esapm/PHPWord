@@ -81,12 +81,13 @@ class TOC extends AbstractElement
         $fontStyle = $element->getStyleFont();
         $isObject = ($fontStyle instanceof Font) ? true : false;
         $rId = $title->getRelationId();
-        $indent = (int) (($title->getDepth() - 1) * $tocStyle->getIndent());
+        $depth = $title->getDepth();
+        $indent = (int) (($depth - 1) * $tocStyle->getIndent());
 
         $xmlWriter->startElement('w:p');
 
         // Write style and field mark
-        $this->writeStyle($xmlWriter, $element, $indent);
+        $this->writeStyle($xmlWriter, $element, $indent, $depth);
         if ($writeFieldMark) {
             $this->writeFieldMark($xmlWriter, $element);
         }
@@ -155,7 +156,7 @@ class TOC extends AbstractElement
     /**
      * Write style.
      */
-    private function writeStyle(XMLWriter $xmlWriter, TOCElement $element, int $indent): void
+    private function writeStyle(XMLWriter $xmlWriter, TOCElement $element, int $indent, int $depth): void
     {
         $tocStyle = $element->getStyleTOC();
         $fontStyle = $element->getStyleFont();
@@ -167,6 +168,10 @@ class TOC extends AbstractElement
         if ($isObject && null !== $fontStyle->getParagraph()) {
             $styleWriter = new ParagraphStyleWriter($xmlWriter, $fontStyle->getParagraph());
             $styleWriter->write();
+        } else { // Assign the appropriate "TOC X" paragraph style 
+            $xmlWriter->startElement('w:pStyle');
+            $xmlWriter->writeAttribute('w:val', 'TOC ' . (string) $depth);
+            $xmlWriter->endElement();
         }
 
         // Font
@@ -205,6 +210,7 @@ class TOC extends AbstractElement
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:fldChar');
         $xmlWriter->writeAttribute('w:fldCharType', 'begin');
+//        $xmlWriter->writeAttribute('w:dirty', 'true');
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 
