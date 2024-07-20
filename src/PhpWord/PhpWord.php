@@ -25,12 +25,14 @@ use PhpOffice\PhpWord\Exception\Exception;
  * PHPWord main class.
  *
  * @method Collection\Titles getTitles()
+ * @method Collection\Captions getCaptions()
  * @method Collection\Footnotes getFootnotes()
  * @method Collection\Endnotes getEndnotes()
  * @method Collection\Charts getCharts()
  * @method Collection\Comments getComments()
  * @method int addBookmark(Element\Bookmark $bookmark)
  * @method int addTitle(Element\Title $title)
+ * @method int addCaption(Element\Caption $caption)
  * @method int addFootnote(Element\Footnote $footnote)
  * @method int addEndnote(Element\Endnote $endnote)
  * @method int addChart(Element\Chart $chart)
@@ -80,7 +82,7 @@ class PhpWord
         Settings::setDefaultRtl(null);
 
         // Collection
-        $collections = ['Bookmarks', 'Titles', 'Footnotes', 'Endnotes', 'Charts', 'Comments'];
+        $collections = ['Bookmarks', 'Titles', 'Footnotes', 'Endnotes', 'Charts', 'Comments', 'Captions'];
         foreach ($collections as $collection) {
             $class = 'PhpOffice\\PhpWord\\Collection\\' . $collection;
             $this->collections[$collection] = new $class();
@@ -112,13 +114,13 @@ class PhpWord
         $addCollection = [];
         $addStyle = [];
 
-        $collections = ['Bookmark', 'Title', 'Footnote', 'Endnote', 'Chart', 'Comment'];
+        $collections = ['Bookmark', 'Title', 'Footnote', 'Endnote', 'Chart', 'Comment', 'Caption'];
         foreach ($collections as $collection) {
             $getCollection[] = strtolower("get{$collection}s");
             $addCollection[] = strtolower("add{$collection}");
         }
 
-        $styles = ['Paragraph', 'Font', 'Table', 'Numbering', 'Link', 'Title'];
+        $styles = ['Paragraph', 'Font', 'Table', 'Numbering', 'Link', 'Title', 'Caption'];
         foreach ($styles as $style) {
             $addStyle[] = strtolower("add{$style}Style");
         }

@@ -27,3 +27,5 @@ Available Paragraph style options:
 - ``shading``. Paragraph Shading.
 - ``textAlignment``. Vertical Character Alignment on Line.
    See ``\PhpOffice\PhpWord\SimpleType\TextAlignment`` class constants for possible values.
+- ``customStyle``. Setting this flag to '0' enables modification of "built-in" styles such as "Table of Figures", TOC 1, and TOC 2.
+- ``fontStyle``. Add font style to paragraph style (either array or predefined style). See ``\PhpOffice\PhpWord\Style\Font`` for font style elements.

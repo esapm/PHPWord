@@ -233,7 +233,11 @@ class Styles extends AbstractPart
     {
         $xmlWriter->startElement('w:style');
         $xmlWriter->writeAttribute('w:type', 'paragraph');
-        $xmlWriter->writeAttribute('w:customStyle', '1');
+
+        // Custom style
+        $customStyle = $style->getCustomStyle();
+        $xmlWriter->writeAttribute('w:customStyle', $customStyle);
+
         $xmlWriter->writeAttribute('w:styleId', $styleName);
         $xmlWriter->startElement('w:name');
         $xmlWriter->writeAttribute('w:val', $styleName);
@@ -251,6 +255,15 @@ class Styles extends AbstractPart
         $styleWriter = new ParagraphStyleWriter($xmlWriter, $style);
         $styleWriter->write();
 
+        // w:rPr
+        $fontStyle = $style->getFontStyle();
+        if (null !== $fontStyle) {
+            if (is_string($fontStyle)) {
+                $fontStyle = \PhpOffice\PhpWord\Style::getStyle($fontStyle);
+            }
+            $fontStyleWriter = new FontStyleWriter($xmlWriter, $fontStyle);
+            $fontStyleWriter->write();
+        }
         $xmlWriter->endElement();
     }
 

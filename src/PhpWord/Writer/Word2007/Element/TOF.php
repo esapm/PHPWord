@@ -17,8 +17,8 @@
 
 namespace PhpOffice\PhpWord\Writer\Word2007\Element;
 
-use PhpOffice\PhpWord\Element\Title;
-use PhpOffice\PhpWord\Element\TOC as TOCElement;
+use PhpOffice\PhpWord\Element\Caption;
+use PhpOffice\PhpWord\Element\TOF as TOFElement;
 use PhpOffice\PhpWord\Shared\XMLWriter;
 use PhpOffice\PhpWord\Style\Font;
 use PhpOffice\PhpWord\Writer\Word2007\Style\Font as FontStyleWriter;
@@ -26,11 +26,11 @@ use PhpOffice\PhpWord\Writer\Word2007\Style\Paragraph as ParagraphStyleWriter;
 use PhpOffice\PhpWord\Writer\Word2007\Style\Tab as TabStyleWriter;
 
 /**
- * TOC element writer.
+ * TOF element writer.
  *
  * @since 0.10.0
  */
-class TOC extends AbstractElement
+class TOF extends AbstractElement
 {
     /**
      * Write element.
@@ -39,24 +39,24 @@ class TOC extends AbstractElement
     {
         $xmlWriter = $this->getXmlWriter();
         $element = $this->getElement();
-        if (!$element instanceof TOCElement) {
+        if (!$element instanceof TOFElement) {
             return;
         }
 
-        $titles = $element->getTitles();
+        $captions = $element->getCaptions();
         $writeFieldMark = true;
 
         //////////////////////////////////////
         // Switch the comments of the below sections to have Word autoupdate the
-        // Table of Contents.
+        // Table of Figures.
         //////////////////////////////////////
         // $xmlWriter->startElement('w:p');
-        // $this->writeStyle($xmlWriter, $element, 0);
-        // $this->writeFieldMark($xmlWriter, $element, $title, $writeFieldMark);
+        // $this->writeStyle($xmlWriter, $element);
+        // $this->writeFieldMark($xmlWriter, $element);
         // $xmlWriter->endElement(); // w:p
         /////////////////////////////////////
-        foreach ($titles as $title) {
-            $this->writeTitle($xmlWriter, $element, $title, $writeFieldMark);
+        foreach ($captions as $caption) {
+            $this->writeCaption($xmlWriter, $element, $caption, $writeFieldMark);
             if ($writeFieldMark) {
                 $writeFieldMark = false;
             }
@@ -73,28 +73,33 @@ class TOC extends AbstractElement
     }
 
     /**
-     * Write title.
+     * Write caption.
      */
-    private function writeTitle(XMLWriter $xmlWriter, TOCElement $element, Title $title, bool $writeFieldMark): void
+    private function writeCaption(XMLWriter $xmlWriter, TOFElement $element, Caption $caption, bool $writeFieldMark): void
     {
-        $tocStyle = $element->getStyleTOC();
+        $tofStyle = $element->getStyleTOF();
         $fontStyle = $element->getStyleFont();
         $isObject = ($fontStyle instanceof Font) ? true : false;
-        $rId = $title->getRelationId();
-        $depth = $title->getDepth();
-        $indent = (int) (($depth - 1) * $tocStyle->getIndent());
+        $paragraphStyle = $element->getParagraphStyle();
+        $rId = $caption->getRelationId();
+        $captionLabel = $caption->getLabel();
+        $figureNumber = $caption->getFigureNumber();
 
         $xmlWriter->startElement('w:p');
 
+        if (!empty($paragraphStyle)) {
+            $this->writeParagraphStyle();
+        }
+
         // Write style and field mark
-        $this->writeStyle($xmlWriter, $element, $indent, $depth);
+        $this->writeStyle($xmlWriter, $element);
         if ($writeFieldMark) {
             $this->writeFieldMark($xmlWriter, $element);
         }
 
         // Hyperlink
         $xmlWriter->startElement('w:hyperlink');
-        $xmlWriter->writeAttribute('w:anchor', "_Toc{$rId}");
+        $xmlWriter->writeAttribute('w:anchor', "_{$captionLabel}{$rId}");
         $xmlWriter->writeAttribute('w:history', '1');
 
         // Title text
@@ -105,8 +110,9 @@ class TOC extends AbstractElement
         }
         $xmlWriter->startElement('w:t');
 
-        $titleText = $title->getText();
-        $this->writeText(is_string($titleText) ? $titleText : '');
+        $captionText = $caption->getText();
+        $this->writeText($captionLabel . ' ' . $figureNumber . '. ');
+        $this->writeText(is_string($captionText) ? $captionText : '');
 
         $xmlWriter->endElement(); // w:t
         $xmlWriter->endElement(); // w:r
@@ -118,19 +124,19 @@ class TOC extends AbstractElement
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:fldChar');
         $xmlWriter->writeAttribute('w:fldCharType', 'begin');
+//        $xmlWriter->writeAttribute('w:dirty', 'true');
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 
-        if ($title->getPageNumber() !== null) {
+        if ($caption->getPageNumber() !== null) {
 
             // Removing these lines from normal code forces Word to regenerate the whole table.
             // Otherwise, neither the heading numbers nor the page numbers are displayed without
             // manually updating them.
-            // However, they are needed for the TOC pagenumber test.
             $xmlWriter->startElement('w:r');
             $xmlWriter->startElement('w:instrText');
             $xmlWriter->writeAttribute('xml:space', 'preserve');
-            $xmlWriter->text("PAGEREF _Toc{$rId} \\h");
+            $xmlWriter->text(" PAGEREF _{$captionLabel}{$rId} \\h ");
             $xmlWriter->endElement();
             $xmlWriter->endElement();
 
@@ -142,7 +148,7 @@ class TOC extends AbstractElement
 
             $xmlWriter->startElement('w:r');
             $xmlWriter->startElement('w:t');
-            $xmlWriter->text((string) $title->getPageNumber());
+            $xmlWriter->text((string) $caption->getPageNumber());
             $xmlWriter->endElement();
             $xmlWriter->endElement();
         }
@@ -161,9 +167,9 @@ class TOC extends AbstractElement
     /**
      * Write style.
      */
-    private function writeStyle(XMLWriter $xmlWriter, TOCElement $element, int $indent, int $depth): void
+    private function writeStyle(XMLWriter $xmlWriter, TOFElement $element): void
     {
-        $tocStyle = $element->getStyleTOC();
+        $tofStyle = $element->getStyleTOF();
         $fontStyle = $element->getStyleFont();
         $isObject = ($fontStyle instanceof Font) ? true : false;
 
@@ -173,10 +179,6 @@ class TOC extends AbstractElement
         if ($isObject && null !== $fontStyle->getParagraph()) {
             $styleWriter = new ParagraphStyleWriter($xmlWriter, $fontStyle->getParagraph());
             $styleWriter->write();
-        } else { // Assign the appropriate "TOC X" paragraph style
-            $xmlWriter->startElement('w:pStyle');
-            $xmlWriter->writeAttribute('w:val', 'TOC ' . (string) $depth);
-            $xmlWriter->endElement();
         }
 
         // Font
@@ -190,42 +192,31 @@ class TOC extends AbstractElement
 
         // Tab
         $xmlWriter->startElement('w:tabs');
-        $styleWriter = new TabStyleWriter($xmlWriter, $tocStyle);
+        $styleWriter = new TabStyleWriter($xmlWriter, $tofStyle);
         $styleWriter->write();
         $xmlWriter->endElement();
-
-        // Indent
-        if ($indent > 0) {
-            $xmlWriter->startElement('w:ind');
-            $xmlWriter->writeAttribute('w:left', $indent);
-            $xmlWriter->endElement();
-        }
 
         $xmlWriter->endElement(); // w:pPr
     }
 
     /**
-     * Write TOC Field.
+     * Write TOF Field.
      */
-    private function writeFieldMark(XMLWriter $xmlWriter, TOCElement $element): void
+    private function writeFieldMark(XMLWriter $xmlWriter, TOFElement $element): void
     {
-        $minDepth = $element->getMinDepth();
-        $maxDepth = $element->getMaxDepth();
-
+        $TOFCaptionLabel = $element->getCaptionLabel();
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:fldChar');
         $xmlWriter->writeAttribute('w:fldCharType', 'begin');
-//        $xmlWriter->writeAttribute('w:dirty', 'true');
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:instrText');
         $xmlWriter->writeAttribute('xml:space', 'preserve');
-        $xmlWriter->writeRaw(' TOC \o "');
-        $xmlWriter->text($minDepth . '-' . $maxDepth);
-        $xmlWriter->writeRaw('" \h \z \u');
-//        $xmlWriter->text("TOC \\o {$minDepth}-{$maxDepth} \\h \\z \\t Title, 1");
+        $xmlWriter->writeRaw(' TOC \h \z \c "');
+        $xmlWriter->text($TOFCaptionLabel);
+        $xmlWriter->writeRaw('" ');
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 

@@ -189,6 +189,30 @@ class Paragraph extends Border
     private $suppressAutoHyphens = false;
 
     /**
+     * Custom style.
+     *
+     * @var string
+     */
+    private $customStyle = '1';
+
+    /**
+     * Font style.
+     *
+     * @var null|array|\PhpOffice\PhpWord\Style\AbstractStyle|string
+     */
+    private $fontStyle;
+
+    /**
+     * Create new paragraph style.
+     *
+     * @param null|array|\PhpOffice\PhpWord\Style\AbstractStyle|string $fontStyle
+     */
+    public function __construct($fontStyle = null)
+    {
+        $this->setFontStyle($fontStyle);
+    }
+
+    /**
      * Set Style value.
      *
      * @param string $key
@@ -242,6 +266,8 @@ class Paragraph extends Border
             'bidi' => $this->isBidi(),
             'textAlignment' => $this->getTextAlignment(),
             'suppressAutoHyphens' => $this->hasSuppressAutoHyphens(),
+            'customStyle' => $this->getCustomStyle(),
+            'fontStyle' => $this->getFontStyle(),
         ];
 
         return $styles;
@@ -821,5 +847,53 @@ class Paragraph extends Border
     public function setSuppressAutoHyphens($suppressAutoHyphens): void
     {
         $this->suppressAutoHyphens = (bool) $suppressAutoHyphens;
+    }
+
+    /**
+     * Get custom Style flag.
+     *
+     * @return string
+     */
+    public function getCustomStyle()
+    {
+        return $this->customStyle;
+    }
+
+    /**
+     * Set custom Style flag.
+     *
+     * @param string $value
+     *
+     * @return self
+     */
+    public function setCustomStyle($value = '1')
+    {
+        $this->customStyle = $value;
+
+        return $this;
+    }
+
+    /**
+     * Set font style.
+     *
+     * @param mixed $value
+     *
+     * @return self
+     */
+    public function setFontStyle($value = null)
+    {
+        $this->setObjectVal($value, 'Font', $this->fontStyle);
+
+        return $this;
+    }
+
+    /**
+     * Get font style.
+     *
+     * @return \PhpOffice\PhpWord\Style\Font
+     */
+    public function getFontStyle()
+    {
+        return $this->fontStyle;
     }
 }

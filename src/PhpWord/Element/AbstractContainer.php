@@ -88,9 +88,9 @@ abstract class AbstractContainer extends AbstractElement
             'Text', 'TextRun', 'Bookmark', 'Link', 'PreserveText', 'TextBreak',
             'ListItem', 'ListItemRun', 'Table', 'Image', 'Object', 'OLEObject',
             'Footnote', 'Endnote', 'CheckBox', 'TextBox', 'Field',
-            'Line', 'Shape', 'Title', 'TOC', 'PageBreak',
+            'Line', 'Shape', 'Title', 'TOC', 'TOF', 'PageBreak',
             'Chart', 'FormField', 'SDT', 'Comment',
-            'Formula',
+            'Formula', 'Caption',
         ];
         $functions = [];
         foreach ($elements as $element) {
@@ -237,6 +237,7 @@ abstract class AbstractContainer extends AbstractElement
             'Link' => $generalContainers,
             'TextBreak' => $generalContainers,
             'Image' => $generalContainers,
+            'Caption' => $generalContainers,
             'OLEObject' => $generalContainers,
             'Field' => $generalContainers,
             'Line' => $generalContainers,
@@ -255,6 +256,7 @@ abstract class AbstractContainer extends AbstractElement
             'PreserveText' => ['Section', 'Header', 'Footer', 'Cell'],
             'Title' => ['Section', 'Cell'],
             'TOC' => ['Section'],
+            'TOF' => ['Section'],
             'PageBreak' => ['Section'],
             'Chart' => ['Section', 'Cell'],
         ];

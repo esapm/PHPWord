@@ -18,6 +18,9 @@ $phpWord->addFontStyle($fontStyleName, ['bold' => true, 'italic' => true, 'size'
 $paragraphStyleName = 'pStyle';
 $phpWord->addParagraphStyle($paragraphStyleName, ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
 
+$longQuoteStyleName = 'qStyle';
+$phpWord->addParagraphStyle($longQuoteStyleName, ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START, 'spaceBefore' => 100, 'spaceAfter' => 100, 'indentation' => ['left' => 720, 'right' => 720], 'fontStyle' => ['italic' => true]]);
+
 $phpWord->addTitleStyle(1, ['bold' => true], ['spaceAfter' => 240]);
 
 // New portrait section
@@ -38,6 +41,7 @@ $section->addTextBreak(2);
 $section->addText('I am styled by a font style definition.', $fontStyleName);
 $section->addText('I am styled by a paragraph style definition.', null, $paragraphStyleName);
 $section->addText('I am styled by both font and paragraph style.', $fontStyleName, $paragraphStyleName);
+$section->addText('I am styled by a paragraph style that contains a font style.', null, $longQuoteStyleName);
 
 $section->addTextBreak();
 
