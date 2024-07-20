@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.76a95c52.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -2118,7 +2118,21 @@
 <p><a href="https://github.com/PHPOffice/PHPWord/compare/1.2.0...2.0.0">Full Changelog</a></p>
 <h2 id="enhancements">Enhancements</h2>
 <ul>
-<li>IOFactory : Added extractVariables method to extract variables from a document <a href="https://github.com/sibalonat">@sibalonat</a> in <a href="https://github.com/PHPOffice/PHPWord/pull/2515">#2515</a></li>
+<li>
+<p>IOFactory : Added extractVariables method to extract variables from a document <a href="https://github.com/sibalonat">@sibalonat</a> in <a href="https://github.com/PHPOffice/PHPWord/pull/2515">#2515</a></p>
+</li>
+<li>
+<p>Word2007 Writer: Added support for figure (and table) captions</p>
+</li>
+<li>
+<p>Word2007 Writer: Added support for modifying the "customStyle" flag in addParagraphStyle(). Setting this flag to '0' enables modification of "built-in" styles such as "Table of Figures", TOC 1, and TOC 2.</p>
+</li>
+<li>
+<p>Word2007 Writer: Added support for font styles to be linked to paragraph styles.</p>
+</li>
+<li>
+<p>Word2007 Writer: Word built-in styles TOC 1, TOC 2, etc. are now applied by default to the corresponding TOC entries. This can be overridden if the applied font style has an associated paragraph style.</p>
+</li>
 </ul>
 <h3 id="bug-fixes">Bug fixes</h3>
 <ul>

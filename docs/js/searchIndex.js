@@ -41,6 +41,11 @@ Search.appendIndex(
             "summary": "Bookmarks\u0020collection.",
             "url": "classes/PhpOffice-PhpWord-Collection-Bookmarks.html"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Collection\\Captions",
+            "name": "Captions",
+            "summary": "Captions\u0020collection.",
+            "url": "classes/PhpOffice-PhpWord-Collection-Captions.html"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Collection\\Charts",
             "name": "Charts",
             "summary": "Charts\u0020collection.",
@@ -615,6 +620,66 @@ Search.appendIndex(
             "name": "collectionRelation",
             "summary": "Is\u0020part\u0020of\u0020collection.",
             "url": "classes/PhpOffice-PhpWord-Element-Bookmark.html#property_collectionRelation"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption",
+            "name": "Caption",
+            "summary": "Caption\u0020element.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Create\u0020a\u0020new\u0020Caption\u0020Element.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html#method___construct"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption\u003A\u003AsetLabel\u0028\u0029",
+            "name": "setLabel",
+            "summary": "Set\u0020Caption\u0020label.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html#method_setLabel"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption\u003A\u003AgetLabel\u0028\u0029",
+            "name": "getLabel",
+            "summary": "Get\u0020Caption\u0020label.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html#method_getLabel"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption\u003A\u003AgetPageNumber\u0028\u0029",
+            "name": "getPageNumber",
+            "summary": "Get\u0020page\u0020number.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html#method_getPageNumber"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption\u003A\u003AgetFigureNumber\u0028\u0029",
+            "name": "getFigureNumber",
+            "summary": "Get\u0020figure\u0020number.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html#method_getFigureNumber"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption\u003A\u003AsetFigureNumber\u0028\u0029",
+            "name": "setFigureNumber",
+            "summary": "Set\u0020figure\u0020number.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html#method_setFigureNumber"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption\u003A\u003A\u0024figureNumbers",
+            "name": "figureNumbers",
+            "summary": "figureNumbers.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html#property_figureNumbers"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption\u003A\u003A\u0024label",
+            "name": "label",
+            "summary": "Label.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html#property_label"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption\u003A\u003A\u0024figureNumber",
+            "name": "figureNumber",
+            "summary": "figureNumber.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html#property_figureNumber"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption\u003A\u003A\u0024pageNumber",
+            "name": "pageNumber",
+            "summary": "Page\u0020number.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html#property_pageNumber"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Caption\u003A\u003A\u0024collectionRelation",
+            "name": "collectionRelation",
+            "summary": "Is\u0020part\u0020of\u0020collection.",
+            "url": "classes/PhpOffice-PhpWord-Element-Caption.html#property_collectionRelation"
         },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Element\\Cell",
             "name": "Cell",
@@ -2240,6 +2305,76 @@ Search.appendIndex(
             "name": "maxDepth",
             "summary": "Max\u0020title\u0020depth\u0020to\u0020show.",
             "url": "classes/PhpOffice-PhpWord-Element-TOC.html#property_maxDepth"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF",
+            "name": "TOF",
+            "summary": "Table\u0020of\u0020figures.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Create\u0020a\u0020new\u0020Table\u002Dof\u002DFigures\u0020Element.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#method___construct"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003AgetCaptions\u0028\u0029",
+            "name": "getCaptions",
+            "summary": "Get\u0020all\u0020captions.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#method_getCaptions"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003AgetStyleTOF\u0028\u0029",
+            "name": "getStyleTOF",
+            "summary": "Get\u0020TOF\u0020Style.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#method_getStyleTOF"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003AgetStyleFont\u0028\u0029",
+            "name": "getStyleFont",
+            "summary": "Get\u0020Font\u0020Style.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#method_getStyleFont"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003AgetCaptionLabel\u0028\u0029",
+            "name": "getCaptionLabel",
+            "summary": "Get\u0020Caption\u0020Label.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#method_getCaptionLabel"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003AsetFontStyle\u0028\u0029",
+            "name": "setFontStyle",
+            "summary": "Set\u0020Text\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#method_setFontStyle"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003AgetFontStyle\u0028\u0029",
+            "name": "getFontStyle",
+            "summary": "Get\u0020Text\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#method_getFontStyle"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003AgetParagraphStyle\u0028\u0029",
+            "name": "getParagraphStyle",
+            "summary": "Get\u0020Paragraph\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#method_getParagraphStyle"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003AsetParagraphStyle\u0028\u0029",
+            "name": "setParagraphStyle",
+            "summary": "Set\u0020Paragraph\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#method_setParagraphStyle"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003A\u0024captionLabel",
+            "name": "captionLabel",
+            "summary": "Caption\u0020label.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#property_captionLabel"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003A\u0024tofStyle",
+            "name": "tofStyle",
+            "summary": "TOF\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#property_tofStyle"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003A\u0024fontStyle",
+            "name": "fontStyle",
+            "summary": "Font\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#property_fontStyle"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF\u003A\u003A\u0024paragraphStyle",
+            "name": "paragraphStyle",
+            "summary": "Paragraph\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOF.html#property_paragraphStyle"
         },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Element\\TrackChange",
             "name": "TrackChange",
@@ -10311,6 +10446,11 @@ Search.appendIndex(
             "summary": "Paragraph\u0020style.",
             "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Create\u0020new\u0020paragraph\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#method___construct"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003AsetStyleValue\u0028\u0029",
             "name": "setStyleValue",
             "summary": "Set\u0020Style\u0020value.",
@@ -10561,6 +10701,26 @@ Search.appendIndex(
             "summary": "",
             "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#method_setSuppressAutoHyphens"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003AgetCustomStyle\u0028\u0029",
+            "name": "getCustomStyle",
+            "summary": "Get\u0020custom\u0020Style\u0020flag.",
+            "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#method_getCustomStyle"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003AsetCustomStyle\u0028\u0029",
+            "name": "setCustomStyle",
+            "summary": "Set\u0020custom\u0020Style\u0020flag.",
+            "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#method_setCustomStyle"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003AsetFontStyle\u0028\u0029",
+            "name": "setFontStyle",
+            "summary": "Set\u0020font\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#method_setFontStyle"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003AgetFontStyle\u0028\u0029",
+            "name": "getFontStyle",
+            "summary": "Get\u0020font\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#method_getFontStyle"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003ALINE_HEIGHT",
             "name": "LINE_HEIGHT",
             "summary": "",
@@ -10660,6 +10820,16 @@ Search.appendIndex(
             "name": "suppressAutoHyphens",
             "summary": "Suppress\u0020hyphenation\u0020for\u0020paragraph.",
             "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#property_suppressAutoHyphens"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003A\u0024customStyle",
+            "name": "customStyle",
+            "summary": "Custom\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#property_customStyle"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003A\u0024fontStyle",
+            "name": "fontStyle",
+            "summary": "Font\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#property_fontStyle"
         },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Style\\Row",
             "name": "Row",
@@ -12220,6 +12390,36 @@ Search.appendIndex(
             "name": "indent",
             "summary": "Indent.",
             "url": "classes/PhpOffice-PhpWord-Style-TOC.html#property_indent"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\TOF",
+            "name": "TOF",
+            "summary": "TOF\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Style-TOF.html"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\TOF\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Create\u0020a\u0020new\u0020TOF\u0020Style.",
+            "url": "classes/PhpOffice-PhpWord-Style-TOF.html#method___construct"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\TOF\u003A\u003AgetTabPos\u0028\u0029",
+            "name": "getTabPos",
+            "summary": "Get\u0020Tab\u0020Position.",
+            "url": "classes/PhpOffice-PhpWord-Style-TOF.html#method_getTabPos"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\TOF\u003A\u003AsetTabPos\u0028\u0029",
+            "name": "setTabPos",
+            "summary": "Set\u0020Tab\u0020Position.",
+            "url": "classes/PhpOffice-PhpWord-Style-TOF.html#method_setTabPos"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\TOF\u003A\u003AgetTabLeader\u0028\u0029",
+            "name": "getTabLeader",
+            "summary": "Get\u0020Tab\u0020Leader.",
+            "url": "classes/PhpOffice-PhpWord-Style-TOF.html#method_getTabLeader"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\TOF\u003A\u003AsetTabLeader\u0028\u0029",
+            "name": "setTabLeader",
+            "summary": "Set\u0020Tab\u0020Leader.",
+            "url": "classes/PhpOffice-PhpWord-Style-TOF.html#method_setTabLeader"
         },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Style",
             "name": "Style",
@@ -14611,6 +14811,16 @@ Search.appendIndex(
             "summary": "Write\u0020bookmark\u0020element.",
             "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Element-Bookmark.html#method_write"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Element\\Caption",
+            "name": "Caption",
+            "summary": "TextRun\u0020element\u0020writer.",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Element-Caption.html"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Element\\Caption\u003A\u003Awrite\u0028\u0029",
+            "name": "write",
+            "summary": "Write\u0020caption\u0020element.",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Element-Caption.html#method_write"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Element\\Chart",
             "name": "Chart",
             "summary": "Chart\u0020element\u0020writer.",
@@ -15085,6 +15295,31 @@ Search.appendIndex(
             "name": "writeFieldMark",
             "summary": "Write\u0020TOC\u0020Field.",
             "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Element-TOC.html#method_writeFieldMark"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Element\\TOF",
+            "name": "TOF",
+            "summary": "TOF\u0020element\u0020writer.",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Element-TOF.html"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Element\\TOF\u003A\u003Awrite\u0028\u0029",
+            "name": "write",
+            "summary": "Write\u0020element.",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Element-TOF.html#method_write"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Element\\TOF\u003A\u003AwriteCaption\u0028\u0029",
+            "name": "writeCaption",
+            "summary": "Write\u0020caption.",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Element-TOF.html#method_writeCaption"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Element\\TOF\u003A\u003AwriteStyle\u0028\u0029",
+            "name": "writeStyle",
+            "summary": "Write\u0020style.",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Element-TOF.html#method_writeStyle"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Element\\TOF\u003A\u003AwriteFieldMark\u0028\u0029",
+            "name": "writeFieldMark",
+            "summary": "Write\u0020TOF\u0020Field.",
+            "url": "classes/PhpOffice-PhpWord-Writer-Word2007-Element-TOF.html#method_writeFieldMark"
         },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Writer\\Word2007\\Part\\AbstractPart",
             "name": "AbstractPart",
