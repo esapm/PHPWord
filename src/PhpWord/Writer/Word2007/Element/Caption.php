@@ -17,8 +17,6 @@
 
 namespace PhpOffice\PhpWord\Writer\Word2007\Element;
 
-use PhpOffice\PhpWord\Style;
-
 /**
  * TextRun element writer.
  *
@@ -62,7 +60,7 @@ class Caption extends AbstractElement
         $xmlWriter->endElement(); // w:t
         $xmlWriter->endElement(); // w:r
 
-        // Section heading (future). The text value increments for every relevant section. 
+        // Section heading (future). The text value increments for every relevant section.
         // The period is automatic and separates the section number from the figure number.
         // <w:r><w:instrText xml:space="preserve"> STYLEREF 1 \s </w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:rPr><w:noProof/></w:rPr><w:t>1</w:t></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r><w:r><w:t>.</w:t></w:r>
 
@@ -76,7 +74,7 @@ class Caption extends AbstractElement
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:instrText');
         $xmlWriter->writeAttribute('xml:space', 'preserve');
-        $xmlWriter->text(" SEQ {$label} \* ARABIC \s 1 ");
+        $xmlWriter->text(" SEQ {$label} \\* ARABIC \\s 1 ");
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 

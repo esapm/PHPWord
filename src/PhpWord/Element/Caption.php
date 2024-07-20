@@ -17,14 +17,11 @@
 
 namespace PhpOffice\PhpWord\Element;
 
-use PhpOffice\PhpWord\Shared\Text as SharedText;
-
 /**
  * Caption element.
  */
 class Caption extends Text
 {
-    
     /**
      * figureNumbers.
      *
@@ -98,7 +95,7 @@ class Caption extends Text
     /**
      * Get Caption label.
      */
-    public function getLabel()
+    public function getLabel(): string
     {
         return $this->label;
     }
@@ -110,7 +107,7 @@ class Caption extends Text
     {
         return $this->pageNumber;
     }
-    
+
     /**
      * Get figure number.
      */
@@ -118,14 +115,14 @@ class Caption extends Text
     {
         return $this->figureNumber;
     }
-    
+
     /**
      * Set figure number.
      */
     public function setFigureNumber(): void
     {
         if(array_key_exists($this->label, self::$figureNumbers)) {
-            self::$figureNumbers[$this->label]++;
+            ++self::$figureNumbers[$this->label];
         } else {
             self::$figureNumbers[$this->label] = 1;
         }

@@ -45,7 +45,7 @@ class TOF extends Tab
      *
      * @param float|int $value
      *
-     * @return self
+     * @return \PhpOffice\PhpWord\Style\Tab
      */
     public function setTabPos($value)
     {
@@ -67,7 +67,7 @@ class TOF extends Tab
      *
      * @param string $value
      *
-     * @return self
+     * @return \PhpOffice\PhpWord\Style\Tab
      */
     public function setTabLeader($value = self::TAB_LEADER_DOT)
     {

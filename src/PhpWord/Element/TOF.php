@@ -130,7 +130,7 @@ class TOF extends AbstractElement
     /**
      * Get Caption Label.
      *
-     * @return int Max depth of titles
+     * @return string
      */
     public function getCaptionLabel()
     {

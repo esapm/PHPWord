@@ -22,6 +22,7 @@ use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\Shared\Text;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\TextAlignment;
+use PhpOffice\PhpWord\Style\Font;
 
 /**
  * Paragraph style.
@@ -194,11 +195,11 @@ class Paragraph extends Border
      * @var string
      */
     private $customStyle = '1';
-       
+
     /**
      * Font style.
      *
-     * @var PhpOffice\PhpWord\Style\Font
+     * @var \PhpOffice\PhpWord\Style\Font
      */
     private $fontStyle;
 
@@ -207,7 +208,7 @@ class Paragraph extends Border
      *
      * @param array|\PhpOffice\PhpWord\Style\Font|string Font styles definition
      */
-    public function __construct($fontStyle = null)
+    public function __construct(Font $fontStyle = null)
     {
         $this->setFontStyle($fontStyle);
     }
@@ -890,7 +891,7 @@ class Paragraph extends Border
     /**
      * Get font style.
      *
-     * @return \PhpOffice\PhpWord\Style\Font|string
+     * @return \PhpOffice\PhpWord\Style\Font
      */
     public function getFontStyle()
     {

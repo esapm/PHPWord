@@ -19,7 +19,7 @@ $paragraphStyleName = 'pStyle';
 $phpWord->addParagraphStyle($paragraphStyleName, ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
 
 $longQuoteStyleName = 'qStyle';
-$phpWord->addParagraphStyle($longQuoteStyleName, ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START, 'spaceBefore' => 100, 'spaceAfter' => 100, 'indentation'=>['left'=>720,'right'=>720], 'fontStyle'=>['italic'=>true]]);
+$phpWord->addParagraphStyle($longQuoteStyleName, ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START, 'spaceBefore' => 100, 'spaceAfter' => 100, 'indentation' => ['left' => 720,'right' => 720], 'fontStyle' => ['italic' => true]]);
 
 $phpWord->addTitleStyle(1, ['bold' => true], ['spaceAfter' => 240]);
 

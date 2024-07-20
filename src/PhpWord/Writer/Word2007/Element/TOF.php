@@ -47,7 +47,7 @@ class TOF extends AbstractElement
         $writeFieldMark = true;
 
         //////////////////////////////////////
-        // Switch the comments of the below sections to have Word autoupdate the 
+        // Switch the comments of the below sections to have Word autoupdate the
         // Table of Figures.
         //////////////////////////////////////
         // $xmlWriter->startElement('w:p');

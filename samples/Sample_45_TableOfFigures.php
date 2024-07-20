@@ -19,42 +19,42 @@ $fontStyle10 = ['size' => 10];
 $header = ['size' => 16, 'bold' => true];
 $phpWord->addTitleStyle(null, ['size' => 22, 'bold' => true]);
 $figureCaptionStyle = 'figureCaptionStyle';
-$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter'=>120, 'spaceBefore'=>0, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START,'next'=>'Normal']);
+$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START,'next' => 'Normal']);
 
 // Modify the default or built-in "Table of Figures" style. This will ensure that the table maintains the associated formatting even if the entire table is updated within Word.
 $tofStyle = 'Table of Figures';
-$phpWord->addParagraphStyle($tofStyle, ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START, 'spaceAfter' => 100, 'customStyle'=>'0']);
+$phpWord->addParagraphStyle($tofStyle, ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START, 'spaceAfter' => 100, 'customStyle' => '0']);
 
 // Add text elements
 $section->addTitle('Table of figures', 0);
 
 // Add Table of figures
-$tof = $section->addTOF('Figure', ['tabLeader'=>PhpOffice\PhpWord\Style\TOC::TAB_LEADER_DOT, 'tabPos'=>9360], null, $tofStyle);
+$tof = $section->addTOF('Figure', ['tabLeader' => PhpOffice\PhpWord\Style\TOC::TAB_LEADER_DOT, 'tabPos' => 9360], null, $tofStyle);
 $section->addTextBreak(1);
 
 // Add text elements
 $section->addTitle('Table of tables', 0);
 
 // Add Table of tables
-$toc = $section->addTOF('Table', ['tabLeader'=>PhpOffice\PhpWord\Style\TOC::TAB_LEADER_DOT, 'tabPos'=>9360], $fontStyle12, $tofStyle);
+$toc = $section->addTOF('Table', ['tabLeader' => PhpOffice\PhpWord\Style\TOC::TAB_LEADER_DOT, 'tabPos' => 9360], $fontStyle12, $tofStyle);
 $section->addTextBreak(1);
 
 // Add images
 $section->addText('Image 1:');
 $section->addImage('resources/_mars.jpg', null, 'Image of Mars');
-$section->addCaption('Image of Mars', 'Figure', ['bold'=>true], $figureCaptionStyle);
+$section->addCaption('Image of Mars', 'Figure', ['bold' => true], $figureCaptionStyle);
 
 printSeparator($section);
 $section->addText('Local image with styles but not alt text:');
 $section->addImage('resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
-$section->addCaption('Image of Earth', 'Figure', ['bold'=>true], $figureCaptionStyle);
+$section->addCaption('Image of Earth', 'Figure', ['bold' => true], $figureCaptionStyle);
 
 // Remote image
 printSeparator($section);
 $source = 'http://php.net/images/logos/php-med-trans-light.gif';
 $section->addText("Remote image from: {$source}");
 $section->addImage($source, null);
-$section->addCaption('Remote image', 'Figure', ['bold'=>true], $figureCaptionStyle);
+$section->addCaption('Remote image', 'Figure', ['bold' => true], $figureCaptionStyle);
 
 printSeparator($section);
 
@@ -64,7 +64,7 @@ $rows = 10;
 $cols = 5;
 $section->addText('Basic table', $header);
 
-$section->addCaption('Basic table', 'Table', ['bold'=>true], ['spaceAfter'=>0, 'spaceBefore'=>240, 'keepNext' => true]);
+$section->addCaption('Basic table', 'Table', ['bold' => true], ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true]);
 $table = $section->addTable();
 for ($r = 1; $r <= $rows; ++$r) {
     $table->addRow();
@@ -86,7 +86,7 @@ $fancyTableFirstRowStyle = ['borderBottomSize' => 18, 'borderBottomColor' => '00
 $fancyTableCellStyle = ['valign' => 'center'];
 $fancyTableCellBtlrStyle = ['valign' => 'center', 'textDirection' => \PhpOffice\PhpWord\Style\Cell::TEXT_DIR_BTLR];
 $fancyTableFontStyle = ['bold' => true];
-$fancyTableCaptionStyle = ['spaceAfter'=>0, 'spaceBefore'=>240, 'keepNext' => true];
+$fancyTableCaptionStyle = ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true];
 $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle, $fancyTableFirstRowStyle);
 
 $section->addCaption('Fancy table', 'Table', $fancyTableFontStyle, $fancyTableCaptionStyle);

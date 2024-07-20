@@ -45,9 +45,9 @@ class TOC extends AbstractElement
 
         $titles = $element->getTitles();
         $writeFieldMark = true;
- 
+
         //////////////////////////////////////
-        // Switch the comments of the below sections to have Word autoupdate the 
+        // Switch the comments of the below sections to have Word autoupdate the
         // Table of Contents.
         //////////////////////////////////////
         // $xmlWriter->startElement('w:p');
@@ -171,7 +171,7 @@ class TOC extends AbstractElement
         if ($isObject && null !== $fontStyle->getParagraph()) {
             $styleWriter = new ParagraphStyleWriter($xmlWriter, $fontStyle->getParagraph());
             $styleWriter->write();
-        } else { // Assign the appropriate "TOC X" paragraph style 
+        } else { // Assign the appropriate "TOC X" paragraph style
             $xmlWriter->startElement('w:pStyle');
             $xmlWriter->writeAttribute('w:val', 'TOC ' . (string) $depth);
             $xmlWriter->endElement();
