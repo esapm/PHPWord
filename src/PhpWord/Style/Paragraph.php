@@ -22,7 +22,6 @@ use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\Shared\Text;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\TextAlignment;
-use PhpOffice\PhpWord\Style\Font;
 
 /**
  * Paragraph style.
@@ -206,7 +205,7 @@ class Paragraph extends Border
     /**
      * Create new paragraph style.
      *
-     * @param null|array|\PhpOffice\PhpWord\Style\AbstractStyle|string Font styles definition
+     * @param null|array|\PhpOffice\PhpWord\Style\AbstractStyle|string $fontStyle
      */
     public function __construct($fontStyle = null)
     {

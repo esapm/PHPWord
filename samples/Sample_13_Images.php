@@ -11,7 +11,7 @@ $phpWord = new \PhpOffice\PhpWord\PhpWord();
 
 // Define styles
 $figureCaptionStyle = 'figureCaptionStyle';
-$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START,'next' => 'Normal']);
+$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START, 'next' => 'Normal']);
 
 // Begin code
 $section = $phpWord->addSection();

@@ -121,7 +121,7 @@ class Caption extends Text
      */
     public function setFigureNumber(): void
     {
-        if(array_key_exists($this->label, self::$figureNumbers)) {
+        if (array_key_exists($this->label, self::$figureNumbers)) {
             ++self::$figureNumbers[$this->label];
         } else {
             self::$figureNumbers[$this->label] = 1;

@@ -2,7 +2,6 @@
 
 use PhpOffice\PhpWord\Element\Section;
 
-
 include_once 'Sample_Header.php';
 
 // New Word document
@@ -19,7 +18,7 @@ $fontStyle10 = ['size' => 10];
 $header = ['size' => 16, 'bold' => true];
 $phpWord->addTitleStyle(null, ['size' => 22, 'bold' => true]);
 $figureCaptionStyle = 'figureCaptionStyle';
-$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START,'next' => 'Normal']);
+$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START, 'next' => 'Normal']);
 
 // Modify the default or built-in "Table of Figures" style. This will ensure that the table maintains the associated formatting even if the entire table is updated within Word.
 $tofStyle = 'Table of Figures';
