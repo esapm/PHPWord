@@ -121,17 +121,19 @@ class TOC extends AbstractElement
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 
-        // Commenting these lines out forces Word to regenerate the whole table.
-        // Otherwise, neither the heading numbers nor the page numbers are displayed without
-        // manually updating them.
-        // $xmlWriter->startElement('w:r');
-        // $xmlWriter->startElement('w:instrText');
-        // $xmlWriter->writeAttribute('xml:space', 'preserve');
-        // $xmlWriter->text("PAGEREF _Toc{$rId} \\h");
-        // $xmlWriter->endElement();
-        // $xmlWriter->endElement();
-
         if ($title->getPageNumber() !== null) {
+
+            // Removing these lines from normal code forces Word to regenerate the whole table.
+            // Otherwise, neither the heading numbers nor the page numbers are displayed without
+            // manually updating them.
+            // However, they are needed for the TOC pagenumber test.
+            $xmlWriter->startElement('w:r');
+            $xmlWriter->startElement('w:instrText');
+            $xmlWriter->writeAttribute('xml:space', 'preserve');
+            $xmlWriter->text("PAGEREF _Toc{$rId} \\h");
+            $xmlWriter->endElement();
+            $xmlWriter->endElement();
+
             $xmlWriter->startElement('w:r');
             $xmlWriter->startElement('w:fldChar');
             $xmlWriter->writeAttribute('w:fldCharType', 'separate');
