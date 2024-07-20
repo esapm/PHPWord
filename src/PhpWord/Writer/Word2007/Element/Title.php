@@ -47,10 +47,10 @@ class Title extends AbstractElement
             $xmlWriter->endElement();
         }
 
-        $bookmarkRId = null;
+//        $bookmarkRId = null;
         if ($element->getDepth() !== 0) {
             $rId = $element->getRelationId();
-            $bookmarkRId = $element->getPhpWord()->addBookmark("_Toc{$rId}");
+//            $bookmarkRId = $element->getPhpWord()->addBookmark("_Toc{$rId}");
 
             // Bookmark start for TOC
             $xmlWriter->startElement('w:bookmarkStart');

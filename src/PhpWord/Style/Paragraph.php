@@ -199,16 +199,16 @@ class Paragraph extends Border
     /**
      * Font style.
      *
-     * @var \PhpOffice\PhpWord\Style\Font
+     * @var null|array|\PhpOffice\PhpWord\Style\AbstractStyle|string
      */
     private $fontStyle;
 
     /**
      * Create new paragraph style.
      *
-     * @param array|\PhpOffice\PhpWord\Style\Font|string Font styles definition
+     * @param null|array|\PhpOffice\PhpWord\Style\AbstractStyle|string Font styles definition
      */
-    public function __construct(Font $fontStyle = null)
+    public function __construct($fontStyle = null)
     {
         $this->setFontStyle($fontStyle);
     }
