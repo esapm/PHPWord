@@ -41,14 +41,14 @@ class Caption extends AbstractElement
 
         $bookmarkRId = null;
         $rId = $element->getRelationId();
-        $bookmarkRId = $element->getPhpWord()->addBookmark();
-        $figureNumber = $element->getFigureNumber();
         $label = $element->getLabel();
+        $bookmarkRId = $element->getPhpWord()->addBookmark("_{$label}{$rId}");
+        $figureNumber = $element->getFigureNumber();
 
         // Bookmark start for Table of Figures
         $xmlWriter->startElement('w:bookmarkStart');
-        $xmlWriter->writeAttribute('w:id', $bookmarkRId);
-        $xmlWriter->writeAttribute('w:name', '_' . $label . (string) $rId);
+        $xmlWriter->writeAttribute('w:id', $rId);
+        $xmlWriter->writeAttribute('w:name', "_{$label}{$rId}");
         $xmlWriter->endElement(); //w:bookmarkStart
 
         // Label
@@ -76,7 +76,7 @@ class Caption extends AbstractElement
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:instrText');
         $xmlWriter->writeAttribute('xml:space', 'preserve');
-        $xmlWriter->text(" SEQ {$label} \* ARABIC ");
+        $xmlWriter->text(" SEQ {$label} \* ARABIC \s 1 ");
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 
@@ -120,7 +120,7 @@ class Caption extends AbstractElement
 
         // Bookmark end
         $xmlWriter->startElement('w:bookmarkEnd');
-        $xmlWriter->writeAttribute('w:id', $bookmarkRId);
+        $xmlWriter->writeAttribute('w:id', $rId);
         $xmlWriter->endElement(); //w:bookmarkEnd
 
         $this->endElementP(); // w:p

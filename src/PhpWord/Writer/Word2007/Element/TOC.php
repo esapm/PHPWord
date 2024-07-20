@@ -121,20 +121,23 @@ class TOC extends AbstractElement
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 
-        $xmlWriter->startElement('w:r');
-        $xmlWriter->startElement('w:instrText');
-        $xmlWriter->writeAttribute('xml:space', 'preserve');
-        $xmlWriter->text("PAGEREF _Toc{$rId} \\h");
-        $xmlWriter->endElement();
-        $xmlWriter->endElement();
-
-        $xmlWriter->startElement('w:r');
-        $xmlWriter->startElement('w:fldChar');
-        $xmlWriter->writeAttribute('w:fldCharType', 'separate');
-        $xmlWriter->endElement();
-        $xmlWriter->endElement();
+        // Commenting these lines out forces Word to regenerate the whole table.
+        // Otherwise, neither the heading numbers nor the page numbers are displayed without
+        // manually updating them.
+        // $xmlWriter->startElement('w:r');
+        // $xmlWriter->startElement('w:instrText');
+        // $xmlWriter->writeAttribute('xml:space', 'preserve');
+        // $xmlWriter->text("PAGEREF _Toc{$rId} \\h");
+        // $xmlWriter->endElement();
+        // $xmlWriter->endElement();
 
         if ($title->getPageNumber() !== null) {
+            $xmlWriter->startElement('w:r');
+            $xmlWriter->startElement('w:fldChar');
+            $xmlWriter->writeAttribute('w:fldCharType', 'separate');
+            $xmlWriter->endElement();
+            $xmlWriter->endElement();
+
             $xmlWriter->startElement('w:r');
             $xmlWriter->startElement('w:t');
             $xmlWriter->text((string) $title->getPageNumber());
@@ -217,7 +220,9 @@ class TOC extends AbstractElement
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:instrText');
         $xmlWriter->writeAttribute('xml:space', 'preserve');
-        $xmlWriter->text("TOC \\o {$minDepth}-{$maxDepth} \\h \\z \\u");
+        $xmlWriter->writeRaw(' TOC \o "');
+        $xmlWriter->text($minDepth . '-' . $maxDepth);
+        $xmlWriter->writeRaw('" \h \z \u');
 //        $xmlWriter->text("TOC \\o {$minDepth}-{$maxDepth} \\h \\z \\t Title, 1");
         $xmlWriter->endElement();
         $xmlWriter->endElement();

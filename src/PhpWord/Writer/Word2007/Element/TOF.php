@@ -124,23 +124,27 @@ class TOF extends AbstractElement
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:fldChar');
         $xmlWriter->writeAttribute('w:fldCharType', 'begin');
+//        $xmlWriter->writeAttribute('w:dirty', 'true');
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 
-        $xmlWriter->startElement('w:r');
-        $xmlWriter->startElement('w:instrText');
-        $xmlWriter->writeAttribute('xml:space', 'preserve');
-        $xmlWriter->text("PAGEREF _" . $captionLabel . $rId . " \\h");
-        $xmlWriter->endElement();
-        $xmlWriter->endElement();
-
-        $xmlWriter->startElement('w:r');
-        $xmlWriter->startElement('w:fldChar');
-        $xmlWriter->writeAttribute('w:fldCharType', 'separate');
-        $xmlWriter->endElement();
-        $xmlWriter->endElement();
+        // Commenting these lines out forces Word to regenerate the whole table.
+        // Otherwise, neither the heading numbers nor the page numbers are displayed without
+        // manually updating them.
+        // $xmlWriter->startElement('w:r');
+        // $xmlWriter->startElement('w:instrText');
+        // $xmlWriter->writeAttribute('xml:space', 'preserve');
+        // $xmlWriter->text(" PAGEREF _{$captionLabel}{$rId} \\h ");
+        // $xmlWriter->endElement();
+        // $xmlWriter->endElement();
 
         if ($caption->getPageNumber() !== null) {
+            $xmlWriter->startElement('w:r');
+            $xmlWriter->startElement('w:fldChar');
+            $xmlWriter->writeAttribute('w:fldCharType', 'separate');
+            $xmlWriter->endElement();
+            $xmlWriter->endElement();
+
             $xmlWriter->startElement('w:r');
             $xmlWriter->startElement('w:t');
             $xmlWriter->text((string) $caption->getPageNumber());
@@ -209,7 +213,9 @@ class TOF extends AbstractElement
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:instrText');
         $xmlWriter->writeAttribute('xml:space', 'preserve');
-        $xmlWriter->text(' TOC \\h \\z \\c ' . $TOFCaptionLabel . ' ');
+        $xmlWriter->writeRaw(' TOC \h \z \c "');
+        $xmlWriter->text($TOFCaptionLabel);
+        $xmlWriter->writeRaw('" ');
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 
