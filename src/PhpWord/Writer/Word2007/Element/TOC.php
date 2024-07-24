@@ -213,6 +213,9 @@ class TOC extends AbstractElement
         $maxDepth = $element->getMaxDepth();
         $switchString = $element->getSwitchString();
         $tField = $element->getTField();
+        $switchO = false;
+        $switchT = false;
+
         if (str_contains($switchString, 'o')) {
             $switchO = true;
             $switchString = str_replace('\o', '', $switchString);
@@ -220,13 +223,13 @@ class TOC extends AbstractElement
         if (str_contains($switchString, 't') || !empty($tField)) {
             $switchT = true;
             $switchString = str_replace('\t', '', $switchString);
-        } 
+        }
         $switchString = preg_replace('/\s+/', ' ', trim($switchString));
 
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:fldChar');
         $xmlWriter->writeAttribute('w:fldCharType', 'begin');
-//        $xmlWriter->writeAttribute('w:dirty', 'true');
+        // $xmlWriter->writeAttribute('w:dirty', 'true');
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 

@@ -57,10 +57,10 @@ class TOC extends AbstractElement
     /**
      * t field heading pair string.
      *
-     * @var array
+     * @var string
      */
     private $tField = '';
-    
+
     /**
      * t field heading pair array.
      *
@@ -234,7 +234,7 @@ class TOC extends AbstractElement
      * Set t field array.
      *
      * @param string $tField
-     * 
+     *
      * @return self
      */
     public function setTField($tField = '')
@@ -243,11 +243,11 @@ class TOC extends AbstractElement
         $this->tFieldArray = [];
         if (!empty($tField)) {
             $arr = explode(',', $tField);
-            for ($i = 0; $i < count($arr); $i = $i + 2) 
-            {
+            for ($i = 0; $i < count($arr); $i = $i + 2) {
                 $this->tFieldArray[$arr[$i]] = $arr[$i+1];
             }
         }
+
         return $this;
     }
 }

@@ -178,7 +178,7 @@ class Styles extends AbstractPart
         // Heading style
         if ($styleType == 'title') {
             $arrStyle = explode('_', $styleName);
-            if (count($arrStyle) > 1 && strtolower($arrStyle[0]) == 'heading') { 
+            if (count($arrStyle) > 1 && strtolower($arrStyle[0]) == 'heading') {
                 $styleId = 'Heading' . $arrStyle[1];
                 $styleName = 'heading ' . $arrStyle[1];
                 $styleLink = 'Heading' . $arrStyle[1] . 'Char';

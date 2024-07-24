@@ -104,7 +104,6 @@ class Style
     public static function addTitleStyle($depth, $fontStyle, $paragraphStyle = null, $styleName = '')
     {
         if (empty($styleName)) {
-
             if (empty($depth)) {
                 $styleName = 'Title';
             } else {

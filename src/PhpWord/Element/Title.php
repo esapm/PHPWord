@@ -89,7 +89,6 @@ class Title extends AbstractElement
             $this->style = $style;
         }
 
-
         if ($pageNumber !== null) {
             $this->pageNumber = $pageNumber;
         }
@@ -119,7 +118,7 @@ class Title extends AbstractElement
      * Set depth.
      *
      * @param int $value
-     * 
+     *
      * @return self
      */
     public function setDepth($value = 0)
