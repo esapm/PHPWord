@@ -55,14 +55,37 @@ class TOC extends AbstractElement
     private $maxDepth = 9;
 
     /**
+     * t field heading pair string.
+     *
+     * @var array
+     */
+    private $tField = '';
+    
+    /**
+     * t field heading pair array.
+     *
+     * @var array
+     */
+    private $tFieldArray = [];
+
+    /**
+     * String containing TOC switches.
+     *
+     * @var string
+     */
+    private $switchString = '\u';
+
+    /**
      * Create a new Table-of-Contents Element.
      *
      * @param mixed $fontStyle
      * @param array $tocStyle
      * @param int $minDepth
      * @param int $maxDepth
+     * @param string $switchString
+     * @param string $tField
      */
-    public function __construct($fontStyle = null, $tocStyle = null, $minDepth = 1, $maxDepth = 9)
+    public function __construct($fontStyle = null, $tocStyle = null, $minDepth = 1, $maxDepth = 9, $switchString = '\h \z \u', $tField = '')
     {
         $this->tocStyle = new TOCStyle();
 
@@ -79,6 +102,10 @@ class TOC extends AbstractElement
 
         $this->minDepth = $minDepth;
         $this->maxDepth = $maxDepth;
+
+        $this->switchString = $switchString;
+
+        $this->setTField($tField);
     }
 
     /**
@@ -95,12 +122,18 @@ class TOC extends AbstractElement
         $titles = $this->phpWord->getTitles()->getItems();
         foreach ($titles as $i => $title) {
             /** @var \PhpOffice\PhpWord\Element\Title $title Type hint */
+            $styleName = $title->getStyle();
             $depth = $title->getDepth();
-            if ($this->minDepth > $depth) {
-                unset($titles[$i]);
-            }
-            if (($this->maxDepth != 0) && ($this->maxDepth < $depth)) {
-                unset($titles[$i]);
+
+            if (array_key_exists($styleName, $this->tFieldArray)) {
+                $title->setDepth($this->tFieldArray[$styleName]);
+            } else {
+                if ($this->minDepth > $depth) {
+                    unset($titles[$i]);
+                }
+                if (($this->maxDepth != 0) && ($this->maxDepth < $depth)) {
+                    unset($titles[$i]);
+                }
             }
         }
 
@@ -165,5 +198,56 @@ class TOC extends AbstractElement
     public function getMinDepth()
     {
         return $this->minDepth;
+    }
+
+    /**
+     * Get switchString.
+     *
+     * @return string switchString
+     */
+    public function getSwitchString()
+    {
+        return $this->switchString;
+    }
+
+    /**
+     * Get t field string.
+     *
+     * @return string tField
+     */
+    public function getTField()
+    {
+        return $this->tField;
+    }
+
+    /**
+     * Get t field array.
+     *
+     * @return array tFieldArray
+     */
+    public function getTFieldArray()
+    {
+        return $this->tFieldArray;
+    }
+
+    /**
+     * Set t field array.
+     *
+     * @param string $tField
+     * 
+     * @return self
+     */
+    public function setTField($tField = '')
+    {
+        $this->tField = $tField;
+        $this->tFieldArray = [];
+        if (!empty($tField)) {
+            $arr = explode(',', $tField);
+            for ($i = 0; $i < count($arr); $i = $i + 2) 
+            {
+                $this->tFieldArray[$arr[$i]] = $arr[$i+1];
+            }
+        }
+        return $this;
     }
 }
