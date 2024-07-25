@@ -133,6 +133,13 @@ class Paragraph extends Border
     private $pageBreakBefore = false;
 
     /**
+     * Outline level.
+     *
+     * @var int
+     */
+    private $outlineLvl;
+
+    /**
      * Numbering style name.
      *
      * @var string
@@ -256,6 +263,7 @@ class Paragraph extends Border
                 'keepLines' => $this->isKeepLines(),
                 'pageBreak' => $this->hasPageBreakBefore(),
             ],
+            'outlineLvl' => $this->getOutlineLvl(),
             'numbering' => [
                 'style' => $this->getNumStyle(),
                 'level' => $this->getNumLevel(),
@@ -659,6 +667,30 @@ class Paragraph extends Border
         $this->pageBreakBefore = $this->setBoolVal($value, $this->pageBreakBefore);
 
         return $this;
+    }
+
+    /**
+     * Set outline level.
+     *
+     * @param int $value
+     *
+     * @return self
+     */
+    public function setOutlineLvl($value)
+    {
+        $this->outlineLvl = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get outline level.
+     *
+     * @return int
+     */
+    public function getOutlineLvl()
+    {
+        return $this->outlineLvl;
     }
 
     /**

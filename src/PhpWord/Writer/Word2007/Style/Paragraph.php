@@ -123,6 +123,13 @@ class Paragraph extends AbstractStyle
         // Tabs
         $this->writeTabs($xmlWriter, $styles['tabs']);
 
+        // Outline level
+        if (is_numeric($styles['outlineLvl'])) {
+            $xmlWriter->startElement('w:outlineLvl');
+            $xmlWriter->writeAttribute('w:val', $styles['outlineLvl']);
+            $xmlWriter->endElement(); // w:outlineLvl
+        }
+
         // Numbering
         $this->writeNumbering($xmlWriter, $styles['numbering']);
 
@@ -183,9 +190,9 @@ class Paragraph extends AbstractStyle
             $xmlWriter->endElement(); // w:ilvl
             $xmlWriter->endElement(); // w:numPr
 
-            $xmlWriter->startElement('w:outlineLvl');
-            $xmlWriter->writeAttribute('w:val', $numLevel);
-            $xmlWriter->endElement(); // w:outlineLvl
+            // $xmlWriter->startElement('w:outlineLvl');
+            // $xmlWriter->writeAttribute('w:val', $numLevel);
+            // $xmlWriter->endElement(); // w:outlineLvl
         }
     }
 

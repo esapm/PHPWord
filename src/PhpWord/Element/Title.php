@@ -66,8 +66,9 @@ class Title extends AbstractElement
      *
      * @param string|TextRun $text
      * @param int $depth
+     * @param string $style
      */
-    public function __construct($text, $depth = 1, ?int $pageNumber = null)
+    public function __construct($text, $depth = 1, ?int $pageNumber = null, $style = '')
     {
         if (is_string($text)) {
             $this->text = SharedText::toUTF8($text);
@@ -77,10 +78,19 @@ class Title extends AbstractElement
             throw new InvalidArgumentException('Invalid text, should be a string or a TextRun');
         }
 
-        $this->depth = $depth;
-        $styleName = $depth === 0 ? 'Title' : "Heading_{$this->depth}";
-        if (array_key_exists($styleName, Style::getStyles())) {
-            $this->style = str_replace('_', '', $styleName);
+        if (empty($style)) {
+            $this->setDepth($depth);
+            $styleName = $depth === 0 ? 'Title' : "Heading_{$this->depth}";
+            if (array_key_exists($styleName, Style::getStyles())) {
+                $this->style = str_replace('_', '', $styleName);
+            }
+        } else {
+            $this->style = $style;
+            if (is_int($outlineLvl = Style::getStyle($style)->getParagraph()->getOutlineLvl())) {
+                $this->setDepth($outlineLvl + 1);
+            } else {
+                $this->setDepth($depth);
+            }
         }
 
         if ($pageNumber !== null) {
@@ -106,6 +116,20 @@ class Title extends AbstractElement
     public function getDepth()
     {
         return $this->depth;
+    }
+
+    /**
+     * Set depth.
+     *
+     * @param int $value
+     *
+     * @return self
+     */
+    public function setDepth($value = 0)
+    {
+        $this->depth = $value;
+
+        return $this;
     }
 
     /**

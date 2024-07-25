@@ -51,7 +51,7 @@ class TOC extends AbstractElement
         // Table of Contents.
         //////////////////////////////////////
         // $xmlWriter->startElement('w:p');
-        // $this->writeStyle($xmlWriter, $element, 0);
+        // $this->writeStyle($xmlWriter, $element, 0, 8);
         // $this->writeFieldMark($xmlWriter, $element, $title, $writeFieldMark);
         // $xmlWriter->endElement(); // w:p
         /////////////////////////////////////
@@ -211,21 +211,46 @@ class TOC extends AbstractElement
     {
         $minDepth = $element->getMinDepth();
         $maxDepth = $element->getMaxDepth();
+        $switchString = $element->getSwitchString();
+        $tField = $element->getTField();
+        $switchO = false;
+        $switchT = false;
+
+        if (str_contains($switchString, 'o')) {
+            $switchO = true;
+            $switchString = str_replace('\o', '', $switchString);
+        }
+        if (str_contains($switchString, 't') || !empty($tField)) {
+            $switchT = true;
+            $switchString = str_replace('\t', '', $switchString);
+        }
+        $switchString = preg_replace('/\s+/', ' ', trim($switchString));
 
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:fldChar');
         $xmlWriter->writeAttribute('w:fldCharType', 'begin');
-//        $xmlWriter->writeAttribute('w:dirty', 'true');
+        // $xmlWriter->writeAttribute('w:dirty', 'true');
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:instrText');
         $xmlWriter->writeAttribute('xml:space', 'preserve');
-        $xmlWriter->writeRaw(' TOC \o "');
-        $xmlWriter->text($minDepth . '-' . $maxDepth);
-        $xmlWriter->writeRaw('" \h \z \u');
-//        $xmlWriter->text("TOC \\o {$minDepth}-{$maxDepth} \\h \\z \\t Title, 1");
+        $xmlWriter->writeRaw(' TOC ');
+
+        if ($switchO) {
+            $xmlWriter->writeRaw('\o "');
+            $xmlWriter->text($minDepth . '-' . $maxDepth);
+            $xmlWriter->writeRaw('" ');
+        }
+        $xmlWriter->text($switchString . ' ');
+
+        if ($switchT) {
+            $xmlWriter->writeRaw('\t "');
+            $xmlWriter->text($tField);
+            $xmlWriter->writeRaw('" ');
+        }
+
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 

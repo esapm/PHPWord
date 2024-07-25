@@ -42,7 +42,7 @@ class Paragraph extends AbstractStyle
     /**
      * Write style.
      */
-    public function write(): void
+    public function write(bool $closeStyle = true): void
     {
         $style = $this->getStyle();
         if (!$style instanceof \PhpOffice\PhpWord\Style\Paragraph) {
@@ -173,6 +173,8 @@ class Paragraph extends AbstractStyle
             $xmlWriter->endElement();
         }
 
-        $xmlWriter->endElement(); //style:style
+        if ($closeStyle) {
+            $xmlWriter->endElement(); //style:style
+        }
     }
 }

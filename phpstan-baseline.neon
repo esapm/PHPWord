@@ -1416,11 +1416,6 @@ parameters:
 			path: src/PhpWord/Writer/Word2007/Element/TableAlignment.php
 
 		-
-			message: "#^Method PhpOffice\\\\PhpWord\\\\PhpWord\\:\\:addBookmark\\(\\) invoked with 0 parameters, 1 required\\.$#"
-			count: 1
-			path: src/PhpWord/Writer/Word2007/Element/Title.php
-
-		-
 			message: "#^Method PhpOffice\\\\PhpWord\\\\Writer\\\\Word2007\\\\Part\\\\Chart\\:\\:writeAxisTitle\\(\\) has parameter \\$title with no type specified\\.$#"
 			count: 1
 			path: src/PhpWord/Writer/Word2007/Part/Chart.php

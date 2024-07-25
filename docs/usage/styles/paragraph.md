@@ -29,3 +29,4 @@ Available Paragraph style options:
    See ``\PhpOffice\PhpWord\SimpleType\TextAlignment`` class constants for possible values.
 - ``customStyle``. Setting this flag to '0' enables modification of "built-in" styles such as "Table of Figures", TOC 1, and TOC 2.
 - ``fontStyle``. Add font style to paragraph style (either array or predefined style). See ``\PhpOffice\PhpWord\Style\Font`` for font style elements.
+- ``outlineLvl``. Integer between 0 and 9 that defines the associated paragraphs' outline level.

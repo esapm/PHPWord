@@ -351,7 +351,7 @@ class ParagraphTest extends \PHPUnit\Framework\TestCase
         self::assertEquals('paragraph', $doc->getElementAttribute($element, 'style:family'));
         $element .= '/style:paragraph-properties';
         self::assertEquals('page', $doc->getElementAttribute($element, 'fo:break-before'));
-        $element = "$s2a/style:style[3]";
+        $element = "$s2a/style:style[2]";
         self::assertEquals('Heading_2', $doc->getElementAttribute($element, 'style:name'));
         self::assertEquals('paragraph', $doc->getElementAttribute($element, 'style:family'));
         $element .= '/style:paragraph-properties';
