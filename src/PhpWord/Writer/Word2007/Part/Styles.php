@@ -184,7 +184,7 @@ class Styles extends AbstractPart
                 $styleLink = 'Heading' . $arrStyle[1] . 'Char';
             } else {
                 $styleId = str_replace(' ', '', $styleName);
-                $styleName = strtolower($styleName);
+            //    $styleName = strtolower($styleName);
                 $styleLink = $styleId . 'Char';
             }
             $xmlWriter->writeAttribute('w:styleId', $styleId);

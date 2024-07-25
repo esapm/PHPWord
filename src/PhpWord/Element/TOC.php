@@ -127,6 +127,8 @@ class TOC extends AbstractElement
 
             if (array_key_exists($styleName, $this->tFieldArray)) {
                 $title->setDepth($this->tFieldArray[$styleName]);
+            } elseif (array_key_exists(str_replace('Heading', 'Heading ', $styleName), $this->tFieldArray)) {
+                $title->setDepth($this->tFieldArray[str_replace('Heading', 'Heading ', $styleName)]);
             } else {
                 if ($this->minDepth > $depth) {
                     unset($titles[$i]);
@@ -244,7 +246,7 @@ class TOC extends AbstractElement
         if (!empty($tField)) {
             $arr = explode(',', $tField);
             for ($i = 0; $i < count($arr); $i = $i + 2) {
-                $this->tFieldArray[$arr[$i]] = $arr[$i+1];
+                $this->tFieldArray[$arr[$i]] = $arr[$i + 1];
             }
         }
 

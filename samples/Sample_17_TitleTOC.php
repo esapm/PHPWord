@@ -17,14 +17,17 @@ $phpWord->addTitleStyle(null, ['size' => 22, 'bold' => true]);
 $phpWord->addTitleStyle(1, ['size' => 20, 'color' => '333333', 'bold' => true]);
 $phpWord->addTitleStyle(2, ['size' => 16, 'color' => '666666']);
 $phpWord->addTitleStyle(3, ['size' => 14, 'italic' => true]);
-$phpWord->addTitleStyle(4, ['size' => 12]);
+$phpWord->addTitleStyle(4, ['size' => 12], ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
+$phpWord->addTitleStyle(5, ['size' => 12, 'bold' => true, 'italic' => true], ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
+$phpWord->addTitleStyle(6, ['size' => 12, 'bold' => true], ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
+$phpWord->addTitleStyle(7, ['size' => 12, 'italic' => true], ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
 
 // Add text elements
 $section->addTitle('Table of contents 1', 0);
 $section->addTextBreak(2);
 
 // Add TOC #1
-$toc = $section->addTOC($fontStyle12);
+$toc = $section->addTOC($fontStyle12, null, 1, 3, "Heading 7,4");
 $section->addTextBreak(2);
 
 // Filler
@@ -65,6 +68,9 @@ $section->addTitle('Subtitle 3.1.1.2', 4);
 $section->addText('Text');
 $section->addTitle('Subtitle 3.1.2', 3);
 $section->addText('Text');
+
+$section->addTitle('Heading 7', 7);
+$section->addText('I am more text.');
 
 echo date('H:i:s'), ' Note: Please refresh TOC manually.', EOL;
 

@@ -38,7 +38,7 @@ class Title extends AbstractElement
      *
      * @var int
      */
-    private $depth = 0;
+    private $depth = 1;
 
     /**
      * Name of the heading style, e.g. 'Heading1'.
@@ -68,7 +68,7 @@ class Title extends AbstractElement
      * @param int $depth
      * @param string $style
      */
-    public function __construct($text, $depth = 0, ?int $pageNumber = null, $style = '')
+    public function __construct($text, $depth = 1, ?int $pageNumber = null, $style = '')
     {
         if (is_string($text)) {
             $this->text = SharedText::toUTF8($text);
@@ -78,15 +78,20 @@ class Title extends AbstractElement
             throw new InvalidArgumentException('Invalid text, should be a string or a TextRun');
         }
 
-        $this->setDepth($depth);
-
         if (empty($style)) {
+            $this->setDepth($depth);
             $styleName = $depth === 0 ? 'Title' : "Heading_{$this->depth}";
             if (array_key_exists($styleName, Style::getStyles())) {
                 $this->style = str_replace('_', '', $styleName);
             }
+
         } else {
             $this->style = $style;
+            if (is_numeric($outlineLvl = Style::getStyle($style)->getParagraph()->getOutlineLvl())) {
+                $this->setDepth($outlineLvl + 1); 
+            } else {
+                $this->setDepth($depth); 
+            }
         }
 
         if ($pageNumber !== null) {
