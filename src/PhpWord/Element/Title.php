@@ -84,13 +84,12 @@ class Title extends AbstractElement
             if (array_key_exists($styleName, Style::getStyles())) {
                 $this->style = str_replace('_', '', $styleName);
             }
-
         } else {
             $this->style = $style;
             if (is_int($outlineLvl = Style::getStyle($style)->getParagraph()->getOutlineLvl())) {
-                $this->setDepth($outlineLvl + 1); 
+                $this->setDepth($outlineLvl + 1);
             } else {
-                $this->setDepth($depth); 
+                $this->setDepth($depth);
             }
         }
 

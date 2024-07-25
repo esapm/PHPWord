@@ -27,7 +27,7 @@ $section->addTitle('Table of contents 1', 0);
 $section->addTextBreak(2);
 
 // Add TOC #1
-$toc = $section->addTOC($fontStyle12, null, 1, 3, "Heading 7,4");
+$toc = $section->addTOC($fontStyle12, null, 1, 3, 'Heading 7,4');
 $section->addTextBreak(2);
 
 // Filler

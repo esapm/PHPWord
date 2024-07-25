@@ -110,10 +110,10 @@ class Style
                 $styleName = "Heading_{$depth}";
             }
         }
-        if (!empty($depth) && (is_array($paragraphStyle) || is_null($paragraphStyle))) {
+        if (!empty($depth) && (is_array($paragraphStyle) || null === $paragraphStyle)) {
             $paragraphStyle['outlineLvl'] = $depth - 1;
         }
-    
+
         return self::setStyleValues($styleName, new Font('title', $paragraphStyle), $fontStyle);
     }
 

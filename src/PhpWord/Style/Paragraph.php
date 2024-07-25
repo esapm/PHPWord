@@ -668,12 +668,12 @@ class Paragraph extends Border
 
         return $this;
     }
- 
+
     /**
      * Set outline level.
      *
      * @param int $value
-     * 
+     *
      * @return self
      */
     public function setOutlineLvl($value)
