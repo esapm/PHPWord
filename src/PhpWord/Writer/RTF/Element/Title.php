@@ -70,7 +70,7 @@ class Title extends Text
         $endout = '';
         $style = $element->getStyle();
         if (is_string($style)) {
-            $style = str_replace('Heading', '', $style);
+            $style = str_replace('Heading', '', $style ?? '');
             if ("$style" !== '') {
                 $style = (int) $style - 1;
                 if ($style >= 0 && $style <= 8) {

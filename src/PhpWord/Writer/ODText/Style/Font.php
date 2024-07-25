@@ -40,12 +40,13 @@ class Font extends AbstractStyle
             $temp1 = clone $stylep;
             $temp1->setStyleName($style->getStyleName());
             $temp2 = new \PhpOffice\PhpWord\Writer\ODText\Style\Paragraph($xmlWriter, $temp1);
-            $temp2->write();
+            $temp2->write(false);
+        } else {
+            $xmlWriter->startElement('style:style');
+            $xmlWriter->writeAttribute('style:name', $style->getStyleName());
+            $xmlWriter->writeAttribute('style:family', 'text');
         }
 
-        $xmlWriter->startElement('style:style');
-        $xmlWriter->writeAttribute('style:name', $style->getStyleName());
-        $xmlWriter->writeAttribute('style:family', 'text');
         $xmlWriter->startElement('style:text-properties');
 
         // Name
