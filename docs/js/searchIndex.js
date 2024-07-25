@@ -2206,6 +2206,11 @@ Search.appendIndex(
             "summary": "Get\u0020depth.",
             "url": "classes/PhpOffice-PhpWord-Element-Title.html#method_getDepth"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\Title\u003A\u003AsetDepth\u0028\u0029",
+            "name": "setDepth",
+            "summary": "Set\u0020depth.",
+            "url": "classes/PhpOffice-PhpWord-Element-Title.html#method_setDepth"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Element\\Title\u003A\u003AgetStyle\u0028\u0029",
             "name": "getStyle",
             "summary": "Get\u0020Title\u0020style.",
@@ -2286,6 +2291,26 @@ Search.appendIndex(
             "summary": "Get\u0020Min\u0020Depth.",
             "url": "classes/PhpOffice-PhpWord-Element-TOC.html#method_getMinDepth"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOC\u003A\u003AgetSwitchString\u0028\u0029",
+            "name": "getSwitchString",
+            "summary": "Get\u0020switchString.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOC.html#method_getSwitchString"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOC\u003A\u003AgetTField\u0028\u0029",
+            "name": "getTField",
+            "summary": "Get\u0020t\u0020field\u0020string.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOC.html#method_getTField"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOC\u003A\u003AgetTFieldArray\u0028\u0029",
+            "name": "getTFieldArray",
+            "summary": "Get\u0020t\u0020field\u0020array.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOC.html#method_getTFieldArray"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOC\u003A\u003AsetTField\u0028\u0029",
+            "name": "setTField",
+            "summary": "Set\u0020t\u0020field\u0020array.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOC.html#method_setTField"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOC\u003A\u003A\u0024tocStyle",
             "name": "tocStyle",
             "summary": "TOC\u0020style.",
@@ -2305,6 +2330,21 @@ Search.appendIndex(
             "name": "maxDepth",
             "summary": "Max\u0020title\u0020depth\u0020to\u0020show.",
             "url": "classes/PhpOffice-PhpWord-Element-TOC.html#property_maxDepth"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOC\u003A\u003A\u0024tField",
+            "name": "tField",
+            "summary": "t\u0020field\u0020heading\u0020pair\u0020string.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOC.html#property_tField"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOC\u003A\u003A\u0024tFieldArray",
+            "name": "tFieldArray",
+            "summary": "t\u0020field\u0020heading\u0020pair\u0020array.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOC.html#property_tFieldArray"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOC\u003A\u003A\u0024switchString",
+            "name": "switchString",
+            "summary": "String\u0020containing\u0020TOC\u0020switches.",
+            "url": "classes/PhpOffice-PhpWord-Element-TOC.html#property_switchString"
         },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Element\\TOF",
             "name": "TOF",
@@ -10621,6 +10661,16 @@ Search.appendIndex(
             "summary": "Set\u0020start\u0020paragraph\u0020on\u0020next\u0020page\u0020setting.",
             "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#method_setPageBreakBefore"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003AsetOutlineLvl\u0028\u0029",
+            "name": "setOutlineLvl",
+            "summary": "Set\u0020outline\u0020level.",
+            "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#method_setOutlineLvl"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003AgetOutlineLvl\u0028\u0029",
+            "name": "getOutlineLvl",
+            "summary": "Get\u0020outline\u0020level.",
+            "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#method_getOutlineLvl"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003AgetNumStyle\u0028\u0029",
             "name": "getNumStyle",
             "summary": "Get\u0020numbering\u0020style\u0020name.",
@@ -10780,6 +10830,11 @@ Search.appendIndex(
             "name": "pageBreakBefore",
             "summary": "Start\u0020paragraph\u0020on\u0020next\u0020page.",
             "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#property_pageBreakBefore"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003A\u0024outlineLvl",
+            "name": "outlineLvl",
+            "summary": "Outline\u0020level.",
+            "url": "classes/PhpOffice-PhpWord-Style-Paragraph.html#property_outlineLvl"
         },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Style\\Paragraph\u003A\u003A\u0024numStyle",
             "name": "numStyle",
