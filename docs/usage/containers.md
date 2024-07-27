@@ -30,15 +30,14 @@ $sectionStyle = array(
 
 ### Page number
 
-You can change a section page number by using the ``pageNumberingStart``
-style of the section. Note: ``pageNumberingStart`` is deprecated in 
-favor of the ``pageNumberingStart`` array.
+You can change a section page number by using the ``pageNumberingStart`` or, more generally, ``pageNumbering`` style properties.
 
 ``` php
 <?php
 
 // Method 1
 $section = $phpWord->addSection(array('pageNumberingStart' => 1));
+$section = $phpWord->addSection(array('pageNumering' => array('start' => 1)))
 
 // Method 2
 $section = $phpWord->addSection();
