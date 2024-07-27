@@ -91,8 +91,18 @@ class Section extends AbstractStyle
         $xmlWriter->endElement();
 
         // Page numbering start
-        $pageNum = $style->getPageNumberingStart();
-        $xmlWriter->writeElementIf(null !== $pageNum, 'w:pgNumType', 'w:start', $pageNum);
+        $pageNum = $style->getPageNumbering();
+        if (null !== $style->getPageNumberingStart()) {
+            $pageNum['start'] = $pageNum['start'] ?? $style->getPageNumberingStart();
+        }
+
+        if (count($pageNum) > 0) {
+            $xmlWriter->startElement('w:pgNumType');
+            foreach($pageNum as $key => $value) {
+                $xmlWriter->writeAttribute('w:' . $key, $value);
+            }
+            $xmlWriter->endElement();
+        }
 
         // Line numbering
         $styleWriter = new LineNumbering($xmlWriter, $style->getLineNumbering());

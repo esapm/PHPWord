@@ -21,13 +21,18 @@ $sectionStyle = array(
     'orientation' => 'landscape',
     'marginTop' => 600,
     'colsNum' => 2,
+    'pageNumbering' => array(
+        'start' => 1,
+        'fmt'   => 'lowerRoman'
+    )
 );
 ```
 
 ### Page number
 
 You can change a section page number by using the ``pageNumberingStart``
-style of the section.
+style of the section. Note: ``pageNumberingStart`` is deprecated in 
+favor of the ``pageNumberingStart`` array.
 
 ``` php
 <?php
