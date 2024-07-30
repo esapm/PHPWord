@@ -439,8 +439,7 @@ class Section extends Border
     {
         $this->pageNumbering = $pageNumbering;
 
-        if (array_key_exists('start', $pageNumbering))
-        {
+        if (array_key_exists('start', $pageNumbering)) {
             $this->setPageNumberingStart($pageNumbering['start']);
         }
 

@@ -98,7 +98,7 @@ class Section extends AbstractStyle
 
         if (count($pageNum) > 0) {
             $xmlWriter->startElement('w:pgNumType');
-            foreach($pageNum as $key => $value) {
+            foreach ($pageNum as $key => $value) {
                 $xmlWriter->writeAttribute('w:' . $key, $value);
             }
             $xmlWriter->endElement();
