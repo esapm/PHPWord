@@ -42,7 +42,7 @@ class Title extends AbstractElement
         if (!empty($style)) {
             $xmlWriter->startElement('w:pPr');
             $xmlWriter->startElement('w:pStyle');
-            $xmlWriter->writeAttribute('w:val', $style);
+            $xmlWriter->writeAttribute('w:val', str_replace(' ', '', $style));
             $xmlWriter->endElement();
             $xmlWriter->endElement();
         }

@@ -1,6 +1,5 @@
 # Text
 
-
 Text can be added by using ``addText`` and ``addTextRun`` methods. ``addText`` is used for creating simple paragraphs that only contain texts with the same style. ``addTextRun`` is used for creating complex paragraphs that contain text with different style (some bold, other italics, etc) or other elements, e.g. images or links. The syntaxes are as follow:
 
 ``` php

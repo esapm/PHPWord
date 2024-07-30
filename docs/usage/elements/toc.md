@@ -30,3 +30,5 @@ Options for ``$tocStyle``:
   1. With \o switch and heading depths (e.g., setting $minDepth = 1 and $maxDepth = 2 would produce a TOC listing Heading 1 and Heading 2 titles only).
   2. With \t switch and a $tField string containing "titleStyle,depth,titleStyle,depth" pairs. The styles listed in $tField must be added using addTitleStyle(). The \t switch can be used in conjunction with the \o switch. Values for depth in the $tField will override the titleStyle's depth.
   3. With the \u switch. This will build a TOC using the depths (outline levels) associated with title styles. The \u switch can conflict with the \t switch if a style in the $tField string does not have an assigned outline level ($depth).
+
+- In order for page numbers to display correctly in the TOC, custom page number formatting may need to be set in the section styles as well as the { PAGE } field.

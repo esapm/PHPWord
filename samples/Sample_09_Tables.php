@@ -17,7 +17,7 @@ $rows = 10;
 $cols = 5;
 $section->addText('Basic table', $header);
 
-$section->addCaption('Basic table', 'Table', ['bold' => true], ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true]);
+$section->addCaption('Table', 'Basic table', ['bold' => true], ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true]);
 $table = $section->addTable();
 for ($r = 1; $r <= $rows; ++$r) {
     $table->addRow();
@@ -40,7 +40,7 @@ $fancyTableFontStyle = ['bold' => true];
 $fancyTableCaptionStyle = ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true];
 $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle, $fancyTableFirstRowStyle);
 
-$section->addCaption('Fancy table', 'Table', $fancyTableFontStyle, $fancyTableCaptionStyle);
+$section->addCaption('Table', 'Fancy table', $fancyTableFontStyle, $fancyTableCaptionStyle);
 
 $table = $section->addTable($fancyTableStyleName);
 $table->addRow(900);
@@ -82,7 +82,7 @@ $cellVCentered = ['valign' => 'center'];
 
 $spanTableStyleName = 'Colspan Rowspan';
 $phpWord->addTableStyle($spanTableStyleName, $fancyTableStyle);
-$section->addCaption('Colspan (gridSpan) and rowspan (vMerge)', 'Table', $fancyTableFontStyle, $fancyTableCaptionStyle);
+$section->addCaption('Table', 'Colspan (gridSpan) and rowspan (vMerge)', $fancyTableFontStyle, $fancyTableCaptionStyle);
 $table = $section->addTable($spanTableStyleName);
 // Note: Alt text (table captions and descriptions) will be ignored if added to a named style.
 // Use table->addTblCaption() and table->addTblDescription() instead.
@@ -124,7 +124,7 @@ $section->addText('Table with colspan and rowspan', $header);
 
 $styleTable = ['borderSize' => 6, 'borderColor' => '999999', 'tblCaption' => 'Table captions can be added in the style array.', 'tblDescription' => 'Table descriptions can also be added in the style array. Both will be overwritten by text entered using the addTblCaption() or addTblDescription() functions.'];
 $phpWord->addTableStyle('Colspan Rowspan', $styleTable);
-$section->addCaption('Colspan (gridSpan) and rowspan (vMerge)', 'Table', $fancyTableFontStyle, $fancyTableCaptionStyle);
+$section->addCaption('Table', 'Colspan (gridSpan) and rowspan (vMerge)', $fancyTableFontStyle, $fancyTableCaptionStyle);
 $table = $section->addTable('Colspan Rowspan');
 
 $row = $table->addRow();

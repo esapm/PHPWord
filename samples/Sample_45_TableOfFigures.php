@@ -41,19 +41,19 @@ $section->addTextBreak(1);
 // Add images
 $section->addText('Image 1:');
 $section->addImage('resources/_mars.jpg', null, 'Image of Mars');
-$section->addCaption('Image of Mars', 'Figure', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Image of Mars', ['bold' => true], $figureCaptionStyle);
 
 printSeparator($section);
 $section->addText('Local image with styles but not alt text:');
 $section->addImage('resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
-$section->addCaption('Image of Earth', 'Figure', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Image of Earth', ['bold' => true], $figureCaptionStyle);
 
 // Remote image
 printSeparator($section);
 $source = 'http://php.net/images/logos/php-med-trans-light.gif';
 $section->addText("Remote image from: {$source}");
 $section->addImage($source, null);
-$section->addCaption('Remote image', 'Figure', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Remote image', ['bold' => true], $figureCaptionStyle);
 
 printSeparator($section);
 
@@ -63,7 +63,7 @@ $rows = 10;
 $cols = 5;
 $section->addText('Basic table', $header);
 
-$section->addCaption('Basic table', 'Table', ['bold' => true], ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true]);
+$section->addCaption('Table', 'Basic table', ['bold' => true], ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true]);
 $table = $section->addTable();
 for ($r = 1; $r <= $rows; ++$r) {
     $table->addRow();
@@ -88,7 +88,7 @@ $fancyTableFontStyle = ['bold' => true];
 $fancyTableCaptionStyle = ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true];
 $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle, $fancyTableFirstRowStyle);
 
-$section->addCaption('Fancy table', 'Table', $fancyTableFontStyle, $fancyTableCaptionStyle);
+$section->addCaption('Table', 'Fancy table', $fancyTableFontStyle, $fancyTableCaptionStyle);
 
 $table = $section->addTable($fancyTableStyleName);
 $table->addRow(900);

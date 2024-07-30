@@ -21,19 +21,23 @@ $sectionStyle = array(
     'orientation' => 'landscape',
     'marginTop' => 600,
     'colsNum' => 2,
+    'pageNumbering' => array(
+        'start' => 1,
+        'fmt'   => 'lowerRoman'
+    )
 );
 ```
 
 ### Page number
 
-You can change a section page number by using the ``pageNumberingStart``
-style of the section.
+You can change a section page number by using the ``pageNumberingStart`` or, more generally, ``pageNumbering`` style properties.
 
 ``` php
 <?php
 
 // Method 1
 $section = $phpWord->addSection(array('pageNumberingStart' => 1));
+$section = $phpWord->addSection(array('pageNumering' => array('start' => 1)))
 
 // Method 2
 $section = $phpWord->addSection();

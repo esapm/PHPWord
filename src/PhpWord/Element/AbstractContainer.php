@@ -144,6 +144,9 @@ abstract class AbstractContainer extends AbstractElement
         if ($withoutP && ($elementName == 'Text' || $elementName == 'PreserveText')) {
             $args[3] = null; // Remove paragraph style for texts in textrun
         }
+        if ($withoutP && ($elementName == 'Caption')) {
+            $args[4] = null; // Remove paragraph style for captions in textrun
+        }
 
         // Create element using reflection
         $reflection = new ReflectionClass($elementClass);
