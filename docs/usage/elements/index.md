@@ -24,6 +24,7 @@ Below are the matrix of element availability in each container. The column shows
 | 18    | [Field](field.md) | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 19    | [Line](line.md) | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | 20    | [Chart](chart.md) | :white_check_mark: | | | :white_check_mark: | | |
+| 21    | [Caption](caption.md) | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 
 Legend:
 
