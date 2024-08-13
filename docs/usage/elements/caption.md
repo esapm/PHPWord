@@ -5,11 +5,11 @@ To add a caption, use the ``addCaption`` method to sections, headers, footers, t
 ``` php
 <?php
 
-$section->addCaption($text, $label, [$fontStyle], [$paragraphStyle]);
+$section->addCaption($label, [$text], [$fontStyle], [$paragraphStyle]);
 ```
 
-- ``$text``. String describing the element being captioned.
 - ``$label``. String describing the type of element being captioned (e.g., 'Figure' or 'Table').
+- ``$text``. String describing the element being captioned.
 - ``$fontStyle``: See [`Styles > Font`](../styles/font.md).
 - ``$paragraphStyle``: See [`Styles > Paragraph`](../styles/paragraph.md).
 
@@ -32,8 +32,8 @@ $section->addImage(
     'alt text'
 );
 $section->addCaption(
-    'Image of Mars', 
     'Figure', 
+    'Image of Mars', 
     ['bold'=>true], 
     ['spaceAfter'=>240, 'spaceBefore'=>0]
 );

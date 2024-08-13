@@ -107,6 +107,13 @@ class Section extends Border
     private $pageNumberingStart;
 
     /**
+     * Page Numbering Array.
+     *
+     * @var array
+     */
+    private $pageNumbering = [];
+
+    /**
      * Section columns count.
      *
      * @var int
@@ -407,6 +414,34 @@ class Section extends Border
     public function setPageNumberingStart($pageNumberingStart = null)
     {
         $this->pageNumberingStart = $pageNumberingStart;
+
+        return $this;
+    }
+
+    /**
+     * Get page numbering array.
+     *
+     * @return null|array
+     */
+    public function getPageNumbering()
+    {
+        return $this->pageNumbering;
+    }
+
+    /**
+     * Set page numbering array.
+     *
+     * @param null|array $pageNumbering
+     *
+     * @return self
+     */
+    public function setPageNumbering($pageNumbering = [])
+    {
+        $this->pageNumbering = $pageNumbering;
+
+        if (array_key_exists('start', $pageNumbering)) {
+            $this->setPageNumberingStart($pageNumbering['start']);
+        }
 
         return $this;
     }

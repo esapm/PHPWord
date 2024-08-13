@@ -65,7 +65,7 @@ class Caption extends Text
      * @param mixed $fontStyle
      * @param mixed $paragraphStyle
      */
-    public function __construct($text = null, $label = 'Figure', $fontStyle = null, $paragraphStyle = null, ?int $pageNumber = null)
+    public function __construct($label = 'Figure', $text = null, $fontStyle = null, $paragraphStyle = null, ?int $pageNumber = null)
     {
         $this->setLabel($label);
         $this->setText($text);

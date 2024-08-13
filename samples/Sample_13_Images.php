@@ -17,19 +17,19 @@ $phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBef
 $section = $phpWord->addSection();
 $section->addText('Local image with alt text but no styles:');
 $section->addImage('resources/_mars.jpg', null, 'Image of Mars');
-$section->addCaption('Image of Mars', 'Figure', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Image of Mars', ['bold' => true], $figureCaptionStyle);
 
 printSeparator($section);
 $section->addText('Local image with styles but not alt text:');
 $section->addImage('resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
-$section->addCaption('Image of Earth', 'Figure', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Image of Earth', ['bold' => true], $figureCaptionStyle);
 
 // Remote image
 printSeparator($section);
 $source = 'http://php.net/images/logos/php-med-trans-light.gif';
 $section->addText("Remote image from: {$source}");
 $section->addImage($source, null);
-$section->addCaption('Remote image', 'Figure', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Remote image', ['bold' => true], $figureCaptionStyle);
 
 // Image from string
 printSeparator($section);
@@ -40,7 +40,7 @@ $fileContent = file_get_contents($source);
 $section->addText('Image from string');
 $imageTextRun = $section->addTextRun(['keepNext' => true]);
 $imageTextRun->addImage($fileContent);
-$section->addCaption('Image of Mars', 'Figure', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Image of Mars', ['bold' => true], $figureCaptionStyle);
 
 //Wrapping style
 printSeparator($section);
