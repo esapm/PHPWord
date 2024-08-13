@@ -11046,6 +11046,16 @@ Search.appendIndex(
             "summary": "Set\u0020page\u0020numbering\u0020start.",
             "url": "classes/PhpOffice-PhpWord-Style-Section.html#method_setPageNumberingStart"
         },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Section\u003A\u003AgetPageNumbering\u0028\u0029",
+            "name": "getPageNumbering",
+            "summary": "Get\u0020page\u0020numbering\u0020array.",
+            "url": "classes/PhpOffice-PhpWord-Style-Section.html#method_getPageNumbering"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Section\u003A\u003AsetPageNumbering\u0028\u0029",
+            "name": "setPageNumbering",
+            "summary": "Set\u0020page\u0020numbering\u0020array.",
+            "url": "classes/PhpOffice-PhpWord-Style-Section.html#method_setPageNumbering"
+        },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Style\\Section\u003A\u003AgetColsNum\u0028\u0029",
             "name": "getColsNum",
             "summary": "Get\u0020Section\u0020Columns\u0020Count.",
@@ -11180,6 +11190,11 @@ Search.appendIndex(
             "name": "pageNumberingStart",
             "summary": "Page\u0020Numbering\u0020Start.",
             "url": "classes/PhpOffice-PhpWord-Style-Section.html#property_pageNumberingStart"
+        },                {
+            "fqsen": "\\PhpOffice\\PhpWord\\Style\\Section\u003A\u003A\u0024pageNumbering",
+            "name": "pageNumbering",
+            "summary": "Page\u0020Numbering\u0020Array.",
+            "url": "classes/PhpOffice-PhpWord-Style-Section.html#property_pageNumbering"
         },                {
             "fqsen": "\\PhpOffice\\PhpWord\\Style\\Section\u003A\u003A\u0024colsNum",
             "name": "colsNum",

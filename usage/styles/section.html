@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
@@ -2019,6 +2019,33 @@
 <li><code>pageSizeW</code>. Page width in <em>twip</em>. Implicitly defined by <code>orientation</code> option. Any changes are discouraged.</li>
 <li><code>vAlign</code>. Vertical Page Alignment
    See <code>\PhpOffice\PhpWord\SimpleType\VerticalJc</code> for possible values</li>
+<li><code>pageNumbering</code>. Array containing page numbering options (start, fmt, chapSep, chapStyle).</li>
+<li><code>start</code>. Specifies the page number that appears on the first page of the section. If the value is omitted, numbering continues from the highest page number in the previous section.</li>
+<li><code>fmt</code>. Specifies the number format to be used for page numbers in the section. The most commonly used values are:<ul>
+<li><code>cardinalText</code> - the cardinal text of the run language. (In English, One, Two, Three, etc.)</li>
+<li><code>decimal</code> - decimal numbering (1, 2, 3, 4, etc.)</li>
+<li><code>decimalEnclosedCircle</code> - decimal number enclosed in a circle</li>
+<li><code>decimalEnclosedFullstop</code> - decimal number followed by a period</li>
+<li><code>decimalEnclosedParen</code> - decimal number enclosed in parentheses</li>
+<li><code>decimalZero</code> - decimal number but with a zero added to numbers 1 through 9</li>
+<li><code>lowerLetter</code> - based on the run language (e.g., a, b, c, etc.). Letters repeat for values greater than the size of the alphabet</li>
+<li><code>lowerRoman</code> - lowercase Roman numerals (i, ii, iii, iv, etc.)
+none</li>
+<li><code>ordinalText</code> - ordinal text of the run laguage. (In English, First, Second, Third, etc.)</li>
+<li><code>upperLetter</code> - based on the run language (e.g., A, B, C, etc.). Letters repeat for values greater than the size of the alphabet</li>
+<li><code>upperRoman</code> - uppercase Roman numerals (I, II, III, IV, etc.)</li>
+</ul>
+</li>
+<li><code>chapSep</code>. Specifies the separator character to be used between the chapter and page number if a chapter style has been set. Possible values are:<ul>
+<li><code>colon</code>  - (e.g., 1:1)</li>
+<li><code>emDash</code> - (e.g., 1—1)</li>
+<li><code>endash</code> - (e.g., 1–1)</li>
+<li><code>hyphen</code> - (e.g., 1-1)</li>
+<li><code>period</code> - (e.g., 1.1)</li>
+</ul>
+</li>
+<li><code>chapStyle</code>. Specifies the one-based index of the heading style applied to chapter titles. The nearest heading of the style is located and the numbering information is extracted for the page number. For example, a chapStyle value of 1 (Heading 1 style) means that the numbering value of the nearest Heading 1 style is used for the chapter value in the page number.
+   See ISO/IEC 29500-1 for additional information.</li>
 </ul>
 
 

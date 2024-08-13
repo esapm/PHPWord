@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
     
     
       
@@ -1978,11 +1978,11 @@
 <p>To add a caption, use the <code>addCaption</code> method to sections, headers, footers, textruns, or table cells.</p>
 <div class="highlight"><pre><span></span><code><span class="cp">&lt;?php</span>
 
-<span class="nv">$section</span><span class="o">-&gt;</span><span class="na">addCaption</span><span class="p">(</span><span class="nv">$text</span><span class="p">,</span> <span class="nv">$label</span><span class="p">,</span> <span class="p">[</span><span class="nv">$fontStyle</span><span class="p">],</span> <span class="p">[</span><span class="nv">$paragraphStyle</span><span class="p">]);</span>
+<span class="nv">$section</span><span class="o">-&gt;</span><span class="na">addCaption</span><span class="p">(</span><span class="nv">$label</span><span class="p">,</span> <span class="p">[</span><span class="nv">$text</span><span class="p">],</span> <span class="p">[</span><span class="nv">$fontStyle</span><span class="p">],</span> <span class="p">[</span><span class="nv">$paragraphStyle</span><span class="p">]);</span>
 </code></pre></div>
 <ul>
-<li><code>$text</code>. String describing the element being captioned.</li>
 <li><code>$label</code>. String describing the type of element being captioned (e.g., 'Figure' or 'Table').</li>
+<li><code>$text</code>. String describing the element being captioned.</li>
 <li><code>$fontStyle</code>: See <a href="../styles/font.html"><code>Styles &gt; Font</code></a>.</li>
 <li><code>$paragraphStyle</code>: See <a href="../styles/paragraph.html"><code>Styles &gt; Paragraph</code></a>.</li>
 </ul>
@@ -2003,8 +2003,8 @@
     <span class="s1">&#39;alt text&#39;</span>
 <span class="p">);</span>
 <span class="nv">$section</span><span class="o">-&gt;</span><span class="na">addCaption</span><span class="p">(</span>
-    <span class="s1">&#39;Image of Mars&#39;</span><span class="p">,</span> 
     <span class="s1">&#39;Figure&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;Image of Mars&#39;</span><span class="p">,</span> 
     <span class="p">[</span><span class="s1">&#39;bold&#39;</span><span class="o">=&gt;</span><span class="k">true</span><span class="p">],</span> 
     <span class="p">[</span><span class="s1">&#39;spaceAfter&#39;</span><span class="o">=&gt;</span><span class="mi">240</span><span class="p">,</span> <span class="s1">&#39;spaceBefore&#39;</span><span class="o">=&gt;</span><span class="mi">0</span><span class="p">]</span>
 <span class="p">);</span>
