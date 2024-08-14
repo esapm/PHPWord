@@ -37,10 +37,10 @@ class Caption extends AbstractElement
 
         $this->startElementP();
 
-//        $bookmarkRId = null;
+        // $bookmarkRId = null;
         $rId = $element->getRelationId();
         $label = $element->getLabel();
-//        $bookmarkRId = $element->getPhpWord()->addBookmark("_{$label}{$rId}");
+        // $bookmarkRId = $element->getPhpWord()->addBookmark("_{$label}{$rId}");
         $figureNumber = $element->getFigureNumber();
 
         // Bookmark start for Table of Figures
