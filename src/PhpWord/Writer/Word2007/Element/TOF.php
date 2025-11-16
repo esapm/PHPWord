@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -129,7 +130,6 @@ class TOF extends AbstractElement
         $xmlWriter->endElement();
 
         if ($caption->getPageNumber() !== null) {
-
             // Removing these lines from normal code forces Word to regenerate the whole table.
             // Otherwise, neither the heading numbers nor the page numbers are displayed without
             // manually updating them.

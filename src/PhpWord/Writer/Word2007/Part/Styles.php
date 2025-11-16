@@ -265,7 +265,7 @@ class Styles extends AbstractPart
         $fontStyle = $style->getFontStyle();
         if (null !== $fontStyle) {
             if (is_string($fontStyle)) {
-                $fontStyle = \PhpOffice\PhpWord\Style::getStyle($fontStyle);
+                $fontStyle = Style::getStyle($fontStyle);
             }
             $fontStyleWriter = new FontStyleWriter($xmlWriter, $fontStyle);
             $fontStyleWriter->write();

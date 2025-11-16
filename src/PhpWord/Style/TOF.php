@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -45,7 +46,7 @@ class TOF extends Tab
      *
      * @param float|int $value
      *
-     * @return \PhpOffice\PhpWord\Style\Tab
+     * @return Tab
      */
     public function setTabPos($value)
     {
@@ -67,7 +68,7 @@ class TOF extends Tab
      *
      * @param string $value
      *
-     * @return \PhpOffice\PhpWord\Style\Tab
+     * @return Tab
      */
     public function setTabLeader($value = self::TAB_LEADER_DOT)
     {

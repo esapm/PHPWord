@@ -130,7 +130,6 @@ class TOC extends AbstractElement
         $xmlWriter->endElement();
 
         if ($title->getPageNumber() !== null) {
-
             // Removing these lines from normal code forces Word to regenerate the whole table.
             // Otherwise, neither the heading numbers nor the page numbers are displayed without
             // manually updating them.

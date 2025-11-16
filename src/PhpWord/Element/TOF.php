@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -37,21 +38,21 @@ class TOF extends AbstractElement
     /**
      * TOF style.
      *
-     * @var \PhpOffice\PhpWord\Style\TOF
+     * @var TOFStyle
      */
     private $tofStyle;
 
     /**
      * Font style.
      *
-     * @var \PhpOffice\PhpWord\Style\Font|string
+     * @var Font|string
      */
     private $fontStyle;
 
     /**
      * Paragraph style.
      *
-     * @var \PhpOffice\PhpWord\Style\Paragraph|string
+     * @var Paragraph|string
      */
     private $paragraphStyle;
 
@@ -97,7 +98,7 @@ class TOF extends AbstractElement
 
         $captions = $this->phpWord->getCaptions()->getItems();
         foreach ($captions as $i => $caption) {
-            /** @var \PhpOffice\PhpWord\Element\Caption $caption Type hint */
+            /** @var Caption $caption Type hint */
             $label = $caption->getLabel();
             if ($this->captionLabel !== $label) {
                 unset($captions[$i]);
@@ -110,7 +111,7 @@ class TOF extends AbstractElement
     /**
      * Get TOF Style.
      *
-     * @return \PhpOffice\PhpWord\Style\TOF
+     * @return TOFStyle
      */
     public function getStyleTOF()
     {
@@ -120,7 +121,7 @@ class TOF extends AbstractElement
     /**
      * Get Font Style.
      *
-     * @return \PhpOffice\PhpWord\Style\Font|string
+     * @return Font|string
      */
     public function getStyleFont()
     {
@@ -140,10 +141,10 @@ class TOF extends AbstractElement
     /**
      * Set Text style.
      *
-     * @param array|\PhpOffice\PhpWord\Style\Font|string $style
-     * @param array|\PhpOffice\PhpWord\Style\Paragraph|string $paragraphStyle
+     * @param array|Font|string $style
+     * @param array|Paragraph|string $paragraphStyle
      *
-     * @return \PhpOffice\PhpWord\Style\Font|string
+     * @return Font|string
      */
     public function setFontStyle($style = null, $paragraphStyle = null)
     {
@@ -166,7 +167,7 @@ class TOF extends AbstractElement
     /**
      * Get Text style.
      *
-     * @return \PhpOffice\PhpWord\Style\Font|string
+     * @return Font|string
      */
     public function getFontStyle()
     {
@@ -176,7 +177,7 @@ class TOF extends AbstractElement
     /**
      * Get Paragraph style.
      *
-     * @return \PhpOffice\PhpWord\Style\Paragraph|string
+     * @return Paragraph|string
      */
     public function getParagraphStyle()
     {
@@ -186,9 +187,9 @@ class TOF extends AbstractElement
     /**
      * Set Paragraph style.
      *
-     * @param array|\PhpOffice\PhpWord\Style\Paragraph|string $style
+     * @param array|Paragraph|string $style
      *
-     * @return \PhpOffice\PhpWord\Style\Paragraph|string
+     * @return Paragraph|string
      */
     public function setParagraphStyle($style = null)
     {

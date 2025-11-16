@@ -6,7 +6,7 @@ include_once 'Sample_Header.php';
 
 // New Word document
 echo date('H:i:s'), ' Create new PhpWord object', EOL;
-$phpWord = new \PhpOffice\PhpWord\PhpWord();
+$phpWord = new PhpOffice\PhpWord\PhpWord();
 $phpWord->getSettings()->setUpdateFields(true);
 
 // New section
@@ -18,11 +18,11 @@ $fontStyle10 = ['size' => 10];
 $header = ['size' => 16, 'bold' => true];
 $phpWord->addTitleStyle(null, ['size' => 22, 'bold' => true]);
 $figureCaptionStyle = 'figureCaptionStyle';
-$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START, 'next' => 'Normal']);
+$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::START, 'next' => 'Normal']);
 
 // Modify the default or built-in "Table of Figures" style. This will ensure that the table maintains the associated formatting even if the entire table is updated within Word.
 $tofStyle = 'Table of Figures';
-$phpWord->addParagraphStyle($tofStyle, ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START, 'spaceAfter' => 100, 'customStyle' => '0']);
+$phpWord->addParagraphStyle($tofStyle, ['alignment' => PhpOffice\PhpWord\SimpleType\Jc::START, 'spaceAfter' => 100, 'customStyle' => '0']);
 
 // Add text elements
 $section->addTitle('Table of figures', 0);
@@ -45,7 +45,7 @@ $section->addCaption('Figure', 'Image of Mars', ['bold' => true], $figureCaption
 
 printSeparator($section);
 $section->addText('Local image with styles but not alt text:');
-$section->addImage('resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
+$section->addImage('resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
 $section->addCaption('Figure', 'Image of Earth', ['bold' => true], $figureCaptionStyle);
 
 // Remote image
@@ -80,10 +80,10 @@ printSeparator($section);
 $section->addText('Fancy table', $header);
 
 $fancyTableStyleName = 'Fancy Table';
-$fancyTableStyle = ['borderSize' => 6, 'borderColor' => '006699', 'cellMargin' => 80, 'alignment' => \PhpOffice\PhpWord\SimpleType\JcTable::CENTER, 'cellSpacing' => 50];
+$fancyTableStyle = ['borderSize' => 6, 'borderColor' => '006699', 'cellMargin' => 80, 'alignment' => PhpOffice\PhpWord\SimpleType\JcTable::CENTER, 'cellSpacing' => 50];
 $fancyTableFirstRowStyle = ['borderBottomSize' => 18, 'borderBottomColor' => '0000FF', 'bgColor' => '66BBFF'];
 $fancyTableCellStyle = ['valign' => 'center'];
-$fancyTableCellBtlrStyle = ['valign' => 'center', 'textDirection' => \PhpOffice\PhpWord\Style\Cell::TEXT_DIR_BTLR];
+$fancyTableCellBtlrStyle = ['valign' => 'center', 'textDirection' => PhpOffice\PhpWord\Style\Cell::TEXT_DIR_BTLR];
 $fancyTableFontStyle = ['bold' => true];
 $fancyTableCaptionStyle = ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true];
 $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle, $fancyTableFirstRowStyle);

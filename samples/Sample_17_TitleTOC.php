@@ -17,10 +17,10 @@ $phpWord->addTitleStyle(null, ['size' => 22, 'bold' => true]);
 $phpWord->addTitleStyle(1, ['size' => 20, 'color' => '333333', 'bold' => true]);
 $phpWord->addTitleStyle(2, ['size' => 16, 'color' => '666666']);
 $phpWord->addTitleStyle(3, ['size' => 14, 'italic' => true]);
-$phpWord->addTitleStyle(4, ['size' => 12], ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
-$phpWord->addTitleStyle(5, ['size' => 12, 'bold' => true, 'italic' => true], ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
-$phpWord->addTitleStyle(6, ['size' => 12, 'bold' => true], ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
-$phpWord->addTitleStyle(7, ['size' => 12, 'italic' => true], ['alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
+$phpWord->addTitleStyle(4, ['size' => 12], ['alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
+$phpWord->addTitleStyle(5, ['size' => 12, 'bold' => true, 'italic' => true], ['alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
+$phpWord->addTitleStyle(6, ['size' => 12, 'bold' => true], ['alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
+$phpWord->addTitleStyle(7, ['size' => 12, 'italic' => true], ['alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER, 'spaceAfter' => 100]);
 
 // Add text elements
 $section->addTitle('Table of contents 1', 0);

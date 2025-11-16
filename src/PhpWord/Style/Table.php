@@ -192,19 +192,19 @@ class Table extends Border
             $this->firstRowStyle = clone $this;
             $this->firstRowStyle->isFirstRow = true;
             unset(
-                $this->firstRowStyle->firstRowStyle, 
-                $this->firstRowStyle->borderInsideHSize, 
-                $this->firstRowStyle->borderInsideHColor, 
-                $this->firstRowStyle->borderInsideVSize, 
-                $this->firstRowStyle->borderInsideVColor, 
-                $this->firstRowStyle->cellMarginTop, 
-                $this->firstRowStyle->cellMarginLeft, 
-                $this->firstRowStyle->cellMarginRight, 
-                $this->firstRowStyle->cellMarginBottom, 
-                $this->firstRowStyle->cellSpacing, 
-                $this->firstRowStyle->tblCaption, 
+                $this->firstRowStyle->firstRowStyle,
+                $this->firstRowStyle->borderInsideHSize,
+                $this->firstRowStyle->borderInsideHColor,
+                $this->firstRowStyle->borderInsideVSize,
+                $this->firstRowStyle->borderInsideVColor,
+                $this->firstRowStyle->cellMarginTop,
+                $this->firstRowStyle->cellMarginLeft,
+                $this->firstRowStyle->cellMarginRight,
+                $this->firstRowStyle->cellMarginBottom,
+                $this->firstRowStyle->cellSpacing,
+                $this->firstRowStyle->tblCaption,
                 $this->firstRowStyle->tblDescription
-        );
+            );
             $this->firstRowStyle->setStyleByArray($firstRowStyle);
         }
 

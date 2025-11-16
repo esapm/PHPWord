@@ -12,7 +12,7 @@ $phpWord = new PhpWord();
 
 // Define styles
 $figureCaptionStyle = 'figureCaptionStyle';
-$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::START, 'next' => 'Normal']);
+$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::START, 'next' => 'Normal']);
 
 // Begin code
 $section = $phpWord->addSection();
@@ -22,7 +22,7 @@ $section->addCaption('Figure', 'Image of Mars', ['bold' => true], $figureCaption
 
 printSeparator($section);
 $section->addText('Local image with styles but no alt text:');
-$section->addImage(__DIR__ . 'resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => \PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
+$section->addImage(__DIR__ . 'resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
 $section->addCaption('Figure', 'Image of Earth', ['bold' => true], $figureCaptionStyle);
 
 // Remote image
