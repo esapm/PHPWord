@@ -17,12 +17,12 @@ $phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBef
 // Begin code
 $section = $phpWord->addSection();
 $section->addText('Local image with alt text but no styles:');
-$section->addImage(__DIR__ . 'resources/_mars.jpg', null, 'Image of Mars');
+$section->addImage(__DIR__ . '/resources/_mars.jpg', null, 'Image of Mars');
 $section->addCaption('Figure', 'Image of Mars', ['bold' => true], $figureCaptionStyle);
 
 printSeparator($section);
 $section->addText('Local image with styles but no alt text:');
-$section->addImage(__DIR__ . 'resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
+$section->addImage(__DIR__ . '/resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
 $section->addCaption('Figure', 'Image of Earth', ['bold' => true], $figureCaptionStyle);
 
 // Remote image
@@ -36,7 +36,7 @@ $section->addCaption('Figure', 'Remote image', ['bold' => true], $figureCaptionS
 printSeparator($section);
 $section->addText('In order to keep the image with the caption that follows, add the image to a textRun.');
 $section->addTextBreak();
-$source = __DIR__ . 'resources/_mars.jpg';
+$source = __DIR__ . '/resources/_mars.jpg';
 $fileContent = file_get_contents($source);
 $section->addText('Image from string');
 $imageTextRun = $section->addTextRun(['keepNext' => true]);

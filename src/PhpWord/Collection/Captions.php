@@ -22,6 +22,8 @@ namespace PhpOffice\PhpWord\Collection;
  * Captions collection.
  *
  * @since 0.10.0
+ *  
+ * @extends AbstractCollection<Caption>
  */
 class Captions extends AbstractCollection
 {
