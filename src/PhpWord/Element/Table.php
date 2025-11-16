@@ -1,4 +1,5 @@
 <?php
+
 /**
  * This file is part of PHPWord - A pure PHP library for reading and writing
  * word processing documents.
@@ -27,14 +28,14 @@ class Table extends AbstractElement
     /**
      * Table style.
      *
-     * @var ?\PhpOffice\PhpWord\Style\Table
+     * @var ?TableStyle
      */
     private $style;
 
     /**
      * Table rows.
      *
-     * @var \PhpOffice\PhpWord\Element\Row[]
+     * @var Row[]
      */
     private $rows = [];
 
@@ -75,7 +76,7 @@ class Table extends AbstractElement
      * @param int $height
      * @param mixed $style
      *
-     * @return \PhpOffice\PhpWord\Element\Row
+     * @return Row
      */
     public function addRow($height = null, $style = null)
     {
@@ -92,7 +93,7 @@ class Table extends AbstractElement
      * @param int $width
      * @param mixed $style
      *
-     * @return \PhpOffice\PhpWord\Element\Cell
+     * @return Cell
      */
     public function addCell($width = null, $style = null)
     {
@@ -106,7 +107,7 @@ class Table extends AbstractElement
     /**
      * Get all rows.
      *
-     * @return \PhpOffice\PhpWord\Element\Row[]
+     * @return Row[]
      */
     public function getRows()
     {
@@ -116,7 +117,7 @@ class Table extends AbstractElement
     /**
      * Get table style.
      *
-     * @return null|\PhpOffice\PhpWord\Style\Table|string
+     * @return null|string|TableStyle
      */
     public function getStyle()
     {
@@ -194,7 +195,7 @@ class Table extends AbstractElement
 
         $rowCount = count($this->rows);
         for ($i = 0; $i < $rowCount; ++$i) {
-            /** @var \PhpOffice\PhpWord\Element\Row $row Type hint */
+            /** @var Row $row Type hint */
             $row = $this->rows[$i];
             $cellCount = count($row->getCells());
             if ($columnCount < $cellCount) {
