@@ -87,7 +87,8 @@ class Title extends AbstractElement
             }
         } else {
             $this->style = $style;
-            if (is_int($outlineLvl = Style::getStyle($style)->getParagraph()->getOutlineLvl())) {
+            $titleStyle = Style::getStyle($style);
+            if (($titleStyle instanceof Style\Font) && (is_int($outlineLvl = $titleStyle->getParagraph()->getOutlineLvl()))) {
                 $this->setDepth($outlineLvl + 1);
             } else {
                 $this->setDepth($depth);

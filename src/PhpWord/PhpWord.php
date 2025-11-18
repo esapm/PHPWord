@@ -121,7 +121,7 @@ class PhpWord
             $addCollection[] = strtolower("add{$collection}");
         }
 
-        $styles = ['Paragraph', 'Font', 'Table', 'Numbering', 'Link', 'Title', 'Caption'];
+        $styles = ['Paragraph', 'Font', 'Table', 'Numbering', 'Link', 'Title'];
         foreach ($styles as $style) {
             $addStyle[] = strtolower("add{$style}Style");
         }

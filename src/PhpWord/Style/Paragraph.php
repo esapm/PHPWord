@@ -989,7 +989,7 @@ class Paragraph extends Border
     /**
      * Get font style.
      *
-     * @return Font
+     * @return null|AbstractStyle|array|string
      */
     public function getFontStyle()
     {

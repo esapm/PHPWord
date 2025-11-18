@@ -204,7 +204,7 @@ class TOF extends AbstractElement
      */
     private function writeFieldMark(XMLWriter $xmlWriter, TOFElement $element): void
     {
-        $TofCaptionLabel = $element->getCaptionLabel();
+        $tofCaptionLabel = $element->getCaptionLabel();
         $xmlWriter->startElement('w:r');
         $xmlWriter->startElement('w:fldChar');
         $xmlWriter->writeAttribute('w:fldCharType', 'begin');
@@ -215,7 +215,7 @@ class TOF extends AbstractElement
         $xmlWriter->startElement('w:instrText');
         $xmlWriter->writeAttribute('xml:space', 'preserve');
         $xmlWriter->writeRaw(' TOC \h \z \c "');
-        $xmlWriter->text($TofCaptionLabel);
+        $xmlWriter->text($tofCaptionLabel);
         $xmlWriter->writeRaw('" ');
         $xmlWriter->endElement();
         $xmlWriter->endElement();
