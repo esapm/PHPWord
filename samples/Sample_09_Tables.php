@@ -17,7 +17,7 @@ $rows = 10;
 $cols = 5;
 $section->addText('Basic table', $header);
 
-$section->addCaption('Table', 'Basic table', ['bold' => true], ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true]);
+$section->addCaption('Table', 'Basic table', ['bold' => false], ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true, 'fontStyle' => ['bold' => true]]);
 $table = $section->addTable();
 for ($r = 1; $r <= $rows; ++$r) {
     $table->addRow();
@@ -36,8 +36,8 @@ $fancyTableStyle = ['borderSize' => 6, 'borderColor' => '006699', 'cellMargin' =
 $fancyTableFirstRowStyle = ['borderBottomSize' => 18, 'borderBottomColor' => '0000FF', 'bgColor' => '66BBFF'];
 $fancyTableCellStyle = ['valign' => 'center'];
 $fancyTableCellBtlrStyle = ['valign' => 'center', 'textDirection' => PhpOffice\PhpWord\Style\Cell::TEXT_DIR_BTLR];
-$fancyTableFontStyle = ['bold' => true];
-$fancyTableCaptionStyle = ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true];
+$fancyTableFontStyle = ['bold' => false];
+$fancyTableCaptionStyle = ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true, 'fontStyle' => ['bold' => true]];
 $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle, $fancyTableFirstRowStyle);
 
 $section->addCaption('Table', 'Fancy table', $fancyTableFontStyle, $fancyTableCaptionStyle);

@@ -18,7 +18,7 @@ $fontStyle10 = ['size' => 10];
 $header = ['size' => 16, 'bold' => true];
 $phpWord->addTitleStyle(null, ['size' => 22, 'bold' => true]);
 $figureCaptionStyle = 'figureCaptionStyle';
-$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::START, 'next' => 'Normal']);
+$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::START, 'next' => 'Normal', 'fontStyle' => ['bold' => true]]);
 
 // Modify the default or built-in "Table of Figures" style. This will ensure that the table maintains the associated formatting even if the entire table is updated within Word.
 $tofStyle = 'Table of Figures';
@@ -41,19 +41,19 @@ $section->addTextBreak(1);
 // Add images
 $section->addText('Image 1:');
 $section->addImage('resources/_mars.jpg', null, 'Image of Mars');
-$section->addCaption('Figure', 'Image of Mars', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Image of Mars', ['bold' => false], $figureCaptionStyle);
 
 printSeparator($section);
 $section->addText('Local image with styles but not alt text:');
 $section->addImage('resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
-$section->addCaption('Figure', 'Image of Earth', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Image of Earth', ['bold' => false], $figureCaptionStyle);
 
 // Remote image
 printSeparator($section);
 $source = 'http://php.net/images/logos/php-med-trans-light.gif';
 $section->addText("Remote image from: {$source}");
 $section->addImage($source, null);
-$section->addCaption('Figure', 'Remote image', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Remote image', ['bold' => false], $figureCaptionStyle);
 
 printSeparator($section);
 
@@ -85,7 +85,7 @@ $fancyTableFirstRowStyle = ['borderBottomSize' => 18, 'borderBottomColor' => '00
 $fancyTableCellStyle = ['valign' => 'center'];
 $fancyTableCellBtlrStyle = ['valign' => 'center', 'textDirection' => PhpOffice\PhpWord\Style\Cell::TEXT_DIR_BTLR];
 $fancyTableFontStyle = ['bold' => true];
-$fancyTableCaptionStyle = ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true];
+$fancyTableCaptionStyle = ['spaceAfter' => 0, 'spaceBefore' => 240, 'keepNext' => true, 'fontStyle' => ['bold' => true]];
 $phpWord->addTableStyle($fancyTableStyleName, $fancyTableStyle, $fancyTableFirstRowStyle);
 
 $section->addCaption('Table', 'Fancy table', $fancyTableFontStyle, $fancyTableCaptionStyle);

@@ -12,25 +12,25 @@ $phpWord = new PhpWord();
 
 // Define styles
 $figureCaptionStyle = 'figureCaptionStyle';
-$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::START, 'next' => 'Normal']);
+$phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBefore' => 0, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::START, 'next' => 'Normal', 'fontStyle' => ['bold' => true]]);
 
 // Begin code
 $section = $phpWord->addSection();
 $section->addText('Local image with alt text but no styles:');
 $section->addImage(__DIR__ . '/resources/_mars.jpg', null, 'Image of Mars');
-$section->addCaption('Figure', 'Image of Mars', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Image of Mars', ['italic' => true], $figureCaptionStyle);
 
 printSeparator($section);
 $section->addText('Local image with styles but no alt text:');
 $section->addImage(__DIR__ . '/resources/_earth.jpg', ['width' => 210, 'height' => 210, 'alignment' => PhpOffice\PhpWord\SimpleType\Jc::CENTER]);
-$section->addCaption('Figure', 'Image of Earth', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Image of Earth', ['bold' => false], $figureCaptionStyle);
 
 // Remote image
 printSeparator($section);
 $source = 'http://php.net/images/logos/php-med-trans-light.gif';
 $section->addText("Remote image from: {$source}");
 $section->addImage($source, null);
-$section->addCaption('Figure', 'Remote image', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Remote image', ['bold' => false, 'italic' => true], $figureCaptionStyle);
 
 // Image from string
 printSeparator($section);
@@ -41,7 +41,7 @@ $fileContent = file_get_contents($source);
 $section->addText('Image from string');
 $imageTextRun = $section->addTextRun(['keepNext' => true]);
 $imageTextRun->addImage($fileContent);
-$section->addCaption('Figure', 'Image of Mars', ['bold' => true], $figureCaptionStyle);
+$section->addCaption('Figure', 'Image of Mars', ['bold' => false], $figureCaptionStyle);
 
 //Wrapping style
 printSeparator($section);

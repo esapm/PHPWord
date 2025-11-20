@@ -10,7 +10,7 @@ $section->addCaption($label, [$text], [$fontStyle], [$paragraphStyle]);
 
 - ``$label``. String describing the type of element being captioned (e.g., 'Figure' or 'Table').
 - ``$text``. String describing the element being captioned.
-- ``$fontStyle``: See [`Styles > Font`](../styles/font.md).
+- ``$fontStyle``: See [`Styles > Font`](../styles/font.md). Applies only to the caption text (not the label or number). It overrides the fontStyle associated with $paragraphStyle.
 - ``$paragraphStyle``: See [`Styles > Paragraph`](../styles/paragraph.md).
 
 Examples:
@@ -34,7 +34,7 @@ $section->addImage(
 $section->addCaption(
     'Figure', 
     'Image of Mars', 
-    ['bold'=>true], 
-    ['spaceAfter'=>240, 'spaceBefore'=>0]
+    ['bold'=>false], 
+    ['spaceAfter'=>240, 'spaceBefore'=>0, 'fontStyle' => array('bold' => true)]
 );
 ```

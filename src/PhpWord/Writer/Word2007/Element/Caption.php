@@ -46,6 +46,7 @@ class Caption extends AbstractElement
         $label = $element->getLabel();
         $bookmarkRId = $element->getPhpWord()->addBookmark(new Bookmark("_Toc{$eId}"));
         $figureNumber = $element->getFigureNumber();
+        $text = $element->getText();
 
         // Bookmark start for Table of Figures
         $xmlWriter->startElement('w:bookmarkStart');
@@ -56,7 +57,7 @@ class Caption extends AbstractElement
         // Label
         $xmlWriter->startElement('w:r');
 
-        $this->writeFontStyle();
+        // $this->writeFontStyle();
 
         $xmlWriter->startElement('w:t');
         $xmlWriter->writeAttribute('xml:space', 'preserve');
@@ -90,7 +91,7 @@ class Caption extends AbstractElement
 
         $xmlWriter->startElement('w:r');
 
-        $this->writeFontStyle();
+        // $this->writeFontStyle();
 
         $xmlWriter->startElement('w:rPr');
         $xmlWriter->startElement('w:noProof');
@@ -108,7 +109,7 @@ class Caption extends AbstractElement
         $xmlWriter->endElement();
 
         // Actual text
-        $text = $element->getText();
+
         if (is_string($text)) {
             $xmlWriter->startElement('w:r');
 
