@@ -57,6 +57,6 @@ class AbstractElementTest extends \PHPUnit\Framework\TestCase
             };
         }
         $stub->setElementId();
-        self::assertEquals(6, strlen($stub->getElementId()));
+        self::assertEquals(9, strlen($stub->getElementId()));
     }
 }
