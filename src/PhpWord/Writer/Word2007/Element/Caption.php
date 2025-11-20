@@ -40,14 +40,15 @@ class Caption extends AbstractElement
 
         // $bookmarkRId = null;
         $rId = $element->getRelationId();
+        $eId = $element->getElementId();
         $label = $element->getLabel();
-        // $bookmarkRId = $element->getPhpWord()->addBookmark("_{$label}{$rId}");
+        $bookmarkRId = $element->getPhpWord()->addBookmark();
         $figureNumber = $element->getFigureNumber();
 
         // Bookmark start for Table of Figures
         $xmlWriter->startElement('w:bookmarkStart');
-        $xmlWriter->writeAttribute('w:id', $rId);
-        $xmlWriter->writeAttribute('w:name', "_{$label}{$rId}");
+        $xmlWriter->writeAttribute('w:id', $bookmarkRId);
+        $xmlWriter->writeAttribute('w:name', "_Toc{$eId}");
         $xmlWriter->endElement(); //w:bookmarkStart
 
         // Label
@@ -119,7 +120,7 @@ class Caption extends AbstractElement
 
         // Bookmark end
         $xmlWriter->startElement('w:bookmarkEnd');
-        $xmlWriter->writeAttribute('w:id', $rId);
+        $xmlWriter->writeAttribute('w:id', $bookmarkRId);
         $xmlWriter->endElement(); //w:bookmarkEnd
 
         $this->endElementP(); // w:p

@@ -77,6 +77,9 @@ class Caption extends Text
         if ($pageNumber !== null) {
             $this->pageNumber = $pageNumber;
         }
+
+        // Set ElementId for bookmark
+        $this->setElementId();
     }
 
     /**

@@ -255,7 +255,7 @@ abstract class AbstractElement
      */
     public function setElementId(): void
     {
-        $this->elementId = substr(md5((string) mt_rand()), 0, 6);
+        $this->elementId = substr(md5((string) mt_rand()), 0, 9);
     }
 
     /**

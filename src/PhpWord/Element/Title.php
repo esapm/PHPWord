@@ -98,6 +98,9 @@ class Title extends AbstractElement
         if ($pageNumber !== null) {
             $this->pageNumber = $pageNumber;
         }
+
+        // Set ElementId for bookmark
+        $this->setElementId();
     }
 
     /**

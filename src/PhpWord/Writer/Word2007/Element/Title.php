@@ -48,15 +48,16 @@ class Title extends AbstractElement
             $xmlWriter->endElement();
         }
 
-//        $bookmarkRId = null;
+        $bookmarkRId = null;
         if ($element->getDepth() !== 0) {
             $rId = $element->getRelationId();
-//            $bookmarkRId = $element->getPhpWord()->addBookmark("_Toc{$rId}");
+            $eId = $element->getElementId();
+            $bookmarkRId = $element->getPhpWord()->addBookmark();
 
             // Bookmark start for TOC
             $xmlWriter->startElement('w:bookmarkStart');
-            $xmlWriter->writeAttribute('w:id', $rId);
-            $xmlWriter->writeAttribute('w:name', "_Toc{$rId}");
+            $xmlWriter->writeAttribute('w:id', $bookmarkRId);
+            $xmlWriter->writeAttribute('w:name', "_Toc{$eId}");
             $xmlWriter->endElement(); //w:bookmarkStart
         }
 
@@ -77,7 +78,7 @@ class Title extends AbstractElement
         if ($element->getDepth() !== 0) {
             // Bookmark end
             $xmlWriter->startElement('w:bookmarkEnd');
-            $xmlWriter->writeAttribute('w:id', $rId);
+            $xmlWriter->writeAttribute('w:id', $bookmarkRId);
             $xmlWriter->endElement(); //w:bookmarkEnd
         }
         $xmlWriter->endElement(); //w:p
