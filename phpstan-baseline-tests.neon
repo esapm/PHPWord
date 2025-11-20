@@ -1,0 +1,385 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:getallCaps\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:getbold\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:getdoubleStrikethrough\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:gethidden\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:getitalic\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:getnoProof\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:getrtl\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:getsmallCaps\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:getstrikethrough\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:getsubScript\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:getsuperScript\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:isbgColor\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:iscolor\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:isfallbackFont\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:isfgColor\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:ishint\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:iskerning\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:islang\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:islineHeight\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:isname\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:isscale\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:issize\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:isspacing\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:isunderline\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Call to an undefined method PhpOffice\\PhpWord\\Style\\Font\:\:iswhiteSpace\(\)\.$#'
+			identifier: method.notFound
+			count: 4
+			path: tests/PhpWordTests/Style/FontTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Border\:\:setBorderBottomColor\(\) expects string\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Border\:\:setBorderBottomSize\(\) expects float\|int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Border\:\:setBorderLeftColor\(\) expects string\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Border\:\:setBorderLeftSize\(\) expects float\|int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Border\:\:setBorderRightColor\(\) expects string\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Border\:\:setBorderRightSize\(\) expects float\|int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Border\:\:setBorderTopColor\(\) expects string\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Border\:\:setBorderTopSize\(\) expects float\|int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setAlignment\(\) expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setBgColor\(\) expects string\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setBorderInsideHColor\(\) expects string\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setBorderInsideHSize\(\) expects int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setBorderInsideVColor\(\) expects string\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setBorderInsideVSize\(\) expects int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setCellMarginBottom\(\) expects int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setCellMarginLeft\(\) expects int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setCellMarginRight\(\) expects int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setCellMarginTop\(\) expects int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setLayout\(\) expects string\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setUnit\(\) expects string\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Table\:\:setWidth\(\) expects float\|int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TableTest.php
+
+		-
+			message: '#^Parameter \#1 \$alignment of method PhpOffice\\PhpWord\\Style\\Image\:\:setPosHorizontal\(\) expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$alignment of method PhpOffice\\PhpWord\\Style\\Image\:\:setPosVertical\(\) expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$positioning of method PhpOffice\\PhpWord\\Style\\Image\:\:setPositioning\(\) expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$relto of method PhpOffice\\PhpWord\\Style\\Image\:\:setPosHorizontalRel\(\) expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$relto of method PhpOffice\\PhpWord\\Style\\Image\:\:setPosVerticalRel\(\) expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Frame\:\:setAlignment\(\) expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Frame\:\:setHeight\(\) expects float\|int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Frame\:\:setWidth\(\) expects float\|int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Image\:\:setMarginLeft\(\) expects float\|int, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\Image\:\:setMarginTop\(\) expects float\|int, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\TextBox\:\:setBgColor\(\) expects string\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\TextBox\:\:setBorderColor\(\) expects string\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\TextBox\:\:setBorderSize\(\) expects int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\TextBox\:\:setInnerMarginBottom\(\) expects int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\TextBox\:\:setInnerMarginLeft\(\) expects int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\TextBox\:\:setInnerMarginRight\(\) expects int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$value of method PhpOffice\\PhpWord\\Style\\TextBox\:\:setInnerMarginTop\(\) expects int\|null, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
+
+		-
+			message: '#^Parameter \#1 \$wrappingStyle of method PhpOffice\\PhpWord\\Style\\Image\:\:setWrappingStyle\(\) expects string, int\|string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/PhpWordTests/Style/TextBoxTest.php
