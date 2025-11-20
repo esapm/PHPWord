@@ -18,6 +18,8 @@
 
 namespace PhpOffice\PhpWord\Writer\Word2007\Element;
 
+use PhpOffice\PhpWord\Element\Bookmark;
+
 /**
  * TextRun element writer.
  *
@@ -52,7 +54,7 @@ class Title extends AbstractElement
         if ($element->getDepth() !== 0) {
             $rId = $element->getRelationId();
             $eId = $element->getElementId();
-            $bookmarkRId = $element->getPhpWord()->addBookmark();
+            $bookmarkRId = $element->getPhpWord()->addBookmark(new Bookmark("_Toc{$eId}"));
 
             // Bookmark start for TOC
             $xmlWriter->startElement('w:bookmarkStart');

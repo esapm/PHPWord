@@ -18,6 +18,8 @@
 
 namespace PhpOffice\PhpWord\Writer\Word2007\Element;
 
+use PhpOffice\PhpWord\Element\Bookmark;
+
 /**
  * TextRun element writer.
  *
@@ -42,7 +44,7 @@ class Caption extends AbstractElement
         $rId = $element->getRelationId();
         $eId = $element->getElementId();
         $label = $element->getLabel();
-        $bookmarkRId = $element->getPhpWord()->addBookmark();
+        $bookmarkRId = $element->getPhpWord()->addBookmark(new Bookmark("_Toc{$eId}"));
         $figureNumber = $element->getFigureNumber();
 
         // Bookmark start for Table of Figures

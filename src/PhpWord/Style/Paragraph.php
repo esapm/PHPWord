@@ -206,7 +206,7 @@ class Paragraph extends Border
     /**
      * Font style.
      *
-     * @var null|AbstractStyle|array|string
+     * @var null|AbstractStyle|string
      */
     private $fontStyle;
 
@@ -989,7 +989,7 @@ class Paragraph extends Border
     /**
      * Get font style.
      *
-     * @return null|AbstractStyle|array|string
+     * @return null|AbstractStyle|string
      */
     public function getFontStyle()
     {
