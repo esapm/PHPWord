@@ -45,8 +45,8 @@ class Caption extends AbstractElement
         $eId = $element->getElementId();
         $label = $element->getLabel();
         $bookmarkRId = $element->getPhpWord()->addBookmark(new Bookmark("_Toc{$eId}"));
-        $figureNumber = $element->getFigureNumber();
         $text = $element->getText();
+        $figureNumber = is_string($text) ? $element->getFigureNumber() . '. ' : $element->getFigureNumber();
 
         // Bookmark start for Table of Figures
         $xmlWriter->startElement('w:bookmarkStart');
@@ -69,42 +69,17 @@ class Caption extends AbstractElement
         // The period is automatic and separates the section number from the figure number.
         // <w:r><w:instrText xml:space="preserve"> STYLEREF 1 \s </w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:rPr><w:noProof/></w:rPr><w:t>1</w:t></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r><w:r><w:t>.</w:t></w:r>
 
-        // Sequence
+        $xmlWriter->startElement('w:fldSimple');
+        $xmlWriter->writeAttribute('w:instr', " SEQ {$label} \\* ARABIC \\s 1 ");
         $xmlWriter->startElement('w:r');
-        $xmlWriter->startElement('w:fldChar');
-        $xmlWriter->writeAttribute('w:fldCharType', 'begin');
-        $xmlWriter->endElement();
-        $xmlWriter->endElement();
-
-        $xmlWriter->startElement('w:r');
-        $xmlWriter->startElement('w:instrText');
-        $xmlWriter->writeAttribute('xml:space', 'preserve');
-        $xmlWriter->text(" SEQ {$label} \\* ARABIC \\s 1 ");
-        $xmlWriter->endElement();
-        $xmlWriter->endElement();
-
-        $xmlWriter->startElement('w:r');
-        $xmlWriter->startElement('w:fldChar');
-        $xmlWriter->writeAttribute('w:fldCharType', 'separate');
-        $xmlWriter->endElement();
-        $xmlWriter->endElement();
-
-        $xmlWriter->startElement('w:r');
-
-        // $this->writeFontStyle();
-
         $xmlWriter->startElement('w:rPr');
         $xmlWriter->startElement('w:noProof');
         $xmlWriter->endElement();
         $xmlWriter->endElement();
         $xmlWriter->startElement('w:t');
-        $xmlWriter->text($figureNumber);
+        $xmlWriter->writeAttribute('xml:space', 'preserve');
+        $this->writeText($figureNumber);
         $xmlWriter->endElement();
-        $xmlWriter->endElement();
-
-        $xmlWriter->startElement('w:r');
-        $xmlWriter->startElement('w:fldChar');
-        $xmlWriter->writeAttribute('w:fldCharType', 'end');
         $xmlWriter->endElement();
         $xmlWriter->endElement();
 
@@ -116,7 +91,7 @@ class Caption extends AbstractElement
             $this->writeFontStyle();
 
             $xmlWriter->startElement('w:t');
-            $this->writeText('. ' . $text);
+            $this->writeText($text);
             $xmlWriter->endElement(); // w:t
             $xmlWriter->endElement(); // w:r
         }
