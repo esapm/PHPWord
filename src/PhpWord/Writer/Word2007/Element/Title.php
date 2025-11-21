@@ -50,6 +50,8 @@ class Title extends AbstractElement
             $xmlWriter->endElement();
         }
 
+        $this->writeCommentRangeStart();
+
         $bookmarkRId = null;
         if ($element->getDepth() !== 0) {
             $rId = $element->getRelationId();
@@ -83,6 +85,9 @@ class Title extends AbstractElement
             $xmlWriter->writeAttribute('w:id', $bookmarkRId);
             $xmlWriter->endElement(); //w:bookmarkEnd
         }
+
+        $this->writeCommentRangeEnd();
+
         $xmlWriter->endElement(); //w:p
     }
 }
