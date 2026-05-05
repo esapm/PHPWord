@@ -75,6 +75,13 @@ abstract class AbstractPart
      */
     protected $rels = [];
 
+    /**                                                                                                                 
+     * Current page number, tracked via w:lastRenderedPageBreak hints.
+     *                                                                                                                  
+     * @var int
+     */                                                                                                                 
+    protected $currentPage = 1;
+
     /**
      * Comment references.
      *
@@ -242,6 +249,7 @@ abstract class AbstractPart
             foreach ($nodes as $node) {
                 if ($xmlReader->elementExists('w:lastRenderedPageBreak', $node)) {
                     $parent->addPageBreak();
+                    ++$this->currentPage;
                 }
                 $instrText = $xmlReader->getValue('w:instrText', $node);
                 if (null !== $instrText) {
@@ -312,6 +320,31 @@ abstract class AbstractPart
             $parent->addTitle($textContent, $headingDepth);
 
             return;
+        }
+
+        // Caption (paragraph styled as "Caption", "Figure Caption", "Table Caption", etc.)                                 
+        if (is_array($paragraphStyle) && isset($paragraphStyle['styleName']) &&                                             
+            str_contains($paragraphStyle['styleName'], 'Caption')) {
+                                                                                                                            
+            // Collect all w:t text nodes (includes cached SEQ field results)                                               
+            $textContent = '';                                                                                              
+            foreach ($xmlReader->getElements('w:r/w:t', $domNode) as $textNode) {                                           
+                $textContent .= $textNode->nodeValue;
+            }
+                                                                                                                            
+            // Derive label from style name ("Caption" → "Figure", "Table Caption" → "Table")
+            $lowerStyle = strtolower($paragraphStyle['styleName']);                                                         
+            $label = 'Figure';                                                                                              
+            foreach (['table', 'photo', 'map', 'plate', 'equation'] as $candidate) {
+                if (str_contains($lowerStyle, $candidate)) {                                                                
+                    $label = ucfirst($candidate);
+                    break;                                                                                                  
+                }
+            }                                                                                                               
+                        
+            $parent->addCaption($label, trim($textContent) ?: null, null, $paragraphStyle, $this->currentPage);             
+        
+            return;                                                                                                         
         }
 
         // Text and TextRun
