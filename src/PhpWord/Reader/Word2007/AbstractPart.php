@@ -204,6 +204,32 @@ abstract class AbstractPart
         // Paragraph style
         $paragraphStyle = $xmlReader->elementExists('w:pPr', $domNode) ? $this->readParagraphStyle($xmlReader, $domNode) : null;
 
+        // Caption check must come before FormField/PreserveText — caption paragraphs
+        // contain SEQ field codes that would otherwise be caught by the instrText branch.
+        if (is_array($paragraphStyle) && isset($paragraphStyle['styleName']) &&
+            str_contains($paragraphStyle['styleName'], 'Caption')) {
+
+            // Collect all w:t text nodes (includes cached SEQ field results)
+            $textContent = '';
+            foreach ($xmlReader->getElements('w:r/w:t', $domNode) as $textNode) {
+                $textContent .= $textNode->nodeValue;
+            }
+
+            // Derive label from style name ("Caption" → "Figure", "Table Caption" → "Table")
+            $lowerStyle = strtolower($paragraphStyle['styleName']);
+            $label = 'Figure';
+            foreach (['table', 'photo', 'map', 'plate', 'equation'] as $candidate) {
+                if (str_contains($lowerStyle, $candidate)) {
+                    $label = ucfirst($candidate);
+                    break;
+                }
+            }
+
+            $parent->addCaption($label, trim($textContent) ?: null, null, $paragraphStyle, $this->currentPage);
+
+            return;
+        }
+
         if ($xmlReader->elementExists('w:r/w:fldChar/w:ffData', $domNode)) {
             // FormField
             $partOfFormField = false;
@@ -320,31 +346,6 @@ abstract class AbstractPart
             $parent->addTitle($textContent, $headingDepth);
 
             return;
-        }
-
-        // Caption (paragraph styled as "Caption", "Figure Caption", "Table Caption", etc.)                                 
-        if (is_array($paragraphStyle) && isset($paragraphStyle['styleName']) &&                                             
-            str_contains($paragraphStyle['styleName'], 'Caption')) {
-                                                                                                                            
-            // Collect all w:t text nodes (includes cached SEQ field results)                                               
-            $textContent = '';                                                                                              
-            foreach ($xmlReader->getElements('w:r/w:t', $domNode) as $textNode) {                                           
-                $textContent .= $textNode->nodeValue;
-            }
-                                                                                                                            
-            // Derive label from style name ("Caption" → "Figure", "Table Caption" → "Table")
-            $lowerStyle = strtolower($paragraphStyle['styleName']);                                                         
-            $label = 'Figure';                                                                                              
-            foreach (['table', 'photo', 'map', 'plate', 'equation'] as $candidate) {
-                if (str_contains($lowerStyle, $candidate)) {                                                                
-                    $label = ucfirst($candidate);
-                    break;                                                                                                  
-                }
-            }                                                                                                               
-                        
-            $parent->addCaption($label, trim($textContent) ?: null, null, $paragraphStyle, $this->currentPage);             
-        
-            return;                                                                                                         
         }
 
         // Text and TextRun
