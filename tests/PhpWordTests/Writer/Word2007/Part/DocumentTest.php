@@ -24,6 +24,7 @@ use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\NumberFormat;
 use PhpOffice\PhpWord\Style\Cell;
 use PhpOffice\PhpWord\Style\Font;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PhpOffice\PhpWordTests\TestHelperDOCX;
 
 /**
@@ -550,9 +551,8 @@ class DocumentTest extends \PHPUnit\Framework\TestCase
 
     /**
      * covers ::_writeTextStyle.
-     *
-     * @dataProvider providerFontStyleStrikethrough
      */
+    #[DataProvider('providerFontStyleStrikethrough')]
     public function testWriteFontStyleStrikethrough(
         bool $isStrikethrough,
         bool $isDoubleStrikethrough,

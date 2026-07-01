@@ -8,13 +8,12 @@ use PhpOffice\PhpWord\Element\TextBox as TextBoxElement;
 use PhpOffice\PhpWord\Shared\XMLWriter;
 use PhpOffice\PhpWord\Style\TextBox as TextBoxStyle;
 use PhpOffice\PhpWord\Writer\Word2007\Element\TextBox;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class TextBoxTest extends TestCase
 {
-    /**
-     * @dataProvider textBoxColorProvider
-     */
+    #[DataProvider('textBoxColorProvider')]
     public function testTextBoxGeneratesCorrectXml(
         ?string $bgColor,
         ?string $borderColor,
