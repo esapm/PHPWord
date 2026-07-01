@@ -157,7 +157,12 @@ class XmlDocument
             $this->xpath->registerNamespace('w14', 'http://schemas.microsoft.com/office/word/2010/wordml');
         }
 
-        return $this->xpath->query($path);
+        $result = $this->xpath->query($path);
+        if ($result === false) {
+            throw new \RuntimeException("Invalid XPath expression: {$path}");
+        }
+
+        return $result;
     }
 
     /**

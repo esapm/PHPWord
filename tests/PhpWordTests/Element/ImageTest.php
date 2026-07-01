@@ -71,7 +71,7 @@ class ImageTest extends AbstractWebServerEmbedded
     {
         $nam = ucfirst((string) strtok($source, '.'));
         $source = __DIR__ . "/../_files/images/{$source}";
-        $image = new Image($source, null, null, false, $nam);
+        $image = new Image($source, null, false, $nam);
         self::assertEquals($source, $image->getSource());
         self::assertEquals($nam, $image->getName());
         self::assertEquals(md5($source), $image->getMediaId());

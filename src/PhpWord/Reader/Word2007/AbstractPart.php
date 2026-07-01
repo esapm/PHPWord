@@ -403,7 +403,7 @@ abstract class AbstractPart
                     }
                     $formField->setEntries($listEntries);
                     if (null !== $formField->getValue()) {
-                        $formField->setText($listEntries[$formField->getValue()]);
+                        $formField->setText($listEntries[(int) $formField->getValue()]);
                     }
 
                     break;

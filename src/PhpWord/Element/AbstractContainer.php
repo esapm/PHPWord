@@ -52,6 +52,7 @@ use ReflectionClass;
  * @method SDT addSDT(string $type)
  * @method Formula addFormula(Math $math)
  * @method Ruby addRuby(TextRun $baseText, TextRun $rubyText, \PhpOffice\PhpWord\ComplexType\RubyProperties $properties)
+ * @method Caption addCaption(string $label = 'Figure', string $text = null, mixed $fontStyle = null, mixed $paragraphStyle = null, int $pageNumber = null)
  * @method \PhpOffice\PhpWord\Element\OLEObject addObject(string $source, mixed $style = null) deprecated, use addOLEObject instead
  *
  * @since 0.10.0
