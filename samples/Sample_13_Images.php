@@ -17,7 +17,7 @@ $phpWord->addParagraphStyle($figureCaptionStyle, ['spaceAfter' => 120, 'spaceBef
 // Begin code
 $section = $phpWord->addSection();
 $section->addText('Local image with alt text but no styles:');
-$section->addImage(__DIR__ . '/resources/_mars.jpg', null, 'Image of Mars');
+$section->addImage(__DIR__ . '/resources/_mars.jpg', null, false, null, 'Image of Mars');
 $section->addCaption('Figure', 'Image of Mars', ['italic' => true], $figureCaptionStyle);
 
 printSeparator($section);

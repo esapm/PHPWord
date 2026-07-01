@@ -41,7 +41,7 @@ use ReflectionClass;
  * @method TOF addTOF(string $captionLabel = 'Figure', mixed $tofStyle = null, mixed $fontStyle = null, mixed $paragraphStyle = null)
  * @method PageBreak addPageBreak()
  * @method Table addTable(mixed $style = null)
- * @method Image addImage(string $source, mixed $style = null, string $altText = null, bool $isWatermark = false, $name = null)
+ * @method Image addImage(string $source, mixed $style = null, bool $isWatermark = false, $name = null, $altText = null)
  * @method OLEObject addOLEObject(string $source, mixed $style = null)
  * @method TextBox addTextBox(mixed $style = null)
  * @method Field addField(string $type = null, array $properties = array(), array $options = array(), mixed $text = null)

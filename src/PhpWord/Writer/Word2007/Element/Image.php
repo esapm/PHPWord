@@ -82,6 +82,10 @@ class Image extends AbstractElement
         $xmlWriter->writeAttribute('alt', $element->getAltText());
         $xmlWriter->writeAttribute('stroked', 'f');
 
+        if ($element->getAltText() != null) {
+            $xmlWriter->writeAttribute('alt', $element->getAltText());
+        }
+
         $styleWriter->write();
 
         $xmlWriter->startElement('v:imagedata');
