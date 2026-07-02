@@ -26,6 +26,7 @@ use PhpOffice\PhpWord\SimpleType\VerticalJc;
 use PhpOffice\PhpWord\Style;
 use PhpOffice\PhpWord\Style\Table;
 use PhpOffice\PhpWord\Style\TablePosition;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PhpOffice\PhpWordTests\AbstractTestReader;
 
 /**
@@ -331,9 +332,7 @@ class StyleTest extends AbstractTestReader
         self::assertEquals(VerticalJc::CENTER, $sectionStyle->getVAlign());
     }
 
-    /**
-     * @dataProvider providerIndentation
-     */
+    #[DataProvider('providerIndentation')]
     public function testIndentation(
         string $indent,
         float $left,

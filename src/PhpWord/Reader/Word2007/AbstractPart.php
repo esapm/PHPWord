@@ -75,11 +75,11 @@ abstract class AbstractPart
      */
     protected $rels = [];
 
-    /**                                                                                                                 
+    /**
      * Current page number, tracked via w:lastRenderedPageBreak hints.
-     *                                                                                                                  
+     *
      * @var int
-     */                                                                                                                 
+     */
     protected $currentPage = 1;
 
     /**
@@ -208,7 +208,6 @@ abstract class AbstractPart
         // contain SEQ field codes that would otherwise be caught by the instrText branch.
         if (is_array($paragraphStyle) && isset($paragraphStyle['styleName']) &&
             str_contains($paragraphStyle['styleName'], 'Caption')) {
-
             // Collect all w:t text nodes (includes cached SEQ field results)
             $textContent = '';
             foreach ($xmlReader->getElements('w:r/w:t', $domNode) as $textNode) {
@@ -221,6 +220,7 @@ abstract class AbstractPart
             foreach (['table', 'photo', 'map', 'plate', 'equation'] as $candidate) {
                 if (str_contains($lowerStyle, $candidate)) {
                     $label = ucfirst($candidate);
+
                     break;
                 }
             }

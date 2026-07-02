@@ -18,20 +18,31 @@
 
 namespace PhpOffice\PhpWordTests\Writer\ODText\Style;
 
+use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\Style\Font;
 use PhpOffice\PhpWordTests\TestHelperDOCX;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test class for Headers, Footers, Tabs in ODT.
  */
 class FontTest extends \PHPUnit\Framework\TestCase
 {
+    /** @var string */
+    private $defaultFontColor;
+
+    protected function setUp(): void
+    {
+        $this->defaultFontColor = Settings::getDefaultFontColor();
+    }
+
     /**
      * Executed after each method of the class.
      */
     protected function tearDown(): void
     {
         TestHelperDOCX::clear();
+        Settings::setDefaultFontColor($this->defaultFontColor);
     }
 
     public function testDefaultDefaults(): void
@@ -133,11 +144,10 @@ class FontTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
-     * @dataProvider providerAllNamedColors
-     *
      * @param string $namedColor
      * @param string $rgbColor
      */
+    #[DataProvider('providerAllNamedColors')]
     public function testAllNamedColors($namedColor, $rgbColor): void
     {
         $phpWord = new \PhpOffice\PhpWord\PhpWord();

@@ -27,6 +27,7 @@ use PhpOffice\PhpWord\Element\Section;
 use PhpOffice\PhpWord\Element\Text;
 use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\IOFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Reader\Word2007;
 use PhpOffice\PhpWord\Style\Font;
@@ -135,9 +136,8 @@ class Word2007Test extends \PHPUnit\Framework\TestCase
 
     /**
      * Load a Word without/withoutImages.
-     *
-     * @dataProvider providerSettingsImageLoading
      */
+    #[DataProvider('providerSettingsImageLoading')]
     public function testLoadWord2011SettingsImageLoading(bool $hasImageLoading): void
     {
         $reader = new Word2007();

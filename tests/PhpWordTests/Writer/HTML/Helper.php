@@ -19,6 +19,7 @@
 namespace PhpOffice\PhpWordTests\Writer\HTML;
 
 use DOMDocument;
+use DOMNode;
 use DOMXPath;
 use Exception;
 use LibXMLError;
@@ -38,7 +39,7 @@ class Helper extends \PHPUnit\Framework\TestCase
             self::fail('Unexpected false return from xpath query');
         } else {
             $item2 = $item->item($itemNumber);
-            if ($item2 === null) {
+            if ($item2 === null || !($item2 instanceof DOMNode)) {
                 self::fail('Unexpected null return requesting item');
             } elseif ($namedItem !== '') {
                 $item3 = $item2->attributes->getNamedItem($namedItem);
@@ -64,7 +65,7 @@ class Helper extends \PHPUnit\Framework\TestCase
             self::fail('Unexpected false return from xpath query');
         } else {
             $item2 = $item->item($itemNumber);
-            if ($item2 === null) {
+            if ($item2 === null || !($item2 instanceof DOMNode)) {
                 self::fail('Unexpected null return requesting item');
             } else {
                 $returnValue = $item2->attributes->getNamedItem($namedItem);

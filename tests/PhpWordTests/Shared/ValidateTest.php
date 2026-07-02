@@ -19,12 +19,11 @@
 namespace PhpOffice\PhpWordTests\Shared;
 
 use PhpOffice\PhpWord\Shared\Validate;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 class ValidateTest extends \PHPUnit\Framework\TestCase
 {
-    /**
-     * @dataProvider providerCSSGenericFont
-     */
+    #[DataProvider('providerCSSGenericFont')]
     public function testValidateCSSGenericFont(?string $value, string $expected): void
     {
         self::assertEquals($expected, Validate::validateCSSGenericFont($value));
@@ -48,9 +47,7 @@ class ValidateTest extends \PHPUnit\Framework\TestCase
         return $data;
     }
 
-    /**
-     * @dataProvider providerCSSWhiteSpace
-     */
+    #[DataProvider('providerCSSWhiteSpace')]
     public function testValidateCSSWhiteSpace(?string $value, string $expected): void
     {
         self::assertEquals($expected, Validate::validateCSSWhiteSpace($value));

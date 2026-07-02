@@ -27,6 +27,7 @@ use PhpOffice\PhpWord\Writer\ODText;
 use PhpOffice\PhpWord\Writer\PDF;
 use PhpOffice\PhpWord\Writer\RTF;
 use PhpOffice\PhpWord\Writer\Word2007;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -45,9 +46,8 @@ class IOFactoryTest extends TestCase
 
     /**
      * Create all possible writers.
-     *
-     * @dataProvider providerCreateWriter
      */
+    #[DataProvider('providerCreateWriter')]
     public function testCreateWriter(string $name, string $expected): void
     {
         $phpWord = new PhpWord();

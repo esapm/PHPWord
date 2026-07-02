@@ -27,6 +27,7 @@ use PhpOffice\PhpWord\Element\TextRun;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\Shared\Converter;
 use PhpOffice\PhpWord\Shared\Html;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\LineSpacingRule;
 use PhpOffice\PhpWord\SimpleType\TblWidth;
@@ -235,9 +236,8 @@ class HtmlTest extends AbstractWebServerEmbedded
 
     /**
      * Test width.
-     *
-     * @dataProvider providerParseWidth
      */
+    #[DataProvider('providerParseWidth')]
     public function testParseWidth(string $htmlSize, float $docxSize, string $docxUnit): void
     {
         $html = '<table width="' . $htmlSize . '"><tr><td>A</td></tr></table>';

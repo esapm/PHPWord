@@ -64,20 +64,21 @@ class Content extends AbstractPart
 
                         break;
                     case 'text:p': // Paragraph
-                        $styleName = $xmlReader->getAttribute('text:style-name', $node);                                                
+                        $styleName = $xmlReader->getAttribute('text:style-name', $node);
                         if (substr($styleName, 0, 2) === 'SB') {
-                            break;                                                                                                      
-                        }           
-
-                        // Track page number via soft page break hints (LibreOffice equivalent of lastRenderedPageBreak)                
-                        foreach ($node->childNodes as $pageBreakChild) {
-                            if ($pageBreakChild->nodeName === 'text:soft-page-break') {                                                 
-                                ++$this->currentPage;
-                                break;                                                                                                  
-                            }       
+                            break;
                         }
 
-                        // Caption: paragraph contains a text:sequence element (ODT auto-numbered figure/table labels)                  
+                        // Track page number via soft page break hints (LibreOffice equivalent of lastRenderedPageBreak)
+                        foreach ($node->childNodes as $pageBreakChild) {
+                            if ($pageBreakChild->nodeName === 'text:soft-page-break') {
+                                ++$this->currentPage;
+
+                                break;
+                            }
+                        }
+
+                        // Caption: paragraph contains a text:sequence element (ODT auto-numbered figure/table labels)
                         $sequenceNode = $xmlReader->getElement('text:sequence', $node);
                         if ($sequenceNode !== null) {
                             $label = $sequenceNode->getAttribute('text:name') ?: 'Figure';
@@ -85,10 +86,11 @@ class Content extends AbstractPart
                             if ($text !== '') {
                                 $this->getSection($phpWord)->addCaption($label, $text, null, null, $this->currentPage);
                             }
+
                             break;
                         }
-                                    
-                        $element = $xmlReader->getElement('draw:frame/draw:object', $node);  
+
+                        $element = $xmlReader->getElement('draw:frame/draw:object', $node);
                         if ($element) {
                             $mathFile = str_replace('./', '', $element->getAttribute('xlink:href')) . '/content.xml';
 

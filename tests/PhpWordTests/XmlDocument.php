@@ -20,9 +20,11 @@ namespace PhpOffice\PhpWordTests;
 
 use DOMDocument;
 use DOMElement;
+use DOMNameSpaceNode;
 use DOMNode;
 use DOMNodeList;
 use DOMXPath;
+use RuntimeException;
 
 /**
  * DOM wrapper class.
@@ -141,7 +143,7 @@ class XmlDocument
     /**
      * Get node list.
      *
-     * @return DOMNodeList<DOMNode>
+     * @return DOMNodeList<DOMNameSpaceNode|DOMNode>
      */
     public function getNodeList(string $path, string $file = ''): DOMNodeList
     {
@@ -159,7 +161,7 @@ class XmlDocument
 
         $result = $this->xpath->query($path);
         if ($result === false) {
-            throw new \RuntimeException("Invalid XPath expression: {$path}");
+            throw new RuntimeException("Invalid XPath expression: {$path}");
         }
 
         return $result;

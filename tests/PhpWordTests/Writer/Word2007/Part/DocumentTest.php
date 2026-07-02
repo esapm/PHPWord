@@ -24,8 +24,8 @@ use PhpOffice\PhpWord\SimpleType\Jc;
 use PhpOffice\PhpWord\SimpleType\NumberFormat;
 use PhpOffice\PhpWord\Style\Cell;
 use PhpOffice\PhpWord\Style\Font;
-use PHPUnit\Framework\Attributes\DataProvider;
 use PhpOffice\PhpWordTests\TestHelperDOCX;
+use PHPUnit\Framework\Attributes\DataProvider;
 
 /**
  * Test class for PhpOffice\PhpWord\Writer\Word2007\Part\Document.

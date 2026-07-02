@@ -20,6 +20,7 @@ namespace PhpOffice\PhpWordTests\Element;
 
 use PhpOffice\PhpWord\Element\Image;
 use PhpOffice\PhpWord\SimpleType\Jc;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PhpOffice\PhpWordTests\AbstractWebServerEmbedded;
 
 /**
@@ -64,9 +65,8 @@ class ImageTest extends AbstractWebServerEmbedded
 
     /**
      * Valid image types.
-     *
-     * @dataProvider providerImages
      */
+    #[DataProvider('providerImages')]
     public function testImages($source, $type, $extension, $createFunction, $imageFunction, $imageQuality): void
     {
         $nam = ucfirst((string) strtok($source, '.'));
