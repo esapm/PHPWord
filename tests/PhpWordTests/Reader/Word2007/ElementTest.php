@@ -71,6 +71,71 @@ class ElementTest extends AbstractTestReader
     }
 
     /**
+     * Test that a VML text box (w:pict/v:shape/v:textbox) is read when not
+     * wrapped in mc:AlternateContent.
+     */
+    public function testReadVmlTextBox(): void
+    {
+        $documentXml = '<w:p>
+            <w:r>
+                <w:pict>
+                    <v:shape xmlns:v="urn:schemas-microsoft-com:vml">
+                        <v:textbox>
+                            <w:txbxContent>
+                                <w:p><w:r><w:t>First line</w:t></w:r></w:p>
+                                <w:p><w:r><w:t>Second line</w:t></w:r></w:p>
+                            </w:txbxContent>
+                        </v:textbox>
+                    </v:shape>
+                </w:pict>
+            </w:r>
+        </w:p>';
+
+        $phpWord = $this->getDocumentFromString(['document' => $documentXml]);
+        $elements = $phpWord->getSection(0)->getElements();
+        self::assertInstanceOf('PhpOffice\PhpWord\Element\TextRun', $elements[0]);
+        $text = $elements[0]->getElement(0);
+        self::assertInstanceOf(Text::class, $text);
+        self::assertStringContainsString('First line', $text->getText());
+        self::assertStringContainsString('Second line', $text->getText());
+    }
+
+    /**
+     * Test that a DrawingML anchored text box (w:drawing/wp:anchor/wps:txbx) is read.
+     */
+    public function testReadDrawingTextBox(): void
+    {
+        $documentXml = '<w:p xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing"
+                             xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"
+                             xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+            <w:r>
+                <w:drawing>
+                    <wp:anchor>
+                        <a:graphic>
+                            <a:graphicData uri="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+                                <wps:wsp>
+                                    <wps:txbx>
+                                        <w:txbxContent>
+                                            <w:p><w:r><w:t>Text box content</w:t></w:r></w:p>
+                                        </w:txbxContent>
+                                    </wps:txbx>
+                                </wps:wsp>
+                            </a:graphicData>
+                        </a:graphic>
+                    </wp:anchor>
+                </w:drawing>
+            </w:r>
+        </w:p>';
+
+        $phpWord = $this->getDocumentFromString(['document' => $documentXml]);
+        $elements = $phpWord->getSection(0)->getElements();
+        self::assertInstanceOf('PhpOffice\PhpWord\Element\TextRun', $elements[0]);
+        $text = $elements[0]->getElement(0);
+        self::assertInstanceOf(Text::class, $text);
+        self::assertEquals('Text box content', $text->getText());
+    }
+
+    /**
      * Test reading of textbreak.
      */
     public function testReadTextBreak(): void

@@ -531,6 +531,30 @@ abstract class AbstractPart
     }
 
     /**
+     * Extract plain text from a w:txbxContent element anywhere inside $node.
+     *
+     * Collects each w:p paragraph's text separately and joins them with a single
+     * space so the result is readable when added inline to a TextRun.
+     */
+    private function extractTextBoxContent(XMLReader $xmlReader, DOMElement $node): string
+    {
+        $txbxContent = $xmlReader->getElement('.//w:txbxContent', $node);
+        if ($txbxContent === null) {
+            return '';
+        }
+
+        $parts = [];
+        foreach ($xmlReader->getElements('w:p', $txbxContent) as $para) {
+            $text = trim($para->nodeValue);
+            if ($text !== '') {
+                $parts[] = $text;
+            }
+        }
+
+        return htmlspecialchars(implode(' ', $parts), ENT_QUOTES, 'UTF-8');
+    }
+
+    /**
      * Parses nodes under w:r.
      *
      * @param string $docPart
@@ -562,6 +586,13 @@ abstract class AbstractPart
                 }
                 $parent->addImage($imageSource);
             }
+            // Text box content (VML v:textbox) — no image when a text box is present
+            if (null === $target) {
+                $textContent = $this->extractTextBoxContent($xmlReader, $node);
+                if ($textContent !== '') {
+                    $parent->addText($textContent, $fontStyle, $paragraphStyle);
+                }
+            }
         } elseif ($node->nodeName == 'w:drawing') {
             // Office 2011 Image
             $xmlReader->registerNamespace('wp', 'http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing');
@@ -581,6 +612,13 @@ abstract class AbstractPart
             if ($this->hasImageLoading() && null !== $target) {
                 $imageSource = "zip://{$this->docFile}#{$target}";
                 $parent->addImage($imageSource, null, false, $name, $altText);
+            }
+            // DrawingML anchored text box (wps:txbx) — no image when a text box is present
+            if (null === $target) {
+                $textContent = $this->extractTextBoxContent($xmlReader, $node);
+                if ($textContent !== '') {
+                    $parent->addText($textContent, $fontStyle, $paragraphStyle);
+                }
             }
         } elseif ($node->nodeName == 'w:object') {
             // Object
