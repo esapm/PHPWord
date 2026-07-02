@@ -47,7 +47,7 @@ class Document extends AbstractPart
         $this->phpWord = $phpWord;
         $xmlReader = new XMLReader();
         $xmlReader->getDomFromZip($this->docFile, $this->xmlFile);
-        $readMethods = ['w:p' => 'readWPNode', 'w:tbl' => 'readTable', 'w:sectPr' => 'readWSectPrNode'];
+        $readMethods = ['w:p' => 'readWPNode', 'w:tbl' => 'readTable', 'w:sectPr' => 'readWSectPrNode', 'w:sdt' => 'readBodySdt'];
 
         $nodes = $xmlReader->getElements('w:body/*');
         if ($nodes->length > 0) {
@@ -86,6 +86,8 @@ class Document extends AbstractPart
                             if (isset($readMethods[$node->nodeName])) {
                                 $readMethod = $readMethods[$node->nodeName];
                                 $this->$readMethod($xmlReader, $node, $hfObject, $docPart);
+                            } elseif ($node->nodeName === 'w:sdt') {
+                                $this->readSdtContent($xmlReader, $node, $readMethods, $hfObject, $docPart);
                             }
                         }
                     }
@@ -168,5 +170,52 @@ class Document extends AbstractPart
         $style = $this->readSectionStyle($xmlReader, $node);
         $section->setStyle($style);
         $this->readHeaderFooter($style, $section);
+    }
+
+    /**
+     * Read a body-level w:sdt (structured document tag / content control).
+     *
+     * Recurses into w:sdtContent and dispatches child nodes — paragraphs, tables,
+     * and nested SDTs — through the same body-level read methods. Handles the
+     * Section pass-by-reference so section breaks inside an SDT work correctly.
+     */
+    private function readBodySdt(XMLReader $xmlReader, DOMElement $sdtNode, Section &$section): void
+    {
+        $contentNode = $xmlReader->getElement('w:sdtContent', $sdtNode);
+        if ($contentNode === null) {
+            return;
+        }
+
+        $readMethods = ['w:p' => 'readWPNode', 'w:tbl' => 'readTable', 'w:sdt' => 'readBodySdt'];
+        foreach ($xmlReader->getElements('*', $contentNode) as $child) {
+            if (isset($readMethods[$child->nodeName])) {
+                $readMethod = $readMethods[$child->nodeName];
+                $this->$readMethod($xmlReader, $child, $section);
+            }
+        }
+    }
+
+    /**
+     * Dispatch the w:sdtContent children of an SDT node through a caller-supplied
+     * readMethods map. Used for header/footer SDTs where the parent is not a Section.
+     *
+     * @param array<string, string> $readMethods
+     * @param mixed $parent
+     */
+    private function readSdtContent(XMLReader $xmlReader, DOMElement $sdtNode, array $readMethods, $parent, string $docPart = 'document'): void
+    {
+        $contentNode = $xmlReader->getElement('w:sdtContent', $sdtNode);
+        if ($contentNode === null) {
+            return;
+        }
+
+        foreach ($xmlReader->getElements('*', $contentNode) as $child) {
+            if (isset($readMethods[$child->nodeName])) {
+                $readMethod = $readMethods[$child->nodeName];
+                $this->$readMethod($xmlReader, $child, $parent, $docPart);
+            } elseif ($child->nodeName === 'w:sdt') {
+                $this->readSdtContent($xmlReader, $child, $readMethods, $parent, $docPart);
+            }
+        }
     }
 }

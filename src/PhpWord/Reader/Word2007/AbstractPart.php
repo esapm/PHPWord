@@ -502,6 +502,14 @@ abstract class AbstractPart
             foreach ($nodes as $node) {
                 $this->readRun($xmlReader, $node, $parent, $docPart, $paragraphStyle);
             }
+        } elseif ($domNode->nodeName === 'w:sdt') {
+            // Inline content control — recurse into w:sdtContent runs
+            $contentNode = $xmlReader->getElement('w:sdtContent', $domNode);
+            if ($contentNode !== null) {
+                foreach ($xmlReader->getElements('*', $contentNode) as $node) {
+                    $this->readRun($xmlReader, $node, $parent, $docPart, $paragraphStyle);
+                }
+            }
         } elseif ($domNode->nodeName == 'w:r') {
             $fontStyle = $this->readFontStyle($xmlReader, $domNode);
             $nodes = $xmlReader->getElements('*', $domNode);

@@ -676,4 +676,101 @@ class ElementTest extends AbstractTestReader
         $textRun = $ruby->getRubyTextRun();
         self::assertEquals('かみ', $textRun->getText());
     }
+
+    /**
+     * Test that a body-level w:sdt (content control) is read — paragraphs and
+     * tables inside w:sdtContent must not be dropped.
+     */
+    public function testReadBodySdt(): void
+    {
+        $documentXml = '<w:sdt>
+            <w:sdtPr/>
+            <w:sdtContent>
+                <w:p>
+                    <w:r><w:t>Inside content control</w:t></w:r>
+                </w:p>
+            </w:sdtContent>
+        </w:sdt>';
+
+        $phpWord = $this->getDocumentFromString(['document' => $documentXml]);
+        $elements = $phpWord->getSection(0)->getElements();
+        self::assertCount(1, $elements);
+        self::assertInstanceOf('PhpOffice\PhpWord\Element\TextRun', $elements[0]);
+        self::assertEquals('Inside content control', $elements[0]->getText());
+    }
+
+    /**
+     * Test that a nested w:sdt (SDT inside SDT) is read correctly.
+     */
+    public function testReadNestedBodySdt(): void
+    {
+        $documentXml = '<w:sdt>
+            <w:sdtContent>
+                <w:p>
+                    <w:r><w:t>Outer</w:t></w:r>
+                </w:p>
+                <w:sdt>
+                    <w:sdtContent>
+                        <w:p>
+                            <w:r><w:t>Inner</w:t></w:r>
+                        </w:p>
+                    </w:sdtContent>
+                </w:sdt>
+            </w:sdtContent>
+        </w:sdt>';
+
+        $phpWord = $this->getDocumentFromString(['document' => $documentXml]);
+        $elements = $phpWord->getSection(0)->getElements();
+        self::assertCount(2, $elements);
+        self::assertEquals('Outer', $elements[0]->getText());
+        self::assertEquals('Inner', $elements[1]->getText());
+    }
+
+    /**
+     * Test that a body-level w:sdt wrapping a table reads the table rows.
+     */
+    public function testReadBodySdtWithTable(): void
+    {
+        $documentXml = '<w:sdt>
+            <w:sdtContent>
+                <w:tbl>
+                    <w:tr>
+                        <w:tc><w:p><w:r><w:t>Cell A</w:t></w:r></w:p></w:tc>
+                        <w:tc><w:p><w:r><w:t>Cell B</w:t></w:r></w:p></w:tc>
+                    </w:tr>
+                </w:tbl>
+            </w:sdtContent>
+        </w:sdt>';
+
+        $phpWord = $this->getDocumentFromString(['document' => $documentXml]);
+        $elements = $phpWord->getSection(0)->getElements();
+        self::assertCount(1, $elements);
+        self::assertInstanceOf('PhpOffice\PhpWord\Element\Table', $elements[0]);
+        $rows = $elements[0]->getRows();
+        self::assertCount(1, $rows);
+        self::assertCount(2, $rows[0]->getCells());
+    }
+
+    /**
+     * Test that an inline w:sdt within a paragraph run is read — text inside
+     * w:sdtContent must appear in the parent paragraph, not be dropped.
+     */
+    public function testReadInlineSdt(): void
+    {
+        $documentXml = '<w:p>
+            <w:r><w:t xml:space="preserve">Before </w:t></w:r>
+            <w:sdt>
+                <w:sdtContent>
+                    <w:r><w:t>inline control</w:t></w:r>
+                </w:sdtContent>
+            </w:sdt>
+            <w:r><w:t xml:space="preserve"> after</w:t></w:r>
+        </w:p>';
+
+        $phpWord = $this->getDocumentFromString(['document' => $documentXml]);
+        $elements = $phpWord->getSection(0)->getElements();
+        self::assertCount(1, $elements);
+        self::assertInstanceOf('PhpOffice\PhpWord\Element\TextRun', $elements[0]);
+        self::assertStringContainsString('inline control', $elements[0]->getText());
+    }
 }
